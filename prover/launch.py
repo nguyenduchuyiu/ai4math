@@ -64,7 +64,9 @@ if __name__ == "__main__":
             request_statuses=generator_scheduler.request_statuses,
             lock=generator_scheduler.lock,
             args=cfg.model_args,
-            max_model_len=max_model_len
+            max_model_len=max_model_len,
+            gpu_memory_utilization=cfg.gpu_memory_utilization,
+            log_dir=log_dir,
         )
         for local_rank in range(ngpus)
     ]

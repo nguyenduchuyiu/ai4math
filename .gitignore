@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+
+/leandojo_benchmark_4/
+/ReProver/
+/retriever/indexed_corpus.pkl
+
+/repl/
+/logs

@@ -9,18 +9,20 @@ lean_timeout = 120
 # model
 batch_size = 4
 mode = 'cot_goedel_v2' # chat templates can be changed in prover/utils.py
-pass_ = 32
+pass_ = 32 # number of samples to generate
 model_path = 'Goedel-LM/Goedel-Prover-V2-8B'
+max_model_len = 30000      # cap context length below OOM threshold
+gpu_memory_utilization = 0.9
 
 model_args = AttrDict(
-    mode=mode,  
+    mode=mode,
     temperature=0.6,
-    max_tokens=32768,
+    max_tokens=16384,          
     top_p=0.95,
 )
 
 # algorithm
-n_search_procs = 16
+n_search_procs = 32
 sampler = dict(
     algorithm=Sampling,
     sample_num=pass_,

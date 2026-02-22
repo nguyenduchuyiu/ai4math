@@ -17,7 +17,7 @@ class LemmaExtractor:
         else:
             self.name = self.get_name(self.code)
         
-    
+     
     def get_lemmas(self):
         sorry_states = self.verifier(self.code)['sorries']
                 

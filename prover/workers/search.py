@@ -58,6 +58,7 @@ class SearchProcess(mp.Process):
             self._current_prob = f'{prob_idx}_{prob_runname}'
             prob_log_dir = self.log_dir / self._current_prob
             os.makedirs(prob_log_dir, exist_ok=True)
+            data['_prob_log_dir'] = str(prob_log_dir)
             sample_generator = self.sampler.sample(
                 data=data,
                 prob_log_dir=prob_log_dir,

@@ -1,0 +1,476 @@
+{
+  "ranked": [
+    {
+      "idx": 30,
+      "raw_score": -252.07727599143982,
+      "final_score": -2200,
+      "status": "FAIL",
+      "worst_category": "semantic",
+      "first_error_line": 24,
+      "num_sorries": 2,
+      "num_preserved_steps": 23,
+      "verify_time": 12.07727599143982
+    },
+    {
+      "idx": 21,
+      "raw_score": -232.66918468475342,
+      "final_score": -2500,
+      "status": "FAIL",
+      "worst_category": "semantic",
+      "first_error_line": 22,
+      "num_sorries": 2,
+      "num_preserved_steps": 26,
+      "verify_time": 12.669184684753418
+    },
+    {
+      "idx": 4,
+      "raw_score": 2736.3589725494385,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 25,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.641027450561523
+    },
+    {
+      "idx": 16,
+      "raw_score": 2757.283777475357,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 23,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.716222524642944
+    },
+    {
+      "idx": 5,
+      "raw_score": 2757.348802089691,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 23,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.651197910308838
+    },
+    {
+      "idx": 0,
+      "raw_score": 2757.444533109665,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 23,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.555466890335083
+    },
+    {
+      "idx": 31,
+      "raw_score": 2757.9794478416443,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 23,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.020552158355713
+    },
+    {
+      "idx": 26,
+      "raw_score": 2758.061609983444,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 23,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 11.938390016555786
+    },
+    {
+      "idx": 2,
+      "raw_score": 2758.4573163986206,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 23,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 11.542683601379395
+    },
+    {
+      "idx": 10,
+      "raw_score": 2765.882100582123,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 22,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 14.117899417877197
+    },
+    {
+      "idx": 19,
+      "raw_score": 2806.288253545761,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.711746454238892
+    },
+    {
+      "idx": 14,
+      "raw_score": 2806.302081823349,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.697918176651001
+    },
+    {
+      "idx": 13,
+      "raw_score": 2806.6958689689636,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.304131031036377
+    },
+    {
+      "idx": 7,
+      "raw_score": 2806.705645084381,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.294354915618896
+    },
+    {
+      "idx": 18,
+      "raw_score": 2806.7958674430847,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.204132556915283
+    },
+    {
+      "idx": 20,
+      "raw_score": 2806.838330745697,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.161669254302979
+    },
+    {
+      "idx": 11,
+      "raw_score": 2806.955201625824,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.044798374176025
+    },
+    {
+      "idx": 6,
+      "raw_score": 2806.9573538303375,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 13.042646169662476
+    },
+    {
+      "idx": 23,
+      "raw_score": 2807.063943386078,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.93605661392212
+    },
+    {
+      "idx": 24,
+      "raw_score": 2807.2034425735474,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.796557426452637
+    },
+    {
+      "idx": 9,
+      "raw_score": 2807.4933609962463,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.506639003753662
+    },
+    {
+      "idx": 1,
+      "raw_score": 2807.579731941223,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.420268058776855
+    },
+    {
+      "idx": 22,
+      "raw_score": 2807.6733181476593,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.326681852340698
+    },
+    {
+      "idx": 28,
+      "raw_score": 2807.738735437393,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.261264562606812
+    },
+    {
+      "idx": 17,
+      "raw_score": 2807.8401618003845,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.159838199615479
+    },
+    {
+      "idx": 12,
+      "raw_score": 2807.9273381233215,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.072661876678467
+    },
+    {
+      "idx": 27,
+      "raw_score": 2807.973892688751,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 12.02610731124878
+    },
+    {
+      "idx": 29,
+      "raw_score": 2808.1166071891785,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 11.883392810821533
+    },
+    {
+      "idx": 3,
+      "raw_score": 2808.1937823295593,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 11.806217670440674
+    },
+    {
+      "idx": 25,
+      "raw_score": 2808.2314851284027,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 11.76851487159729
+    },
+    {
+      "idx": 8,
+      "raw_score": 2808.5188598632812,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 11.48114013671875
+    },
+    {
+      "idx": 15,
+      "raw_score": 2808.885091304779,
+      "final_score": 999.0,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 18,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 11.114908695220947
+    }
+  ],
+  "subgoals": [
+    {
+      "source_idx": 21,
+      "line": 25,
+      "goal": "((-9 : ℝ) + √(61 : ℝ)) * ((-9 : ℝ) - √(61 : ℝ)) = (20 : ℝ)",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)"
+        },
+        {
+          "name": "x",
+          "type": "ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)\nx : ℝ\nh₀ : f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))\n⊢ ((-9 : ℝ) + √(61 : ℝ)) * ((-9 : ℝ) - √(61 : ℝ)) = (20 : ℝ)",
+      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nset_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true\nlemma aime_1983_p3_1_1\n    (f : ℝ → ℝ)\n    (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n    (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    specialize h₀ x\n    · -- Show that (-9 + √61) * (-9 - √61) = 20\n        have h4 : (-9 + √61) * (-9 - √61) = 20 := by\n            try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\n            sorry\n        try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\ntry norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\nsorry",
+      "name": "aime_1983_p3_1_1_c21_s1"
+    },
+    {
+      "source_idx": 30,
+      "line": 23,
+      "goal": "x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))) = (0 : ℝ) ↔\n    x ^ (2 : ℕ) + (18 : ℝ) * x + (30 : ℝ) = (2 : ℝ) * √(x ^ (2 : ℕ) + (18 : ℝ) * x + (45 : ℝ))",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)"
+        },
+        {
+          "name": "x",
+          "type": "ℝ"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))\nh₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)\nx : ℝ\n⊢ x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))) = (0 : ℝ) ↔\n    x ^ (2 : ℕ) + (18 : ℝ) * x + (30 : ℝ) = (2 : ℝ) * √(x ^ (2 : ℕ) + (18 : ℝ) * x + (45 : ℝ))",
+      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nset_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true\nlemma aime_1983_p3_1_1\n    (f : ℝ → ℝ)\n    (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n    (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x, f x = 0 ↔ x^2 + 18*x + 30 = 2*√(x^2 + 18*x + 45) := by\n    intro x\n    rw [h₀]\n    try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\n    sorry\ntry norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\nsorry",
+      "name": "aime_1983_p3_1_1_c30_s1"
+    }
+  ],
+  "candidate_skeletons": {
+    "21": {
+      "code": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nset_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true\nlemma aime_1983_p3_1_1\n    (f : ℝ → ℝ)\n    (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n    (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    specialize h₀ x\n    · -- Show that (-9 + √61) * (-9 - √61) = 20\n        have h4 : (-9 + √61) * (-9 - √61) = 20 := by\n            try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\n            sorry\n        try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\ntry norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\nsorry",
+      "subgoals": [
+        {
+          "name": "aime_1983_p3_1_1_c21_s1",
+          "source_idx": 21,
+          "line": 25,
+          "goal": "((-9 : ℝ) + √(61 : ℝ)) * ((-9 : ℝ) - √(61 : ℝ)) = (20 : ℝ)",
+          "hypotheses": [
+            {
+              "name": "f",
+              "type": "ℝ → ℝ"
+            },
+            {
+              "name": "h₁",
+              "type": "Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)"
+            },
+            {
+              "name": "x",
+              "type": "ℝ"
+            },
+            {
+              "name": "h₀",
+              "type": "f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))"
+            }
+          ],
+          "raw": "f : ℝ → ℝ\nh₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)\nx : ℝ\nh₀ : f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))\n⊢ ((-9 : ℝ) + √(61 : ℝ)) * ((-9 : ℝ) - √(61 : ℝ)) = (20 : ℝ)",
+          "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nset_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true\nlemma aime_1983_p3_1_1\n    (f : ℝ → ℝ)\n    (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n    (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    specialize h₀ x\n    · -- Show that (-9 + √61) * (-9 - √61) = 20\n        have h4 : (-9 + √61) * (-9 - √61) = 20 := by\n            try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\n            sorry\n        try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\ntry norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\nsorry",
+          "sorry_index": 1
+        }
+      ]
+    },
+    "30": {
+      "code": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nset_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true\nlemma aime_1983_p3_1_1\n    (f : ℝ → ℝ)\n    (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n    (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x, f x = 0 ↔ x^2 + 18*x + 30 = 2*√(x^2 + 18*x + 45) := by\n    intro x\n    rw [h₀]\n    try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\n    sorry\ntry norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\nsorry",
+      "subgoals": [
+        {
+          "name": "aime_1983_p3_1_1_c30_s1",
+          "source_idx": 30,
+          "line": 23,
+          "goal": "x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))) = (0 : ℝ) ↔\n    x ^ (2 : ℕ) + (18 : ℝ) * x + (30 : ℝ) = (2 : ℝ) * √(x ^ (2 : ℕ) + (18 : ℝ) * x + (45 : ℝ))",
+          "hypotheses": [
+            {
+              "name": "f",
+              "type": "ℝ → ℝ"
+            },
+            {
+              "name": "h₀",
+              "type": "∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))"
+            },
+            {
+              "name": "h₁",
+              "type": "Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)"
+            },
+            {
+              "name": "x",
+              "type": "ℝ"
+            }
+          ],
+          "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ)))\nh₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)\nx : ℝ\n⊢ x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))) = (0 : ℝ) ↔\n    x ^ (2 : ℕ) + (18 : ℝ) * x + (30 : ℝ) = (2 : ℝ) * √(x ^ (2 : ℕ) + (18 : ℝ) * x + (45 : ℝ))",
+          "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nset_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true\nlemma aime_1983_p3_1_1\n    (f : ℝ → ℝ)\n    (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n    (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x, f x = 0 ↔ x^2 + 18*x + 30 = 2*√(x^2 + 18*x + 45) := by\n    intro x\n    rw [h₀]\n    try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\n    sorry\ntry norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith\nsorry",
+          "sorry_index": 1
+        }
+      ]
+    }
+  }
+}

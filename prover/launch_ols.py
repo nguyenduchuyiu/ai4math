@@ -54,6 +54,7 @@ if __name__ == "__main__":
             request_statuses=generator_scheduler.request_statuses,
             lock=generator_scheduler.lock,
             args=cfg.model_args,
+            log_dir=args.log_dir,
         )
         for local_rank in range(ngpus)
     ]

@@ -36,11 +36,16 @@ class LeanProofAssembler:
                 subfolder_path = parent_dir / subfolder_name
 
                 if not subfolder_path.is_dir():
-                    print(f"Expected subfolder '{subfolder_name}' for 'sorry' #{sorry_counter} in {parent_dir}. Skipping this sorry...")
-                    result.append(line + '\n')
-                    print(rf'{line}')
-                    sorry_counter += 1
-                    continue
+                    # Fallback: accept any matching pattern like 0_<theorem>_1
+                    matches = list(parent_dir.glob(f"{sorry_counter-1}_*_{sorry_counter}"))
+                    if matches:
+                        subfolder_path = matches[0]
+                    else:
+                        print(f"Expected subfolder '{subfolder_name}' for 'sorry' #{sorry_counter} in {parent_dir}. Skipping this sorry...")
+                        result.append(line + '\n')
+                        print(rf'{line}')
+                        sorry_counter += 1
+                        continue
 
                 # Retrieve the sub-proof text
                 subproof_text = self._get_sub_proof_text(subfolder_path)

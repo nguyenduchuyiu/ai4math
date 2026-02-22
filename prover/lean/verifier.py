@@ -8,6 +8,8 @@ import json
 import ctypes
 import resource
 import tempfile
+import shutil
+from dotenv import load_dotenv
 import traceback
 import threading
 import subprocess
@@ -21,12 +23,13 @@ from prover.workers import ProcessScheduler
 from prover.utils import AttrDict
 
 
-HOME_DIR = os.path.expanduser('~')
-DEFAULT_LAKE_PATH = f'{HOME_DIR}/.elan/bin/lake'
-DEFAULT_LEAN_WORKSPACE = 'repl/'
+load_dotenv()
+
+DEFAULT_LAKE_PATH = os.environ.get("LAKE_PATH", shutil.which("lake"))
+DEFAULT_LEAN_WORKSPACE = os.environ.get("LEAN_WORKSPACE", os.path.join(os.getcwd(), "repl/"))
 
 
-def verify_lean4_file(code, lake_path=DEFAULT_LAKE_PATH, lean_workspace=DEFAULT_LEAN_WORKSPACE, last_env=None, verbose=False, timeout=300, allTactics=False, ast=False, premises=False, tactics=False):
+def verify_lean4_file(code, lake_path=DEFAULT_LAKE_PATH, lean_workspace=DEFAULT_LEAN_WORKSPACE, last_env=None, verbose=False, timeout=300, allTactics=False, ast=False, premises=False, tactics=False, lake_exe=True):
     command = dict(cmd=code, allTactics=allTactics, ast=ast, tactics=tactics, premises=premises)
     if last_env is not None:
         command.update(env=last_env)

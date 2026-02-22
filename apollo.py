@@ -5,6 +5,7 @@ import json
 import time
 import pickle
 import shutil
+import argparse
 from pathlib import Path
 from tqdm import tqdm
 
@@ -17,7 +18,7 @@ from utils.convert_lean_to_json import get_deepseek_format_proofs
 from utils.proof_assembler import LeanProofAssembler
 
 from prover.lean.verifier import verify_lean4_file
-from prover.launch_solver import launch_llm
+from prover.launch_solver import launch_llm, launch_llm_with_schedulers
 from prover.launch_hint_fixer import launch_parallel_hint_search, launch_regular_hint_search
 
 
@@ -29,8 +30,13 @@ class ApolloRepair:
                  config: str = "configs/baseline_sampling.py",
                  rec_depth: int = 2,
                  lean_version: str = 'v4.17.0',
-                 log_dir = None):
+                 log_dir = None,
+                 shared_schedulers = None):
         self.code = code
+        # If a file path is passed, load its contents so downstream steps see Lean code, not the path string.
+        if os.path.isfile(self.code):
+            with open(self.code, "r", encoding="utf-8") as f:
+                self.code = f.read()
 
 
         self.lemma_name = lemma_name
@@ -43,6 +49,7 @@ class ApolloRepair:
         else:
             self.log_dir = log_dir
         os.makedirs(self.log_dir, exist_ok=True)
+        self.shared_schedulers = shared_schedulers
 
         self.options = 'set_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true'
 
@@ -101,7 +108,7 @@ class ApolloRepair:
         data_path = os.path.join(log_dir, f"rec_{attempt}.jsonl")
 
         # If we haven't already created main_theorem.lean in this attempt
-        if not os.path.isfile(main_lean_path):
+        if not os.path.isfile(main_lean_path): 
             # -- Syntax repair --
             code_corrected = SyntaxCorrector(code).correct_text()
             print(f"[{self.lemma_name}] Attempt {attempt}, after syntax fix:\n{code_corrected}\n")
@@ -136,6 +143,23 @@ class ApolloRepair:
         if not os.path.isfile(data_path):
             lemma_extractor = LemmaExtractor(final_code, verify_lean4_file)
             lemmas = lemma_extractor.get_lemmas()
+
+            # Fallback: if no lemmas extracted but code still fails,
+            # force-sorrify the entire proof body and extract the main goal
+            if not lemmas:
+                verify_result = verify_lean4_file(final_code)
+                if not verify_result.get('complete', False):
+                    print(f"[{self.lemma_name}] No lemmas extracted, forcing full sorrification fallback.")
+                    fallback_code = final_code.split(':= by')[0] + ':= by\n  sorry'
+                    fallback_verify = verify_lean4_file(fallback_code)
+                    if fallback_verify.get('pass', False):
+                        # Update main_theorem.lean with the sorrified version
+                        final_code = fallback_code
+                        with open(main_lean_path, "w") as f:
+                            f.write(final_code)
+                        lemma_extractor = LemmaExtractor(final_code, verify_lean4_file)
+                        lemmas = lemma_extractor.get_lemmas()
+
             formatted_lemmas = get_deepseek_format_proofs(lemmas)
 
             print(f"[{self.lemma_name}] Attempt {attempt} - extracted {len(lemmas)} lemmas.")
@@ -146,7 +170,19 @@ class ApolloRepair:
                     f.write(json.dumps(item, ensure_ascii=False) + "\n")
 
         # Now run the LLM solver on the sub-lemmas
-        launch_llm(data_path, self.config, log_dir)
+        if self.shared_schedulers:
+            launch_llm_with_schedulers(
+                data_path,
+                self.config,
+                log_dir,
+                verifier_scheduler=self.shared_schedulers["verifier_scheduler"],
+                generator_scheduler=self.shared_schedulers["generator_scheduler"],
+                cfg=self.shared_schedulers.get("cfg"),
+                node_rank=self.shared_schedulers.get("node_rank", 0),
+                world_size=self.shared_schedulers.get("world_size", 1),
+            )
+        else:
+            launch_llm(data_path, self.config, log_dir)
 
         # Next, update or finalize the main theorem
         self.generate_main_theorem_files(log_dir, attempt)
@@ -173,7 +209,11 @@ class ApolloRepair:
                     with open(os.path.join(fullpath, "main_theorem.lean"), "w") as f:
                         f.write(verified_code)
                 else:
-                    failure_file = glob.glob(os.path.join(fullpath, "failure-*.pkl"))[0]
+                    failure_files = glob.glob(os.path.join(fullpath, "failure-*.pkl"))
+                    if not failure_files:
+                        print(f"No success or failure pkl found in {fullpath}, skipping")
+                        continue
+                    failure_file = failure_files[0]
                     fails = self.extract_proof_from_deepseek_pkl(failure_file, log_dir)
 
                     data_jsonl = get_deepseek_format_proofs(fails)
@@ -229,3 +269,23 @@ class ApolloRepair:
                 c = header + '\n\n' + d['formal_statement'] + d['proof_code']
                 fails.append(c)
         return fails
+    
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", type=str, default="configs/baseline_sampling_goedel_v2.py")
+    parser.add_argument("--problem", type=str, default="problems/problem1.lean")
+    args = parser.parse_args()
+    # Create log_dir from problem file name (without extension)
+    base_problem = os.path.splitext(os.path.basename(args.problem))[0]
+    print("Base problem: ", base_problem)
+    log_dir = os.path.join('logs', base_problem)
+    code = open(args.problem, 'r').read()
+    apollo = ApolloRepair(
+        code=code, 
+        lemma_name=base_problem, 
+        config=args.config, 
+        rec_depth=2, 
+        lean_version='v4.17.0', 
+        log_dir=log_dir
+    )
+    apollo.run()

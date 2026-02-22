@@ -3,6 +3,11 @@
 '''
 
 import os
+import tempfile
+
+# Use system temp for tiktoken cache, not cwd
+os.environ.setdefault("TIKTOKEN_CACHE_DIR", os.path.join(tempfile.gettempdir(), "data-gym-cache"))
+
 import tiktoken
 
 import numpy as np

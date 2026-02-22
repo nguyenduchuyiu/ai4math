@@ -11,16 +11,17 @@ batch_size = 4
 mode = 'cot_kimina' # chat templates can be changed in prover/utils.py
 pass_ = 32
 model_path = 'AI-MO/Kimina-Prover-Preview-Distill-7B'
+gpu_memory_utilization = 0.9
 
 model_args = AttrDict(
     mode=mode,  
     temperature=0.6,
-    max_tokens=15000,
+    max_tokens=16384,
     top_p=0.95,
 )
 
 # algorithm
-n_search_procs = 32
+n_search_procs = 16
 sampler = dict(
     algorithm=Sampling,
     sample_num=pass_,

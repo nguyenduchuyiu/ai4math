@@ -15,7 +15,7 @@ from prover.utils import AttrDict, MODEL_FORMAT
 
 
 class GeneratorProcess(mp.Process):
-    def __init__(self, local_rank, node_rank, model_path, task_queue, request_statuses, lock, args, max_model_len = None):
+    def __init__(self, local_rank, node_rank, model_path, task_queue, request_statuses, lock, args, max_model_len = None, gpu_memory_utilization = 0.9, log_dir = None):
         super().__init__()
         self.local_rank = local_rank
         self.node_rank = node_rank
@@ -24,6 +24,7 @@ class GeneratorProcess(mp.Process):
         self.request_statuses = request_statuses
         self.lock = lock
         self.max_model_len = max_model_len
+        self.gpu_memory_utilization = gpu_memory_utilization
         self.sampling_params = SamplingParams(
             temperature=args.temperature,
             max_tokens=args.max_tokens,
@@ -32,6 +33,7 @@ class GeneratorProcess(mp.Process):
         )
         self.prompt_func = MODEL_FORMAT[args.mode]['prompt']
         self.output_func = MODEL_FORMAT[args.mode]['output']
+        self.log_dir = log_dir
 
     def run(self):
         seed = int(time.time()) % 1000 + (self.node_rank * 8 + self.local_rank) * 1000
@@ -44,11 +46,22 @@ class GeneratorProcess(mp.Process):
         if 'lora' in self.model_path:
             self.lora_path = self.model_path
             self.model_path = 'deepseek-ai/DeepSeek-Prover-V1.5-RL'
-            llm = LLM(model=self.model_path, max_num_batched_tokens=8192, seed=seed, trust_remote_code=True, enable_lora=True, max_lora_rank=64) # REFORMAT THE CODE
+            llm = LLM(model=self.model_path, 
+                      max_num_batched_tokens=8192, 
+                      seed=seed, 
+                      trust_remote_code=True, 
+                      enable_lora=True, 
+                      max_lora_rank=64, 
+                      gpu_memory_utilization=self.gpu_memory_utilization,
+                      )
         else:
             self.lora_path = ''
             tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
-            llm = LLM(model=self.model_path, trust_remote_code=True, max_model_len=self.max_model_len)
+            llm = LLM(model=self.model_path, 
+                      trust_remote_code=True, 
+                      max_model_len=self.max_model_len, 
+                      gpu_memory_utilization=self.gpu_memory_utilization,
+                      )
 
         while True:
             inputs = self.task_queue.get()
@@ -97,6 +110,18 @@ class GeneratorProcess(mp.Process):
                 lora_request=LoRARequest("lora_adapter", 1, self.lora_path) # CHANGE TO SUPPORT ALL NOT JUST LORA
                 )
             outputs = [self.output_func(_output.outputs[0].text) for _output in model_outputs]
+
+            # Log LLM prompts and outputs (per-problem folder when available)
+            for prompt, _output, parsed, (_, _, item) in zip(prompts, model_outputs, outputs, inputs):
+                prob_log_dir = item.get('_prob_log_dir', self.log_dir)
+                if prob_log_dir is not None:
+                    log_file = os.path.join(str(prob_log_dir), f'llm_output_gpu{self.local_rank}.log')
+                    with open(log_file, 'a') as f:
+                        f.write(f'===== [{time.strftime("%Y-%m-%d %H:%M:%S")}] =====\n')
+                        f.write(f'--- PROMPT ---\n{prompt}\n')
+                        f.write(f'--- RAW OUTPUT ---\n{_output.outputs[0].text}\n')
+                        f.write(f'--- PARSED OUTPUT ---\n{parsed}\n\n')
+
             with self.lock:
                 for (_, request_id, _), output in zip(inputs, outputs):
                     self.request_statuses[request_id] = output
