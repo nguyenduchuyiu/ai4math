@@ -3,6 +3,9 @@ import os
 import sys
 import textwrap
 from pathlib import Path
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import TextIteratorStreamer
 
 
 MODEL_ID = "AI-MO/Kimina-Prover-Preview-Distill-7B"
@@ -19,7 +22,7 @@ def load_model(model_id: str = MODEL_ID):
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
         dtype=dtype,
-        device_map="auto",  # spreads layers across available devices/CPU
+        device_map="cpu",  # spreads layers across available devices/CPU
     )
 
     return tokenizer, model
@@ -111,6 +114,7 @@ def main():
                             nlinarith [h6, Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
                         cases' (mul_eq_zero.mp h7) with h8 h9
                         · left
+                        -- **The following line failed with linarith, try other tactics.**
             Continue the proof using Lean tactics.
             <|im_end|>
 
@@ -121,7 +125,7 @@ def main():
         help="Text prompt to send to the model.",
     )
     parser.add_argument("--max-new-tokens", type=int, default=16384)
-    parser.add_argument("--temperature", type=float, default=0.6)
+    parser.add_argument("--temperature", type=float, default=0.9)
     parser.add_argument("--top-p", type=float, default=0.95)
     args = parser.parse_args()
 
