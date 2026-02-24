@@ -1,5 +1,6 @@
 from prover.lean.verifier import verify_lean4_file
 from utils.sorrify import Sorrifier, ProofTree
+from utils.syntax_repair import SyntaxCorrector
 import os
 from datetime import datetime
 
@@ -7,7 +8,6 @@ from datetime import datetime
 code = '''import Mathlib
 set_option maxHeartbeats 0
 open BigOperators Real Nat Topology Rat
-
 lemma aime_1983_p3_1_1
     (f : ℝ → ℝ)
     (h₀ : ∀ x : ℝ,
@@ -19,79 +19,76 @@ lemma aime_1983_p3_1_1
     intro x
     constructor
     · -- Assume f(x) = 0, prove x = -9 ± √61
-      intro hx
-      have hfx : f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + 18 * x + 45) := h₀ x
-      rw [hfx] at hx
-      have h_eq : x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + 18 * x + 45) = 0 := hx
-      have h1 : 2 * √(x ^ 2 + 18 * x + 45) = x ^ 2 + 18 * x + 30 := by linarith
-      have h2 : x ^ 2 + 18 * x + 45 ≥ 0 := by
-        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]
-      have h3 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)
-      have h4 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith
-      have h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by linarith
-      have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
-        have hsq : (2 * √(x ^ 2 + 18 * x + 45)) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
-          calc
-            (2 * √(x ^ 2 + 18 * x + 45)) ^ 2 = 4 * (√(x ^ 2 + 18 * x + 45) ^ 2) := by ring
-            _ = 4 * (x ^ 2 + 18 * x + 45) := by rw [Real.sq_sqrt h2]
-        rw [← h5] at hsq
-        nlinarith
-      have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by
-        ring_nf
-        nlinarith [h6, Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
-      cases' (mul_eq_zero.mp h7) with h8 h9
-      · left
-        linarith
-      · right
-        linarith
+        intro hx
+        have hfx : f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + 18 * x + 45) := h₀ x
+        rw [hfx] at hx
+        have h_eq : x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + 18 * x + 45) = 0 := hx
+        have h1 : 2 * √(x ^ 2 + 18 * x + 45) = x ^ 2 + 18 * x + 30 := by linarith
+        have h2 : x ^ 2 + 18 * x + 45 ≥ 0 := by
+            nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]
+        have h3 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)
+        have h4 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith
+        have h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by linarith
+        have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
+            have hsq : (2 * √(x ^ 2 + 18 * x + 45)) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
+                calc
+                    (2 * √(x ^ 2 + 18 * x + 45)) ^ 2 = 4 * (√(x ^ 2 + 18 * x + 45) ^ 2) := by ring
+                    _ = 4 * (x ^ 2 + 18 * x + 45) := by rw [Real.sq_sqrt h2]
+            rw [← h5] at hsq
+            nlinarith
+        have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by
+            ring_nf
+            nlinarith [h6, Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
+        cases' (mul_eq_zero.mp h7) with h8 h9
+        · left
+          linarith
+        · right
+          linarith
     · -- Assume x = -9 ± √61, prove f(x) = 0
-      rintro (h | h)
-      · -- x = -9 + √61
-        rw [h]
-        have h1 : (-9 + √61) ^ 2 + (18 * (-9 + √61) + 30) - 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 0 := by
-          have h2 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 = 10 := by
+        rintro (h | h)
+        · rw [h]
+          have h1 : √61 > 0 := Real.sqrt_pos.mpr (by norm_num : (61 : ℝ) > 0)
+          have h2 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 = 2 * √61 * (-9 + √61) := by
             ring_nf
             nlinarith [Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
-          have h3 : √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 5 := by
-            rw [show (-9 + √61) ^ 2 + 18 * (-9 + √61) + 45 = 25 by ring_nf; nlinarith [Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]]
-            exact Real.sqrt_eq_cases.2 (by norm_num)
-          linarith
-        rw [h1]
-      · -- x = -9 - √61
-        rw [h]
-        have h1 : (-9 - √61) ^ 2 + (18 * (-9 - √61) + 30) - 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 0 := by
-          have h2 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 = 10 := by
+          have h3 : √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = √61 := by
+            rw [h2]
+            rw [Real.sqrt_mul (by linarith)]
+            have h4 : √61 * √61 = 61 := by
+              rw [Real.mul_self_sqrt (by linarith)]
+            nlinarith
+          rw [h3]
+          ring
+        · rw [h]
+          have h1 : √61 > 0 := Real.sqrt_pos.mpr (by norm_num : (61 : ℝ) > 0)
+          have h2 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 = -2 * √61 * (-9 - √61) := by
             ring_nf
             nlinarith [Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
-          have h3 : √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 5 := by
-            rw [show (-9 - √61) ^ 2 + 18 * (-9 - √61) + 45 = 25 by ring_nf; nlinarith [Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]]
-            exact Real.sqrt_eq_cases.2 (by norm_num)
-          linarith
-        rw [h1]
-  have h3 : (f ⁻¹' {0}).toFinset = {(-9 + √61), (-9 - √61)} := by
+          have h3 : √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = √61 := by
+            rw [h2]
+            rw [Real.sqrt_mul (by linarith)]
+            have h4 : √61 * √61 = 61 := by
+              rw [Real.mul_self_sqrt (by linarith)]
+            nlinarith
+          rw [h3]
+          ring
+  have h3 : (f ⁻¹' {0} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by
     ext x
-    simp [Set.mem_preimage, Set.mem_singleton_iff]
-    constructor
-    · -- Show that if f(x) = 0, then x ∈ { -9+√61, -9-√61 }
-      intro hfx
-      have h_eq : f x = 0 := hfx
-      have h4 : x = -9 + √61 ∨ x = -9 - √61 := h2 x
-      tauto
-    · -- Show that if x ∈ { -9+√61, -9-√61 }, then f(x) = 0
-      rintro (h | h)
-      · -- x = -9 + √61
-        rw [h]
-        exact (h2 (-9 + √61)).left
-      · -- x = -9 - √61
-        rw [h]
-        exact (h2 (-9 - √61)).right
+    simp [h2]
+    <;> constructor
+    · intro hx
+      exact hx
+    · rintro (rfl | rfl)
+      · left; linarith
+      · right; linarith
   rw [h3]
-  rw [Finset.prod_pair]
-  have h4 : (-9 + √61) ≠ (-9 - √61) := by
-    have h5 : √61 > 0 := Real.sqrt_pos.mpr (by norm_num : (61 : ℝ) > 0)
-    linarith [h5]
-  simp [h4]
-  linarith [Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
+  simp [Finset.prod_pair]
+  have h4 : (-9 + √61) * (-9 - √61) = 20 := by
+    calc
+        (-9 + √61) * (-9 - √61) = (-9) ^ 2 - (√61) ^ 2 := by ring
+        _ = 81 - 61 := by norm_num [Real.sq_sqrt]
+        _ = 20 := by norm_num
+  exact h4
 '''
 
 # Create output directory if it doesn't exist
@@ -108,7 +105,15 @@ with open(output_file, "w", encoding="utf-8") as f:
     f.write(code)
     f.write("```\n\n")
 
-    pt = ProofTree(code)
+    # Apply the same syntax correction pipeline as the main prover.
+    code_corrected = SyntaxCorrector(code).correct_text()
+
+    f.write("## Corrected Code\n\n")
+    f.write("```lean\n")
+    f.write(code_corrected)
+    f.write("\n```\n\n")
+
+    pt = ProofTree(code_corrected)
     pt.parse_lean_with_dot_subcases(clean_empty_lines=True, clean_comments=False)
 
     f.write("## Parsed Tree Structure\n\n")
@@ -140,7 +145,7 @@ with open(output_file, "w", encoding="utf-8") as f:
         f.write("\n```\n\n")
 
     f.write("## Sorrification Process\n\n")
-    checker = Sorrifier(pt, verify_lean4_file, clean_empty_lines=True, clean_comments=False)
+    checker = Sorrifier(pt, verify_lean4_file, clean_empty_lines=True, clean_comments=False, max_cycles=50)
     result = checker.verify_and_fix_tree()
 
     f.write("### Sorrified Result\n\n")

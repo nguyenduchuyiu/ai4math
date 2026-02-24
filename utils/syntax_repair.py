@@ -182,7 +182,7 @@ class SyntaxCorrector:
         self.correct_by_statements()
         self.correct_by_statements_in_let()
         self.remove_newlines_inside_brackets()
-        self.remove_commas()
+        # self.remove_commas()
         self.correct_multiple_line_have_statements()
         self.remove_redundant_spaces()
         

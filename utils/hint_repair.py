@@ -3,72 +3,113 @@ from tqdm import tqdm
 import re
 import sys
 
-
 class ProofRepairer:
     def __init__(self, code: str, verifier, verbose=True):
         self.code = code
         self.verifier = verifier
         self.verbose = verbose
-        self.try_repairer = 'try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith'
-
+        # Bỏ đi việc nhét thêm chữ `sorry` ở đuôi, ép Tactic phải tự đóng goal sạch sẽ!
+        self.try_repairer = 'try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith ; try aesop'
     def repair_proof(self) -> str:
+        # ==========================================
+        # BƯỚC 1: SỬA BẰNG HINT (Giữ nguyên logic cực tốt của bạn)
+        # ==========================================
         code_with_hints = self.code.replace('sorry', 'hint')
-        print('Begin HintRepair...')
-        err_info = self.verify_lean_code(code_with_hints)
+        if self.verbose:
+            print('Begin HintRepair...')
+        err_info = self.verifier(code_with_hints)
 
-        if 'infos' not in err_info.keys():
+        if 'infos' in err_info:
+            hint_correct = []
+            for i, info in enumerate(err_info['infos'], start=1):
+                try:
+                    suggestions = self.get_hint_tactics(info['data'])
+                except Exception:
+                    suggestions = []
+                if len(suggestions) == 1:
+                    hint_correct.append([i, suggestions[0]])
+
+            replacement_accumulation = 0
+            iterator = tqdm(hint_correct, desc='Correcting with hint') if self.verbose else hint_correct
+            for idx, tactic in iterator:
+                idx -= replacement_accumulation
+                self.code = self.replace_nth('sorry', tactic, self.code, idx)
+                replacement_accumulation += 1
+
+        # ==========================================
+        # BƯỚC 2: SHOTGUN REPAIR (Thử & Quay xe)
+        # ==========================================
+        def count_unsolved(err_dict):
+            """Đếm số lượng mục tiêu chưa giải quyết"""
+            return sum(1 for e in err_dict.get('errors', []) if 'unsolved goals' in e['data'])
+            
+        def count_fatal(err_dict):
+            """Đếm các lỗi chí mạng (như đệ quy, sai cú pháp...)"""
+            return sum(1 for e in err_dict.get('errors', []) if 'unsolved goals' not in e['data'])
+
+        base_err = self.verifier(self.code)
+        if base_err.get('pass', False):
             return self.code
 
-        hint_correct = []
-        for i, info in enumerate(err_info['infos'], start=1):
-            try:
-                suggestions = self.get_hint_tactics(info['data'])
-            except Exception:
-                suggestions = []
-            if len(suggestions) == 1:
-                hint_correct.append([i, suggestions[0]])
+        base_unsolved = count_unsolved(base_err)
+        base_fatal = count_fatal(base_err)
 
-        replacement_accumulation = 0
-        for idx, tactic in tqdm(hint_correct, desc='Correcting with hint') if self.verbose else hint_correct:
-            idx -= replacement_accumulation
-            self.code = self.replace_nth('sorry', tactic, self.code, idx)
-            replacement_accumulation += 1
+        total_sorries = self.code.count('sorry')
+        if total_sorries == 0:
+            return self.code
 
-        fixed_codelines = []
-        for line in tqdm(self.code.splitlines(), desc='Correcting with other solvers') if self.verbose else self.code.splitlines():
-            if 'sorry' in line:
-                indent = len(line) - len(line.lstrip())
-                if ':= by' in line:
-                    before, _ = line.split(':= by', 1)
-                    base = before + ':= by'
-                    tactic_indent = ' ' * (indent + 2)
-                    line = base + '\n' + tactic_indent + self.try_repairer + '\n' + tactic_indent + 'sorry'
-                else:
-                    line = line.replace('sorry', self.try_repairer) + '\n' + ' ' * indent + 'sorry'
-            fixed_codelines.append(line)
+        if self.verbose:
+            print('Begin Shotgun Repair...')
+            
+        pbar = tqdm(total=total_sorries, desc='Correcting with other solvers') if self.verbose else None
+        attempt_idx = 1
+        
+        while True:
+            parts = self.code.split('sorry')
+            if attempt_idx >= len(parts):
+                break
 
-        fixed_code = '\n'.join(fixed_codelines)
-        err_info = self.verify_lean_code(fixed_code)
-        fixed_codelines = fixed_code.splitlines()
-        lines_to_remove = []
-        if not err_info['pass']:
-            for e in err_info['errors']:
-                if 'no goals to be solved' not in e['data']:
-                    continue
-                lines_to_remove.append(int(e['pos']['line'] - 1))
-        fixed_codelines = [x for i, x in enumerate(fixed_codelines) if i not in set(lines_to_remove)]
-        self.code = '\n'.join(fixed_codelines)
+            # Tạo bản Test: Chỉ thay thế chữ `sorry` ở vị trí hiện tại bằng Shotgun
+            part1 = 'sorry'.join(parts[:attempt_idx])
+            part2 = 'sorry'.join(parts[attempt_idx:])
+            test_code = part1 + self.try_repairer + part2
+
+            # Xác thực bản Test
+            test_err = self.verifier(test_code)
+            test_unsolved = count_unsolved(test_err)
+            test_fatal = count_fatal(test_err)
+
+            if test_err.get('pass', False):
+                self.code = test_code
+                if pbar: pbar.update(len(parts) - attempt_idx)
+                break
+
+            # 🚨 LOGIC CHÍNH: 
+            # Chỉ chấp nhận bản Test NẾU giải quyết được goal (unsolved giảm) 
+            # VÀ KHÔNG sinh thêm lỗi fatal (như recursion depth hay No goals)
+            if test_fatal <= base_fatal and test_unsolved < base_unsolved:
+                self.code = test_code
+                base_unsolved = test_unsolved
+                base_fatal = test_fatal
+                # Không tăng attempt_idx vì số sorry đã giảm đi 1, sorry tiếp theo sẽ trồi lên vị trí attempt_idx
+            else:
+                # Bắn trượt hoặc gây tác dụng phụ -> Quay xe (giữ nguyên sorry), bắn cái sorry tiếp theo
+                attempt_idx += 1
+            
+            if pbar: pbar.update(1)
+
+        if pbar: pbar.close()
         return self.code
 
-    def apply_hints(self, code: str) -> str:
-        return code.replace('sorry', 'hint')
-    
-    def replace_line_with_hint_line(self, code, line):
-        return code.replace(line, line.replace('sorry', 'hint'))
-    
-    def replace_line_with_suggested_tactic(self, code, line, tactic):
-        return code.replace(line, line.replace('sorry', tactic))
-    
+    # ==========================================
+    # CÁC HÀM HELPER BÊN DƯỚI (Giữ nguyên)
+    # ==========================================
+    def replace_nth(self, sub, repl, txt, nth):
+        arr = txt.split(sub)
+        part1 = sub.join(arr[:nth])
+        part2 = sub.join(arr[nth:])
+        return part1 + repl + part2
+
     def get_hint_tactics(self, info):
         lines = info.splitlines()
         suggestions = []
@@ -76,69 +117,21 @@ class ProofRepairer:
         for line in lines:
             stripped = line.strip()
             if stripped.startswith("•"):
-                # Finish any current suggestion
                 if current_suggestion is not None:
                     suggestions.append(current_suggestion)
-                # Start a new suggestion, removing the bullet and any whitespace
                 current_suggestion = stripped[1:].strip()
             else:
-                # If this line doesn't start with a bullet and is not empty,
-                # consider it a continuation of the current suggestion.
                 if current_suggestion is not None and stripped:
                     current_suggestion += " " + stripped
-        # Append the last suggestion if it exists.
-        if current_suggestion is not None and current_suggestion.strip() != 'aesop' and current_suggestion.strip() != 'intro':
-            # Skip aesop and intro, since usually they do not close the goal...
+        if current_suggestion is not None and current_suggestion.strip() not in ('aesop', 'intro'):
             suggestions.append(current_suggestion)
         return suggestions
-    
-    def replace_nth_occurrence(self, string, target, replacement, n):
-        """
-        Replaces the n-th occurrence of 'target' in 'string' with 'replacement'.
-        If 'target' does not occur n times, the original string is returned.
-        """
-        index = -1
-        for _ in range(n):
-            index = string.find(target, index + 1)
-            if index == -1:
-                # 'target' doesn't occur n times
-                return string
-        
-        # Rebuild the string with the replacement
-        return string[:index] + replacement + string[index + 1:]
-    
-    def replace_nth(self, sub, repl, txt, nth):
-        arr=txt.split(sub)
-        part1=sub.join(arr[:nth])
-        part2=sub.join(arr[nth:])
-        
-        return part1+repl+part2
 
     def verify_lean_code(self, code):
         return self.verifier(code)
-            
-
-
 
 class LeanServerProofRepairer(ProofRepairer):
     def verify_lean_code(self, code):
-        # Verifier is a Scheduler Object, so handle differently
         request_id = self.verifier.verifier_submit_request(code)
         result_list = self.verifier.verifier_get_all_request_outputs([request_id])
         return result_list[0]
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    

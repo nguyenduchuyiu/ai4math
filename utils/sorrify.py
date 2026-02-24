@@ -327,23 +327,23 @@ class ProofTree:
             # Recurse on children
             if node["children"]:
                 self.normalize_indentation(node["children"], current_level + 1, step)
-#%%
+
 class Sorrifier:
     """
     A class that sorrifies Lean code with REPL
     """
     def __init__(self, tree: ProofTree, verifier, verbose=False, pbar = True, 
-                 clean_empty_lines=False, clean_comments=False, max_cycles=5):
+                 clean_empty_lines=False, clean_comments=False, max_cycles=75):
         self.proof_tree = tree
         self.clean_empty_lines = clean_empty_lines
         self.clean_comments = clean_comments
-        self.max_cycles = max_cycles
         if not self.proof_tree.tree:
             self.proof_tree.parse_lean_with_dot_subcases(clean_empty_lines=self.clean_empty_lines,
                                                          clean_comments = self.clean_comments)
         self.verifier = verifier
         self.verbose = verbose
         self.pbar = pbar
+        self.max_cycles = max_cycles
     
         # We'll store lines like `import`, `set_option`, `open` in a separate header.
         self._header_code = []
@@ -365,7 +365,7 @@ class Sorrifier:
                     break
             
             if not main_goal:
-                raise AttributeError("ding a header")
+                raise AttributeError("Theorem is missing a header")
             
             fully_sorrified = self.proof_tree.code.split(':= by')[0]
             fully_sorrified += ':= by\n  sorry'
@@ -384,9 +384,10 @@ class Sorrifier:
             raise AttributeError("Theorem is missing a header")
         
         attempt = 1
+
         code = self.proof_tree.code
         
-        to_check = [l for l in self.proof_tree.code.splitlines()[main_goal:] if not l.strip().startswith('--')]
+        to_check = [l for l in code.splitlines()[main_goal:] if not l.strip().startswith('--')]
         attempt_num = min(self.max_cycles, len(to_check))
 
         if self.pbar:
@@ -400,8 +401,7 @@ class Sorrifier:
         
         while not err_info['pass']:
             if attempt > attempt_num:
-                print(f"Sorrifier failed after {attempt_num} attempts. Truncating first error from the code.")
-                return self.truncate_first_error(code)
+                break
             
             errors = self.clean_unsolved_goals(err_info['errors'])
             
@@ -444,6 +444,8 @@ class Sorrifier:
                     
                 else:
                     raise ValueError("Invalid range: start value must not exceed end value.")
+                    
+                
                 
                 fixed_lines.append(start)
             
@@ -482,56 +484,19 @@ class Sorrifier:
                 if re.search(r":=\s*by", line):
                     main_goal = idx
                     break
-            
+
             err_info = self.verify_lean_code(code)
             
             if self.pbar:
                 pbar.update(1)
             attempt += 1
 
-        # if attempt > attempt_num:
-        #     fully_sorrified = code.split(':= by')[0]
-        #     fully_sorrified += ':= by\n  sorry'
-        #     return fully_sorrified
+        if attempt > attempt_num:
+            fully_sorrified = code.split(':= by')[0]
+            fully_sorrified += ':= by\n  sorry'
+            return fully_sorrified
         return code
             
-    def truncate_first_error(self, original_code):
-        '''
-        Truncate the first error from the code by removing the line before the error and adding sorry to the end of the code
-        '''
-        err_info = self.verify_lean_code(original_code)
-        
-        if err_info['pass']:
-            return original_code
-
-        real_errors = [
-            err for err in err_info['errors'] 
-            if "unsolved goals" not in err['data'] and "no goals" not in err['data']
-        ]
-
-        if not real_errors:
-            return original_code.split(':= by')[0] + ':= by\n  sorry'
-
-        real_errors.sort(key=lambda x: x['pos']['line'])
-        first_error_line = real_errors[0]['pos']['line']
-
-        lines = original_code.splitlines()
-        kept_lines = lines[:first_error_line - 1]
-
-        if not kept_lines:
-            indent = 2
-        else:
-            last_line = kept_lines[-1]
-            indent_size = len(last_line) - len(last_line.lstrip())
-            
-            if last_line.strip().endswith(("by", "do", "with", ":")):
-                indent_size += 2
-                
-            indent = indent_size
-
-        kept_lines.append(" " * indent + "sorry")
-
-        return "\n".join(kept_lines)
     # ----------------------------------------------------------------------
     # (A) Identify and Fix Errors
     # ----------------------------------------------------------------------
@@ -812,42 +777,3 @@ class LeanServerSorrifier(Sorrifier):
         request_id = self.verifier.verifier_submit_request(code)
         result_list = self.verifier.verifier_get_all_request_outputs([request_id])
         return result_list[0]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

@@ -1,18 +1,29 @@
-from utils.extract_proof_state import extract_queries
-from retriever import retrieve
+import os
+import hashlib
 
-code = open("tet.lean").read()
-print(f"=== Input ===\n{code}")
+ROOT = "logs/miniF2F-Test"
 
-queries = extract_queries(code)
-print(f"Found {len(queries)} sorry(s)\n")
+def file_hash(path, chunk_size=8192):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        while True:
+            chunk = f.read(chunk_size)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest()
 
-for i, q in enumerate(queries, 1):
-    print(f"--- sorry #{i} (line {q['line']}) ---")
-    print(f"RAG query:\n{q['raw']}\n")
-    results = retrieve(q['raw'], k=10)
-    print(f"\nRetrieved {len(results)} premises:")
-    for i, (premise, score) in enumerate(results, 1):
-        print(f"\n[{i}] Similarity: {score:.4f}")
-        print(f"Name: {premise['full_name']}")
-        print(premise["code"][:200] + ("..." if len(premise["code"]) > 200 else ""))
+different = []
+
+for dirpath, dirnames, filenames in os.walk(ROOT):
+    if "rec_1.jsonl" in filenames and "rec_2.jsonl" in filenames:
+        f1 = os.path.join(dirpath, "rec_1.jsonl")
+        f2 = os.path.join(dirpath, "rec_2.jsonl")
+
+        if file_hash(f1) != file_hash(f2):
+            # dirpath chính là thư mục của bài toán hiện tại
+            different.append(dirpath)
+
+print("Số bài có rec_1.jsonl khác rec_2.jsonl:", len(different))
+for d in different:
+    print(d)

@@ -8,7 +8,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import TextIteratorStreamer
 
 
-MODEL_ID = "AI-MO/Kimina-Prover-Preview-Distill-7B"
+# MODEL_ID = "AI-MO/Kimina-Prover-Preview-Distill-7B"
+MODEL_ID = "Goedel-LM/Goedel-Prover-V2-8B"
 
 
 def load_model(model_id: str = MODEL_ID):
@@ -76,7 +77,6 @@ def main():
 
             <|im_start|>user
             Solve the following Lean 4 proof state.
-
             lean4
             import Mathlib
             set_option maxHeartbeats 0
@@ -114,7 +114,6 @@ def main():
                             nlinarith [h6, Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
                         cases' (mul_eq_zero.mp h7) with h8 h9
                         · left
-                        -- **The following line failed with linarith, try other tactics.**
             Continue the proof using Lean tactics.
             <|im_end|>
 

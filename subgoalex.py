@@ -1,0 +1,132 @@
+from prover.lean.verifier import verify_lean4_file
+from sniper import Sorrifier
+from utils.syntax_repair import SyntaxCorrector
+import os
+from datetime import datetime
+
+
+code = '''import Mathlib
+import Aesop
+
+set_option maxHeartbeats 0
+set_option pp.numericTypes true
+set_option pp.coercions.types true
+
+open BigOperators Real Nat Topology Rat
+
+theorem mathd_algebra_332 (x y : ℝ) (ho : (x + y) / 2 = (7 : ℝ))
+  (h₁ : Real.sqrt (x * y) = Real.sqrt (19 : ℝ)) :
+  x ^ 2 + y ^ 2 = (158 : ℝ) := by
+
+  have sum : x + y = (14 : ℝ) := by
+    rw [← mul_div_cancel_left (two_ne_zero : (2 : ℝ) ≠ 0)]
+    rw [ho]
+    rfl
+
+  have prod_pos : 0 < x * y := by
+    have h_pos19 : 0 < sqrt (19 : ℝ) := by
+      apply (sqrt_pos (19 : ℝ)).2
+      norm_num
+    have h_pos_xy : 0 < sqrt (x * y) := by
+      rwa [h₁] at h_pos19
+    apply (sqrt_pos (x * y)).1
+    exact h_pos_xy
+
+  have prod : x * y = (19 : ℝ) := by
+    apply sqrt_inj
+    · exact le_of_lt prod_pos
+    · norm_num
+    · exact h₁
+
+  by
+    rw [sum, prod]
+    ring
+
+'''
+
+# Create output directory if it doesn't exist
+os.makedirs("output", exist_ok=True)
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+output_file = f"output/subgoalex.md"
+
+with open(output_file, "w", encoding="utf-8") as f:
+    f.write(f"# Proof Analysis Report\n\n")
+    f.write(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+    
+    f.write("## Raw Code\n\n")
+    f.write("```lean\n")
+    f.write(code)
+    f.write("```\n\n")
+
+    # Apply the same syntax correction pipeline as the main prover.
+    code_corrected = SyntaxCorrector(code).correct_text()
+
+    f.write("## Corrected Code\n\n")
+    f.write("```lean\n")
+    f.write(code_corrected)
+    f.write("\n```\n\n")
+    
+    f.write("## Initial Verification\n\n")
+    r = verify_lean4_file(code_corrected, timeout=120)
+    f.write(f"**Status:** {'✅ PASS' if r['pass'] else '❌ FAIL'}\n\n")
+    
+    if not r['pass'] and r.get('errors'):
+        f.write("### Errors\n\n```bash\n")
+        for e in r.get('errors', []):
+            f.write(f"- **Line {e['pos']['line']}:** {e['data']}\n")
+        f.write("\n```\n\n")
+
+    f.write("## Sorrification Process\n\n")
+    checker = Sorrifier(verify_lean4_file, max_cycles=20)
+    result = checker.verify_and_fix(code_corrected)
+
+    f.write("### Sorrified Result\n\n")
+    f.write("```lean\n")
+    f.write(result)
+    f.write("\n```\n\n")
+
+    f.write("## Auto Solver (ProofRepairer)\n\n")
+    from utils.hint_repair import ProofRepairer
+    repairer = ProofRepairer(result, verify_lean4_file)
+    final_code = repairer.repair_proof()
+
+    f.write("### Auto Solver Result\n\n")
+    f.write("```lean\n")
+    f.write(final_code)
+    f.write("\n```\n\n")
+
+    # Verify final result
+    final_check = verify_lean4_file(final_code, timeout=120)
+    f.write("## Final Verification\n\n")
+    f.write(f"- **Pass:** {'Yes' if final_check['pass'] else 'No'}\n")
+    f.write(f"- **Complete:** {'Yes' if final_check.get('complete', False) else 'No'}\n")
+
+    from utils.extract_proof_state import extract_queries
+    from retriever import retrieve
+
+    f.write("## RAG Retrieval Analysis\n\n")
+
+    queries = extract_queries(final_code)
+    f.write(f"**Found {len(queries)} sorry(s)**\n\n")
+
+    for i, q in enumerate(queries, 1):
+        f.write(f"### Sorry #{i} (Line {q['line']})\n\n")
+        f.write("#### Query\n\n```lean\n")
+        f.write(q['raw'])
+        f.write("\n```\n\n")
+        
+        # results = retrieve(q['raw'], k=10)
+        # f.write(f"#### Retrieved {len(results)} Premises\n\n```lean\n")
+        
+        # for j, (premise, score) in enumerate(results, 1):
+        #     f.write(f"**[{j}] {premise['full_name']}** (Similarity: {score:.4f})\n\n")
+        #     premise_code = premise["code"]
+        #     if len(premise_code) > 200:
+        #         f.write(premise_code[:200] + "...")
+        #     else:
+        #         f.write(premise_code)
+        #     f.write("\n")
+        # f.write("\n```\n\n")
+
+print(f"Analysis complete! Report saved to: {output_file}")
+print(f"Open the file to view the formatted results.")
