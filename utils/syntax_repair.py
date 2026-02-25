@@ -15,25 +15,12 @@ class SyntaxCorrector:
         self.code = re.sub(pattern, r"\1[\2]", self.code)
         
     def correct_by_statements(self):
+        # Loại bỏ pattern_missing_by. Tôn trọng code cũ nếu nó không dùng 'by'
         pattern_repeating_whitespace = re.compile(r':=\s+by')
-        pattern_missing_by = re.compile(r':=(?!\s*by\b)')
-        correct_header_pattern = re.compile(r"\(([^)]*:= by[^)]*)\)")
-
-        # Replace it with := by (only a single space)
-        self.code = pattern_repeating_whitespace.sub(':= by', self.code)
-        self.code = pattern_missing_by.sub(':= by ', self.code)
-        
         pattern_lean3_by = re.compile(r',\s+by')
-        self.code = pattern_lean3_by.sub(':= by', self.code)
-
-        def replacer(match):
-            content = match.group(1)  # <-- Now group(1) actually exists
-            # Replace ":= by" with ":="
-            content = content.replace(":= by", ":=")
-            # Put parentheses back
-            return f"({content})"
         
-        self.code = re.sub(correct_header_pattern, replacer, self.code)
+        self.code = pattern_repeating_whitespace.sub(':= by', self.code)
+        self.code = pattern_lean3_by.sub(':= by', self.code)
 
         
     
@@ -55,10 +42,10 @@ class SyntaxCorrector:
         
         self.code = '\n'.join(lines)
             
-    def correct_multiple_line_have_statements(self):
-        pattern = r"(have\s+.*?=)\s*\n\s*(.*?)(\s*:=\s*by)"
-        replacement = r"\1 \2\3"
-        self.code = re.sub(pattern, replacement, self.code, flags=re.DOTALL)
+    # def correct_multiple_line_have_statements(self):
+    #     pattern = r"(have\s+.*?=)\s*\n\s*(.*?)(\s*:=\s*by)"
+    #     replacement = r"\1 \2\3"
+    #     self.code = re.sub(pattern, replacement, self.code, flags=re.DOTALL)
     
     def remove_redundant_spaces(self):
         def clean_line(line: str) -> str:
@@ -84,44 +71,44 @@ class SyntaxCorrector:
 
         self.code = pattern.sub("", self.code)
     
-    def remove_newlines_inside_brackets(self):
-        """
-        Find bracketed substrings [ ... ] possibly spanning multiple lines,
-        remove newline characters from inside, and re-insert them intact.
-        """
-        pattern = r'(have.*?:= by)'
+    # def remove_newlines_inside_brackets(self):
+    #     """
+    #     Find bracketed substrings [ ... ] possibly spanning multiple lines,
+    #     remove newline characters from inside, and re-insert them intact.
+    #     """
+    #     pattern = r'(have.*?:= by)'
     
-        # Define a replacement function that removes newlines from the matched substring
-        def repl(match):
-            substring = match.group(1)
-            return substring.replace('\n', '')
+    #     # Define a replacement function that removes newlines from the matched substring
+    #     def repl(match):
+    #         substring = match.group(1)
+    #         return substring.replace('\n', '')
         
-        # Use re.sub with the replacement function and DOTALL flag to handle newlines
-        self.code = re.sub(pattern, repl, self.code, flags=re.DOTALL)
+    #     # Use re.sub with the replacement function and DOTALL flag to handle newlines
+    #     self.code = re.sub(pattern, repl, self.code, flags=re.DOTALL)
         
     def count_indentation(self, line):
         return len(line) - len(line.lstrip())
     
-    def normalise_newline_hypothesis(self):
-        lines = self.code.splitlines()
-        code = []
-        flag = False
-        for i, line in enumerate(lines):
+    # def normalise_newline_hypothesis(self):
+    #     lines = self.code.splitlines()
+    #     code = []
+    #     flag = False
+    #     for i, line in enumerate(lines):
             
-            if line.lstrip().startswith('have') and not line.lstrip().endswith(':= by'):
-                parts = line.split(':= by')
-                if i+1 < len(lines):
-                    indentation = self.count_indentation(lines[i+1])
-                    if indentation < self.count_indentation(lines[i]):
-                        indentation = self.count_indentation(lines[i]) + 2
-                else:
-                    indentation = self.count_indentation(lines[i]) + 2
-                try:
-                    line = parts[0] + ' := by\n' + indentation *' ' + parts[1] + '\n'
-                except:
-                    continue
-            code.append(line)
-        self.code = '\n'.join(code)
+    #         if line.lstrip().startswith('have') and not line.lstrip().endswith(':= by'):
+    #             parts = line.split(':= by')
+    #             if i+1 < len(lines):
+    #                 indentation = self.count_indentation(lines[i+1])
+    #                 if indentation < self.count_indentation(lines[i]):
+    #                     indentation = self.count_indentation(lines[i]) + 2
+    #             else:
+    #                 indentation = self.count_indentation(lines[i]) + 2
+    #             try:
+    #                 line = parts[0] + ' := by\n' + indentation *' ' + parts[1] + '\n'
+    #             except:
+    #                 continue
+    #         code.append(line)
+    #     self.code = '\n'.join(code)
         
     ### o3-mini/o4-mini specific corrections
     
@@ -149,18 +136,18 @@ class SyntaxCorrector:
         self.code = '\n'.join(corrected_lines)
             
     def specific_corrections(self):
-        lines = self.code.splitlines()
-        for i, line in enumerate(lines):
-            if line.lstrip().startswith('rw') or line.lstrip().startswith('intro'):
-                for rogue_string in [':=']:
-                    line = line.replace(':=', '')
-                lines[i] = line
-            if any(identifier for identifier in ['by', 'do', 'begin', 'end', 'exact', 'calc', 'if', 'else'] if identifier == line.strip()):
-                lines[i] = ''
+            lines = self.code.splitlines()
+            for i, line in enumerate(lines):
+                # Chỉ loại bỏ := thừa ở đầu rw hoặc intro
+                if line.lstrip().startswith('rw') or line.lstrip().startswith('intro'):
+                    lines[i] = line.replace(':=', '')
                 
+                # CHÚ Ý: Bỏ 'calc', 'exact', 'if', 'else', 'do' ra khỏi danh sách xóa
+                if line.strip() in ['begin', 'end']: 
+                    lines[i] = ''
+                    
+            self.code = '\n'.join(lines)
             
-        self.code = '\n'.join(lines)
-        
             
 
     def correct_text(self) -> str:
@@ -181,13 +168,13 @@ class SyntaxCorrector:
         self.correct_rw()
         self.correct_by_statements()
         self.correct_by_statements_in_let()
-        self.remove_newlines_inside_brackets()
+        # self.remove_newlines_inside_brackets()
         # self.remove_commas()
-        self.correct_multiple_line_have_statements()
+        # self.correct_multiple_line_have_statements()
         self.remove_redundant_spaces()
         
 
-        self.normalise_newline_hypothesis()
+        # self.normalise_newline_hypothesis()
         
         
         self.code = '\n'.join([l for l in self.code.splitlines() if l.strip() != ''])

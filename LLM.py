@@ -72,7 +72,9 @@ def main():
             """
             <|im_start|>system
             You are an expert in mathematics and Lean 4.
-            Given a Lean proof state, produce valid Lean 4 tactics to solve the current goal.
+            Given a Lean proof state, produce valid Lean 4 tactics to solve the current goal, 
+            fill in the sorry places with valid Lean 4 tactics, do not change other complete tatics.
+            Think before producing final tactics.
             <|im_end|>
 
             <|im_start|>user
@@ -81,39 +83,52 @@ def main():
             import Mathlib
             set_option maxHeartbeats 0
             open BigOperators Real Nat Topology Rat
+
             lemma aime_1983_p3_1_1
-                (f : ℝ → ℝ)
-                (h₀ : ∀ x : ℝ,
-                    f x =
-                    x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + 18 * x + 45))
-                (h₁ : Fintype (↑(f ⁻¹' {0}) : Type)) :
-                ∏ x ∈ (f ⁻¹' {0}).toFinset, x = 20 := by
-                have h2 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by
-                    intro x
-                    constructor
-                    · -- Assume f(x) = 0, prove x = -9 ± √61
-                        intro hx
-                        have hfx : f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + 18 * x + 45) := h₀ x
-                        rw [hfx] at hx
-                        have h_eq : x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + 18 * x + 45) = 0 := hx
-                        have h1 : 2 * √(x ^ 2 + 18 * x + 45) = x ^ 2 + 18 * x + 30 := by linarith
-                        have h2 : x ^ 2 + 18 * x + 45 ≥ 0 := by
-                            nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]
-                        have h3 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)
-                        have h4 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith
-                        have h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by linarith
-                        have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
-                            have hsq : (2 * √(x ^ 2 + 18 * x + 45)) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
-                                calc
-                                    (2 * √(x ^ 2 + 18 * x + 45)) ^ 2 = 4 * (√(x ^ 2 + 18 * x + 45) ^ 2) := by ring
-                                    _ = 4 * (x ^ 2 + 18 * x + 45) := by rw [Real.sq_sqrt h2]
-                            rw [← h5] at hsq
-                            nlinarith
-                        have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by
-                            ring_nf
-                            nlinarith [h6, Real.sq_sqrt (show 0 ≤ 61 by norm_num : (61 : ℝ) ≥ 0)]
-                        cases' (mul_eq_zero.mp h7) with h8 h9
-                        · left
+            (f : ℝ → ℝ)
+            (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))
+            (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :
+            ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by
+            have h2 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by
+                intro x
+                constructor
+                · -- Assume f(x) = 0, prove x = -9 ± √61
+                intro hfx
+                have h_eq : f x = 0 := hfx
+                rw [h₀] at h_eq
+                have h3 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by
+                    sorry
+                have h4 : x ^ 2 + 18 * x + 45 ≥ 0 := by
+                    have h5 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)
+                    nlinarith [h3, h5]
+                have h5 : √(x ^ 2 + 18 * x + 45) ^ 2 = x ^ 2 + 18 * x + 45 := by
+                    rw [Real.sq_sqrt]
+                    linarith
+                have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
+                    nlinarith [h3, h5]
+                have h7 : x ^ 2 + 18 * x + 20 = 0 := by
+                    sorry
+                have h8 : (x + 9) ^ 2 = 61 := by
+                    nlinarith [h7]
+                have h9 : x + 9 = √61 ∨ x + 9 = -√61 := by
+                    apply eq_or_eq_neg_of_sq_eq_sq
+                    norm_num
+                    linarith
+                cases h9 with
+                | inl h10 =>
+                    left
+                    linarith
+                | inr h11 =>
+                    right
+                    linarith
+                · -- Assume x = -9 ± √61, prove f(x) = 0
+                rintro (h | h)
+                ·
+                    sorry
+                ·
+                    sorry
+                sorry
+
             Continue the proof using Lean tactics.
             <|im_end|>
 

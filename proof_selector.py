@@ -17,6 +17,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any, Tuple
 
 from prover.lean.verifier import verify_lean4_file
+from utils.syntax_repair import SyntaxCorrector
 from utils.scope_sorrifier import Sorrifier
 from utils.hint_repair import ProofRepairer
 from utils.extract_proof_state import extract_queries
@@ -156,9 +157,9 @@ def _sorrify_and_repair_one(sp: ScoredProof) -> ScoredProof:
         sp.num_preserved_steps = len([l for l in sp.code.splitlines() if l.strip()])
     else:
         try:
+            code_corrected = SyntaxCorrector(sp.code).correct_text()
             checker = Sorrifier(verify_lean4_file, max_cycles=20)
-            sorrified = checker.verify_and_fix(sp.code)
-            
+            sorrified = checker.verify_and_fix(code_corrected)
             repairer = ProofRepairer(sorrified, verify_lean4_file)
             repaired = repairer.repair_proof()
             

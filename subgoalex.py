@@ -102,14 +102,14 @@ with open(output_file, "w", encoding="utf-8") as f:
     f.write(code)
     f.write("```\n\n")
 
-    # # Apply the same syntax correction pipeline as the main prover.
-    # code_corrected = SyntaxCorrector(code).correct_text()
+    # Apply the same syntax correction pipeline as the main prover.
+    code_corrected = SyntaxCorrector(code).correct_text()
 
-    # f.write("## Corrected Code\n\n")
-    # f.write("```lean\n")
-    # f.write(code_corrected)
-    # f.write("\n```\n\n")
-    code_corrected = code
+    f.write("## Corrected Code\n\n")
+    f.write("```lean\n")
+    f.write(code_corrected)
+    f.write("\n```\n\n")
+    # code_corrected = code
     
     f.write("## Initial Verification\n\n")
     r = verify_lean4_file(code_corrected, timeout=120)
