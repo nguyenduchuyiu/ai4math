@@ -8,12 +8,8 @@ class ProofRepairer:
         self.code = code
         self.verifier = verifier
         self.verbose = verbose
-        # Bỏ đi việc nhét thêm chữ `sorry` ở đuôi, ép Tactic phải tự đóng goal sạch sẽ!
         self.try_repairer = 'try norm_cast ; try norm_num ; try simp_all ; try ring_nf at * ; try native_decide ; try linarith ; try nlinarith ; try aesop'
     def repair_proof(self) -> str:
-        # ==========================================
-        # BƯỚC 1: SỬA BẰNG HINT (Giữ nguyên logic cực tốt của bạn)
-        # ==========================================
         code_with_hints = self.code.replace('sorry', 'hint')
         if self.verbose:
             print('Begin HintRepair...')
@@ -36,15 +32,10 @@ class ProofRepairer:
                 self.code = self.replace_nth('sorry', tactic, self.code, idx)
                 replacement_accumulation += 1
 
-        # ==========================================
-        # BƯỚC 2: SHOTGUN REPAIR (Thử & Quay xe)
-        # ==========================================
         def count_unsolved(err_dict):
-            """Đếm số lượng mục tiêu chưa giải quyết"""
             return sum(1 for e in err_dict.get('errors', []) if 'unsolved goals' in e['data'])
             
         def count_fatal(err_dict):
-            """Đếm các lỗi chí mạng (như đệ quy, sai cú pháp...)"""
             return sum(1 for e in err_dict.get('errors', []) if 'unsolved goals' not in e['data'])
 
         base_err = self.verifier(self.code)
@@ -59,7 +50,7 @@ class ProofRepairer:
             return self.code
 
         if self.verbose:
-            print('Begin Shotgun Repair...')
+            print('Begin Hint Repair...')
             
         pbar = tqdm(total=total_sorries, desc='Correcting with other solvers') if self.verbose else None
         attempt_idx = 1
@@ -69,12 +60,10 @@ class ProofRepairer:
             if attempt_idx >= len(parts):
                 break
 
-            # Tạo bản Test: Chỉ thay thế chữ `sorry` ở vị trí hiện tại bằng Shotgun
             part1 = 'sorry'.join(parts[:attempt_idx])
             part2 = 'sorry'.join(parts[attempt_idx:])
             test_code = part1 + self.try_repairer + part2
 
-            # Xác thực bản Test
             test_err = self.verifier(test_code)
             test_unsolved = count_unsolved(test_err)
             test_fatal = count_fatal(test_err)
@@ -84,16 +73,11 @@ class ProofRepairer:
                 if pbar: pbar.update(len(parts) - attempt_idx)
                 break
 
-            # 🚨 LOGIC CHÍNH: 
-            # Chỉ chấp nhận bản Test NẾU giải quyết được goal (unsolved giảm) 
-            # VÀ KHÔNG sinh thêm lỗi fatal (như recursion depth hay No goals)
             if test_fatal <= base_fatal and test_unsolved < base_unsolved:
                 self.code = test_code
                 base_unsolved = test_unsolved
                 base_fatal = test_fatal
-                # Không tăng attempt_idx vì số sorry đã giảm đi 1, sorry tiếp theo sẽ trồi lên vị trí attempt_idx
             else:
-                # Bắn trượt hoặc gây tác dụng phụ -> Quay xe (giữ nguyên sorry), bắn cái sorry tiếp theo
                 attempt_idx += 1
             
             if pbar: pbar.update(1)
@@ -101,9 +85,6 @@ class ProofRepairer:
         if pbar: pbar.close()
         return self.code
 
-    # ==========================================
-    # CÁC HÀM HELPER BÊN DƯỚI (Giữ nguyên)
-    # ==========================================
     def replace_nth(self, sub, repl, txt, nth):
         arr = txt.split(sub)
         part1 = sub.join(arr[:nth])

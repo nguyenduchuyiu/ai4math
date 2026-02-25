@@ -23,7 +23,7 @@ def load_model(model_id: str = MODEL_ID):
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
         dtype=dtype,
-        device_map="cpu",  # spreads layers across available devices/CPU
+        device_map="cuda",  # spreads layers across available devices/CPU
     )
 
     return tokenizer, model

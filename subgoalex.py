@@ -1,47 +1,91 @@
 from prover.lean.verifier import verify_lean4_file
-from sniper import Sorrifier
+from utils.scope_sorrifier import Sorrifier
 from utils.syntax_repair import SyntaxCorrector
 import os
 from datetime import datetime
 
 
-code = '''import Mathlib
-import Aesop
-
+code = '''
+import Mathlib
 set_option maxHeartbeats 0
-set_option pp.numericTypes true
-set_option pp.coercions.types true
-
 open BigOperators Real Nat Topology Rat
-
-theorem mathd_algebra_332 (x y : ℝ) (ho : (x + y) / 2 = (7 : ℝ))
-  (h₁ : Real.sqrt (x * y) = Real.sqrt (19 : ℝ)) :
-  x ^ 2 + y ^ 2 = (158 : ℝ) := by
-
-  have sum : x + y = (14 : ℝ) := by
-    rw [← mul_div_cancel_left (two_ne_zero : (2 : ℝ) ≠ 0)]
-    rw [ho]
-    rfl
-
-  have prod_pos : 0 < x * y := by
-    have h_pos19 : 0 < sqrt (19 : ℝ) := by
-      apply (sqrt_pos (19 : ℝ)).2
-      norm_num
-    have h_pos_xy : 0 < sqrt (x * y) := by
-      rwa [h₁] at h_pos19
-    apply (sqrt_pos (x * y)).1
-    exact h_pos_xy
-
-  have prod : x * y = (19 : ℝ) := by
-    apply sqrt_inj
-    · exact le_of_lt prod_pos
-    · norm_num
-    · exact h₁
-
-  by
-    rw [sum, prod]
-    ring
-
+lemma aime_1983_p3_1_1
+  (f : ℝ → ℝ)
+  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))
+  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}): Type)) :
+  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by
+  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by
+    intro x
+    rw [h₀ x]
+    simp [pow_two]
+  have h3 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by
+    intro x
+    rw [h2 x]
+    constructor
+    · -- Assume f(x) = 0
+      intro h
+      have h4 : √(x ^ 2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by linarith
+      have h5 : 0 ≤ √(x ^ 2 + 18 * x + 45) := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)
+      have h6 : 0 ≤ (x^2 + 18 * x + 30) / 2 := by linarith [h5, h4]
+      have h7 : x ^ 2 + 18 * x + 30 ≥ 0 := by linarith [h6]
+      have h8 : x^2 + 18 * x + 45 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by
+        calc
+          x^2 + 18 * x + 45 = (√(x ^ 2 + 18 * x + 45)) ^ 2 := by rw [Real.sq_sqrt]; nlinarith
+          _ = ((x^2 + 18 * x + 30) / 2) ^ 2 := by rw [h4]
+      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by
+        ring_nf
+        nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num), h7, h8]
+      cases' (mul_eq_zero.mp h9) with h10 h11
+      · -- x - (-9 + √61) = 0
+        left
+        linarith
+      · -- x - (-9 - √61) = 0
+        right
+        linarith
+    · -- Show that if x ∈ {-9 + √61, -9 - √61}, then f(x) = 0
+      rintro (h | h)
+      · -- x = -9 + √61
+        rw [h]
+        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61
+        have h13 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 - 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 0 := by
+          have h14 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 = 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) := by
+            have h15 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 45 = 25 := by
+              ring_nf
+              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]
+            have h16 : √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 5 := by
+              rw [h15]
+              exact Real.sqrt_eq_cases.2 (by norm_num)
+            nlinarith [h16]
+          linarith
+        linarith
+      · -- x = -9 - √61
+        rw [h]
+        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61
+        have h13 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 - 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 0 := by
+          have h14 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 = 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) := by
+            have h15 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 45 = 25 := by
+              ring_nf
+              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]
+            have h16 : √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 5 := by
+              rw [h15]
+              exact Real.sqrt_eq_cases.2 (by norm_num)
+            nlinarith [h16]
+          linarith
+        linarith
+  have h17 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by
+    ext x
+    simp [h3 x]
+  have h18 : (f ⁻¹' {(0 : ℝ)}).toFinset = {(-9 + √61), (-9 - √61)} := by
+    simp [h17]
+  rw [h18]
+  rw [Finset.prod_insert]
+  rw [Finset.prod_singleton]
+  have h19 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by
+    calc
+      (-9 + √61) * (-9 - √61) = (-9) ^ 2 - (√61) ^ 2 := by ring
+      _ = 81 - 61 := by norm_num [Real.sq_sqrt]
+      _ = 20 := by norm_num
+  linarith [h19]
 '''
 
 # Create output directory if it doesn't exist
@@ -58,13 +102,14 @@ with open(output_file, "w", encoding="utf-8") as f:
     f.write(code)
     f.write("```\n\n")
 
-    # Apply the same syntax correction pipeline as the main prover.
-    code_corrected = SyntaxCorrector(code).correct_text()
+    # # Apply the same syntax correction pipeline as the main prover.
+    # code_corrected = SyntaxCorrector(code).correct_text()
 
-    f.write("## Corrected Code\n\n")
-    f.write("```lean\n")
-    f.write(code_corrected)
-    f.write("\n```\n\n")
+    # f.write("## Corrected Code\n\n")
+    # f.write("```lean\n")
+    # f.write(code_corrected)
+    # f.write("\n```\n\n")
+    code_corrected = code
     
     f.write("## Initial Verification\n\n")
     r = verify_lean4_file(code_corrected, timeout=120)
