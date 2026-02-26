@@ -2,351 +2,351 @@
   "ranked": [
     {
       "idx": 4,
-      "raw_score": -184.8383331298828,
+      "raw_score": -277.0210049152374,
       "final_score": -3950,
       "status": "FAIL",
       "worst_category": "semantic",
       "first_error_line": 16,
       "num_sorries": 5,
       "num_preserved_steps": 42,
-      "verify_time": 24.838333129882812
+      "verify_time": 117.02100491523743
     },
     {
       "idx": 10,
-      "raw_score": -163.39757204055786,
+      "raw_score": -261.29857563972473,
       "final_score": -800,
       "status": "FAIL",
       "worst_category": "semantic",
       "first_error_line": 15,
       "num_sorries": 2,
       "num_preserved_steps": 9,
-      "verify_time": 13.397572040557861
+      "verify_time": 111.29857563972473
     },
     {
       "idx": 30,
-      "raw_score": -152.88954257965088,
+      "raw_score": -158.40539002418518,
       "final_score": -1250,
       "status": "FAIL",
       "worst_category": "semantic",
       "first_error_line": 14,
       "num_sorries": 3,
       "num_preserved_steps": 14,
-      "verify_time": 12.889542579650879
+      "verify_time": 18.40539002418518
     },
     {
       "idx": 21,
-      "raw_score": 1866.4751625061035,
+      "raw_score": 1859.8720028400421,
       "final_score": -800,
       "status": "FAIL",
       "worst_category": "other",
       "first_error_line": 12,
       "num_sorries": 2,
       "num_preserved_steps": 9,
-      "verify_time": 13.524837493896484
-    },
-    {
-      "idx": 5,
-      "raw_score": 2854.7966923713684,
-      "final_score": -1100,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 13,
-      "num_sorries": 2,
-      "num_preserved_steps": 12,
-      "verify_time": 15.203307628631592
-    },
-    {
-      "idx": 2,
-      "raw_score": 2855.316767692566,
-      "final_score": -1100,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 13,
-      "num_sorries": 2,
-      "num_preserved_steps": 12,
-      "verify_time": 14.683232307434082
+      "verify_time": 20.127997159957886
     },
     {
       "idx": 0,
-      "raw_score": 2855.6061458587646,
+      "raw_score": 2758.3436670303345,
       "final_score": -800,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 13,
       "num_sorries": 2,
       "num_preserved_steps": 9,
-      "verify_time": 14.393854141235352
+      "verify_time": 111.65633296966553
     },
     {
-      "idx": 16,
-      "raw_score": 2856.8416748046875,
+      "idx": 2,
+      "raw_score": 2758.754354953766,
       "final_score": -1100,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 13,
       "num_sorries": 2,
       "num_preserved_steps": 12,
-      "verify_time": 13.1583251953125
+      "verify_time": 111.24564504623413
     },
     {
-      "idx": 26,
-      "raw_score": 2856.8722558021545,
+      "idx": 5,
+      "raw_score": 2758.7985825538635,
       "final_score": -1100,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 13,
       "num_sorries": 2,
       "num_preserved_steps": 12,
-      "verify_time": 13.127744197845459
-    },
-    {
-      "idx": 3,
-      "raw_score": 2904.4353210926056,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 15.56467890739441
-    },
-    {
-      "idx": 1,
-      "raw_score": 2904.7814614772797,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 15.218538522720337
-    },
-    {
-      "idx": 12,
-      "raw_score": 2904.971544981003,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 15.028455018997192
-    },
-    {
-      "idx": 14,
-      "raw_score": 2905.0407140254974,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 14.959285974502563
-    },
-    {
-      "idx": 9,
-      "raw_score": 2905.254484653473,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 14.7455153465271
-    },
-    {
-      "idx": 7,
-      "raw_score": 2905.3013277053833,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 14.6986722946167
+      "verify_time": 111.20141744613647
     },
     {
       "idx": 13,
-      "raw_score": 2905.5994985103607,
+      "raw_score": 2808.0457532405853,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 14.400501489639282
+      "verify_time": 111.95424675941467
     },
     {
       "idx": 6,
-      "raw_score": 2905.8370468616486,
+      "raw_score": 2808.3102748394012,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 14.16295313835144
+      "verify_time": 111.68972516059875
     },
     {
-      "idx": 8,
-      "raw_score": 2905.9767591953278,
+      "idx": 12,
+      "raw_score": 2808.3599350452423,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 14.023240804672241
+      "verify_time": 111.64006495475769
     },
     {
-      "idx": 15,
-      "raw_score": 2906.0112986564636,
+      "idx": 7,
+      "raw_score": 2808.7493748664856,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 13.988701343536377
+      "verify_time": 111.2506251335144
+    },
+    {
+      "idx": 1,
+      "raw_score": 2808.752104282379,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 111.24789571762085
     },
     {
       "idx": 11,
-      "raw_score": 2906.3573303222656,
+      "raw_score": 2808.7608964443207,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 13.642669677734375
+      "verify_time": 111.23910355567932
     },
     {
-      "idx": 28,
-      "raw_score": 2906.3847219944,
+      "idx": 15,
+      "raw_score": 2808.7617161273956,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 13.615278005599976
+      "verify_time": 111.23828387260437
     },
     {
-      "idx": 24,
-      "raw_score": 2906.48091506958,
+      "idx": 8,
+      "raw_score": 2808.770873785019,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 13.519084930419922
+      "verify_time": 111.22912621498108
     },
     {
-      "idx": 17,
-      "raw_score": 2906.839052915573,
+      "idx": 9,
+      "raw_score": 2808.7732372283936,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 13.16094708442688
+      "verify_time": 111.22676277160645
     },
     {
-      "idx": 20,
-      "raw_score": 2906.950539112091,
+      "idx": 3,
+      "raw_score": 2808.7812757492065,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 13.049460887908936
+      "verify_time": 111.21872425079346
     },
     {
-      "idx": 29,
-      "raw_score": 2906.9871649742126,
+      "idx": 14,
+      "raw_score": 2808.781932115555,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 13.012835025787354
+      "verify_time": 111.21806788444519
     },
     {
-      "idx": 27,
-      "raw_score": 2907.062553167343,
-      "final_score": -650,
+      "idx": 16,
+      "raw_score": 2850.7090916633606,
+      "final_score": -1100,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 12.93744683265686
+      "first_error_line": 13,
+      "num_sorries": 2,
+      "num_preserved_steps": 12,
+      "verify_time": 19.290908336639404
     },
     {
-      "idx": 23,
-      "raw_score": 2907.1001358032227,
-      "final_score": -650,
+      "idx": 26,
+      "raw_score": 2850.8440606594086,
+      "final_score": -1100,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 12.899864196777344
-    },
-    {
-      "idx": 22,
-      "raw_score": 2907.4205808639526,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 12.579419136047363
-    },
-    {
-      "idx": 25,
-      "raw_score": 2907.4568581581116,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 12.543141841888428
-    },
-    {
-      "idx": 18,
-      "raw_score": 2907.4765882492065,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 12.523411750793457
+      "first_error_line": 13,
+      "num_sorries": 2,
+      "num_preserved_steps": 12,
+      "verify_time": 19.15593934059143
     },
     {
       "idx": 19,
-      "raw_score": 2907.5781831741333,
+      "raw_score": 2899.787570476532,
       "final_score": -650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 8,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 12.4218168258667
+      "verify_time": 20.212429523468018
+    },
+    {
+      "idx": 17,
+      "raw_score": 2900.0562493801117,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.943750619888306
+    },
+    {
+      "idx": 25,
+      "raw_score": 2900.085726261139,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.914273738861084
+    },
+    {
+      "idx": 20,
+      "raw_score": 2900.2867560386658,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.71324396133423
+    },
+    {
+      "idx": 23,
+      "raw_score": 2900.3486700057983,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.65132999420166
+    },
+    {
+      "idx": 18,
+      "raw_score": 2900.4260218143463,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.573978185653687
+    },
+    {
+      "idx": 22,
+      "raw_score": 2900.499655008316,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.50034499168396
+    },
+    {
+      "idx": 24,
+      "raw_score": 2900.6384885311127,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.36151146888733
+    },
+    {
+      "idx": 29,
+      "raw_score": 2900.7005381584167,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.299461841583252
+    },
+    {
+      "idx": 27,
+      "raw_score": 2900.968130350113,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 19.031869649887085
+    },
+    {
+      "idx": 28,
+      "raw_score": 2901.1170630455017,
+      "final_score": -650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 8,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 18.88293695449829
     }
   ],
   "subgoals": [
     {
-      "source_idx": 14,
-      "line": 8,
-      "goal": "Sort u_1",
+      "source_idx": 10,
+      "line": 10,
+      "goal": "∀ (x : ℝ), f x ≠ 0",
       "hypotheses": [
         {
           "name": "f",
@@ -361,9 +361,59 @@
           "type": "Fintype ↑(f ⁻¹' {0})"
         }
       ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ Sort u_1",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    sorry",
-      "name": "aime_1983_p3_1_1_c14_s1",
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ ∀ (x : ℝ), f x ≠ 0",
+      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x ≠ 0 := by\n  sorry\nsorry",
+      "name": "aime_1983_p3_1_1_c10_s1",
+      "sorry_index": 1
+    },
+    {
+      "source_idx": 16,
+      "line": 13,
+      "goal": "x * x + (18 * x + 30) - 2 * √(x * x + (18 * x + 45)) = x * x + 18 * x + 30 - 2 * √(x * x + 18 * x + 45)",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "x",
+          "type": "ℝ"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\n⊢ x * x + (18 * x + 30) - 2 * √(x * x + (18 * x + 45)) = x * x + 18 * x + 30 - 2 * √(x * x + 18 * x + 45)",
+      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\nsorry",
+      "name": "aime_1983_p3_1_1_c16_s1",
+      "sorry_index": 1
+    },
+    {
+      "source_idx": 0,
+      "line": 10,
+      "goal": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
+      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) := by\n  sorry\nsorry",
+      "name": "aime_1983_p3_1_1_c0_s1",
       "sorry_index": 1
     },
     {
@@ -429,9 +479,9 @@
       "sorry_index": 2
     },
     {
-      "source_idx": 0,
-      "line": 10,
-      "goal": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
+      "source_idx": 12,
+      "line": 8,
+      "goal": "Sort u_1",
       "hypotheses": [
         {
           "name": "f",
@@ -446,59 +496,9 @@
           "type": "Fintype ↑(f ⁻¹' {0})"
         }
       ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) := by\n  sorry\nsorry",
-      "name": "aime_1983_p3_1_1_c0_s1",
-      "sorry_index": 1
-    },
-    {
-      "source_idx": 16,
-      "line": 13,
-      "goal": "x * x + (18 * x + 30) - 2 * √(x * x + (18 * x + 45)) = x * x + 18 * x + 30 - 2 * √(x * x + 18 * x + 45)",
-      "hypotheses": [
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        },
-        {
-          "name": "x",
-          "type": "ℝ"
-        }
-      ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\n⊢ x * x + (18 * x + 30) - 2 * √(x * x + (18 * x + 45)) = x * x + 18 * x + 30 - 2 * √(x * x + 18 * x + 45)",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\nsorry",
-      "name": "aime_1983_p3_1_1_c16_s1",
-      "sorry_index": 1
-    },
-    {
-      "source_idx": 10,
-      "line": 10,
-      "goal": "∀ (x : ℝ), f x ≠ 0",
-      "hypotheses": [
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        }
-      ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ ∀ (x : ℝ), f x ≠ 0",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x ≠ 0 := by\n  sorry\nsorry",
-      "name": "aime_1983_p3_1_1_c10_s1",
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ Sort u_1",
+      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    sorry",
+      "name": "aime_1983_p3_1_1_c12_s1",
       "sorry_index": 1
     },
     {

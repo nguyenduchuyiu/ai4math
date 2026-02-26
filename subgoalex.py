@@ -146,7 +146,7 @@ with open(output_file, "w", encoding="utf-8") as f:
     f.write(f"- **Pass:** {'Yes' if final_check['pass'] else 'No'}\n")
     f.write(f"- **Complete:** {'Yes' if final_check.get('complete', False) else 'No'}\n")
 
-    from utils.extract_proof_state import extract_queries
+    from utils.proof_state_extractor import extract_queries
     from retriever import retrieve
 
     f.write("## RAG Retrieval Analysis\n\n")

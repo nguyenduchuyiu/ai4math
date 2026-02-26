@@ -1012,7 +1012,3 @@ have h₂ : x ^ 2 + (18 * x + 45) = 25 := by
   
   exact h₇
 
-==========================================
-Đang tiến hành ghép code (Merge)...
-Thành công! File hoàn chỉnh đã được lưu tại: final_proof.lean
-Cậu hãy dùng Lean REPL để Verify file này nhé!

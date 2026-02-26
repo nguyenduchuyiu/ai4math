@@ -12,6 +12,7 @@ import sys
 import argparse
 import re
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from prover.lean.verifier import verify_lean4_file
 
@@ -114,10 +115,21 @@ def main():
     print(f"Found {len(problems)} problems in {root}\n")
 
     results = []
-    for pname in problems:
+
+    # ---- Use 16 workers in a ThreadPoolExecutor ----
+    def _single_problem_task(pname):
         pdir = os.path.join(root, pname)
-        r = check_problem(pdir, pname, timeout=args.timeout, skip_verify=args.skip_verify)
-        results.append(r)
+        return check_problem(pdir, pname, timeout=args.timeout, skip_verify=args.skip_verify)
+
+    with ThreadPoolExecutor(max_workers=16) as executor:
+        # submit jobs
+        future_to_name = {executor.submit(_single_problem_task, pname): pname for pname in problems}
+        for future in as_completed(future_to_name):
+            r = future.result()
+            results.append(r)
+
+    # sort results by problem name for consistent output
+    results.sort(key=lambda r: r["name"])
 
     # --- Summary ---
     print("\n" + "=" * 90)

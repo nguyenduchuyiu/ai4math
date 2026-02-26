@@ -2,88 +2,81 @@ import json
 import re
 from typing import Dict, List
 import textwrap
-# Thay bằng hàm gọi API thực tế của cậu
-from LLM import generate_reply 
-
-import re
+from LLM import generate_reply
 
 def extract_lean_tactic(llm_output: str) -> str:
     """
-    1. Xóa <think>
-    2. Lấy code trong block ```lean
-    3. Xé bỏ vỏ bọc 'theorem ... := by' nếu LLM tự bịa ra.
+    Remove <think> tags, strip theorem/lemma wrappers,
+    and PRESERVE INDENTATION at line heads for Lean 4 tactics.
     """
-    # 1. Xóa sạch block <think> (nếu sau này có)
-    # text_without_think = re.sub(r'<think>.*?(?:</think>|(?=```))', '', llm_output, flags=re.DOTALL | re.IGNORECASE)
     text_without_think = llm_output
-    # 2. Tìm block code Lean
-    code_blocks = re.findall(r'```(?:lean?)(.*?)```', text_without_think, flags=re.DOTALL | re.IGNORECASE)
-    
-    if code_blocks:
-        raw_code = code_blocks[-1].strip()
-    else:
-        # Fallback
-        raw_code = text_without_think.strip().replace('<|im_start|>', '').replace('<|im_end|>', '')
+    code_blocks = re.findall(r'```(?:lean4?)(.*?)```', text_without_think, flags=re.DOTALL | re.IGNORECASE)
+    # Strip only leading/trailing newlines, not indentation
+    raw_code = code_blocks[-1].strip('\n') if code_blocks else text_without_think.strip('\n')
+    raw_code = raw_code.replace('<|im_start|>', '').replace('<|im_end|>', '')
 
-    # 3. CHÉM VỎ BỌC THEOREM/LEMMA (Chỉ lấy lõi Tactic)
-    # Nếu code bắt đầu bằng chữ theorem hoặc lemma
-    if raw_code.startswith("theorem ") or raw_code.startswith("lemma "):
-        # Tách chuỗi bằng chữ ':= by' đầu tiên gặp được
+    # Remove spurious theorem/lemma at head, keep tactic block
+    if raw_code.lstrip().startswith("theorem ") or raw_code.lstrip().startswith("lemma "):
         parts = raw_code.split(":= by", 1)
         if len(parts) > 1:
-            # Lấy toàn bộ phần ruột phía sau
-            pure_tactic = parts[1].strip()
-            return pure_tactic
-    return raw_code.strip()
-
+            return parts[1].strip('\n')
+    return raw_code.strip('\n')
 
 def load_cached_tactics_from_log(log_path: str = "solve.txt") -> List[str]:
     """
-    Đọc lại các block sau dòng '--- Extracted Lean tactics ---' trong solve.txt.
-    Trả về list tactics theo đúng thứ tự subgoal đã chạy lần trước.
+    Reload 'LLM Output (raw):' blocks from solve.txt,
+    extract clean Lean tactics using extract_lean_tactic as during runtime.
     """
-    blocks: List[str] = []
+    raw_blocks: List[str] = []
     current: List[str] = []
-    in_block = False
+    in_raw = False
     try:
         with open(log_path, "r", encoding="utf-8") as f:
             for line in f:
-                if line.startswith("--- Extracted Lean tactics ---"):
-                    if in_block and current:
-                        blocks.append("".join(current).rstrip())
+                if line.startswith("LLM Output (raw):"):
+                    if in_raw and current:
+                        raw_blocks.append("".join(current))
                         current = []
-                    in_block = True
+                    in_raw = True
                     continue
-                if in_block:
-                    # Kết thúc block khi sang section mới
-                    if line.startswith("--- ") and "Extracted Lean tactics" not in line:
+                if in_raw:
+                    # End a raw block at '--- Extracted Lean tactics ---'
+                    if line.startswith("--- Extracted Lean tactics ---"):
                         if current:
-                            blocks.append("".join(current).rstrip())
+                            raw_blocks.append("".join(current))
                             current = []
-                        in_block = False
+                        in_raw = False
                         continue
                     current.append(line)
-        if in_block and current:
-            blocks.append("".join(current).rstrip())
+        if in_raw and current:
+            raw_blocks.append("".join(current))
     except FileNotFoundError:
         return []
-    # Làm sạch block rỗng
-    return [b.strip() for b in blocks if b.strip()]
 
-# ==========================================
-# 1. HÀM CHUẨN BỊ PROMPT VÀ DỌN RÁC
-# ==========================================
+    # Extract and keep only non-empty tactics
+    tactics: List[str] = []
+    for raw in raw_blocks:
+        t = extract_lean_tactic(raw)
+        if t.strip():
+            tactics.append(t)
+    return tactics
+
+# ========== 1. PROMPT CONSTRUCTION & CLEANUP UTILITIES ==========
+
 def clean_lean_types(text: str) -> str:
-    """Xóa các ép kiểu rác của Lean 4 (ví dụ: (2 : ℕ), (18 : ℝ)) để LLM dễ đọc hơn."""
-    # Xóa (X : ℕ) hoặc (X : ℝ) -> chỉ giữ lại X
+    """
+    Strip Lean 4 explicit type casts (e.g. (2 : ℕ), (18 : ℝ))
+    for easier prompt readability.
+    """
     text = re.sub(r'\(([^()]+?)\s*:\s*[ℕℝ]\)', r'\1', text)
     return text
 
 def build_prompt(subgoal: dict) -> str:
-    # Lấy đúng cái Tactic State đã được dọn sạch ép kiểu rác
+    """
+    Build a concise Lean 4 tactical prompt for the LLM.
+    Only outputs the tactic sequence, not declarations/context.
+    """
     tactic_state = clean_lean_types(subgoal.get('raw', '').strip())
-    
-    # 🚨 VIẾT LẠI PROMPT: Bỏ hoàn toàn code_prefix, ép nó làm "Tactician" thay vì "Prover"
     prompt = textwrap.dedent(f"""
         <|im_start|>system
         You are an expert Lean 4 tactician.
@@ -103,139 +96,117 @@ def build_prompt(subgoal: dict) -> str:
         """).strip()
     return prompt
 
-# ==========================================
-# 2. HÀM GHÉP CODE (MERGE) SIÊU AN TOÀN
-# ==========================================
+# ========== 2. SAFE (INDENTATION-PRESERVING) CODE MERGE ==========
+
 def merge_llm_solutions(skeleton_code: str, solutions: dict) -> str:
     """
-    Ghép tactic của LLM vào file gốc bằng cách thay thế các chữ 'sorry'.
-    Giữ nguyên cấu trúc thụt lề lồng nhau (nested indentation) của LLM.
+    Replace 'sorry' lines with LLM Lean tactics, preserving indentation.
     """
     lines = skeleton_code.splitlines()
     sorted_lines = sorted(solutions.keys(), reverse=True)
-    
     for line_num in sorted_lines:
         idx = line_num - 1
         target_line = lines[idx]
-        
-        # 1. Đo lề mục tiêu (Lề của chữ 'sorry' cũ)
+        # Target indentation (spaces before 'sorry')
         target_indent_spaces = len(target_line) - len(target_line.lstrip())
         target_indent_str = " " * target_indent_spaces
-        
-        # 2. Xử lý code LLM
+
+        # Handle non-breaking spaces, tabs
         llm_tactic_raw = solutions[line_num]
+        llm_tactic_raw = llm_tactic_raw.replace('\xa0', ' ').expandtabs(4)
         llm_lines = llm_tactic_raw.splitlines()
-        
-        # 3. Tìm "Lề cơ sở" (Base indent) của khối code LLM
-        # (Đo lề của dòng code thực sự đầu tiên)
-        base_indent = 0
-        for line in llm_lines:
-            if line.strip() and not line.strip().startswith("```"):
-                base_indent = len(line) - len(line.lstrip())
-                break
-                
+
+        # Filter out markdown or empty lines
+        clean_lines = []
+        for l in llm_lines:
+            if l.strip() and not l.strip().startswith("```"):
+                clean_lines.append(l)
+
+        if not clean_lines:
+            continue
+
+        # Find base indent (minimum indent among block lines)
+        base_indent = min(len(l) - len(l.lstrip()) for l in clean_lines)
+
+        # Reindent block lines relative to target
         indented_tactics = []
-        for line in llm_lines:
-            # Bỏ rác markdown và dòng trống
-            if line.strip() in ["```lean", "```", "lean4", ""]:
-                continue
-            
-            # 4. Tính toán độ thụt lề tương đối của từng dòng so với lề cơ sở
-            current_indent = len(line) - len(line.lstrip())
-            relative_indent = max(0, current_indent - base_indent)
-            
-            # 5. Lắp ghép: Lề của sorry + Lề tương đối bên trong khối code + Nội dung
-            final_line = target_indent_str + (" " * relative_indent) + line.lstrip()
+        for l in clean_lines:
+            current_indent = len(l) - len(l.lstrip())
+            relative_indent = current_indent - base_indent
+            final_line = target_indent_str + (" " * relative_indent) + l.lstrip()
             indented_tactics.append(final_line)
-            
-        # 6. Thay thế vào file
-        if indented_tactics:
-            lines = lines[:idx] + indented_tactics + lines[idx+1:]
-        
+
+        # Replace the sorry line with the indented tactic block
+        lines = lines[:idx] + indented_tactics + lines[idx+1:]
     return "\n".join(lines)
 
+# ========== 3. MAIN PIPELINE ==========
 
-# ==========================================
-# 3. LUỒNG CHẠY CHÍNH (PIPELINE)
-# ==========================================
 def main():
-    # 1. Đọc file JSON của cậu
+    # 1. Load JSON with subgoals
     with open("output/subgoals.json", "r", encoding="utf-8") as f:
         data = json.load(f)
-        
+
     all_subgoals = data.get("subgoals", [])
-    
-    # 2. Lọc ra các subgoals của Candidate #4 (Vì nó là Candidate tốt nhất)
-    # Trong JSON của cậu, Candidate 4 có "source_idx": 4
+
+    # 2. Select subgoals for Candidate #4 (source_idx: 4)
     target_candidate_idx = 4
     target_subgoals = [sg for sg in all_subgoals if sg["source_idx"] == target_candidate_idx]
-    
+
     if not target_subgoals:
-        print(f"Không tìm thấy subgoal nào cho Candidate #{target_candidate_idx}")
+        print(f"No subgoals found for Candidate #{target_candidate_idx}")
         return
-        
-    print(f"Bắt đầu giải {len(target_subgoals)} subgoals của Candidate #{target_candidate_idx}...")
-    
-    # Lấy Skeleton Code (chính là code_prefix của subgoal cuối cùng, nó chứa toàn bộ file)
-    # Ta sẽ dùng nó làm cái khung để nhét code vào
-    skeleton_code = target_subgoals[-1]["code_prefix"] 
-    # Nếu code_prefix bị cắt mất cái sorry cuối cùng, ta khôi phục lại (vì ta cần skeleton gốc)
+
+    print(f"Starting to solve {len(target_subgoals)} subgoals for Candidate #{target_candidate_idx}...")
+
+    # Final code "skeleton" = code_prefix of the last subgoal (contains whole file)
+    skeleton_code = target_subgoals[-1]["code_prefix"]
     if skeleton_code.strip().endswith("sorry"):
-        pass # Đã có sorry
+        pass
     else:
-        # Trường hợp lấy subgoal khác, ta nên lấy file gốc từ Candidate
-        print("Cảnh báo: Đang dùng code_prefix làm Skeleton.")
-
-    # Dictionary lưu trữ kết quả: { số_dòng: "code_tactic" }
+        print(f"Warning: Using code_prefix as Skeleton.")
     solutions_dict = {}
-
-    # 3. Gọi LLM giải từng Subgoal (hoặc dùng cache từ solve.txt nếu có)
     cached_tactics = load_cached_tactics_from_log()
     cache_idx = 0
-
     for sg in target_subgoals:
-        print(f"\n--- Đang giải: {sg['name']} (Dòng {sg['line']}) ---")
+        print(f"\n--- Solving: {sg['name']} (Line {sg['line']}) ---")
         prompt = build_prompt(sg)
 
-        # Nếu đã có cache thì ưu tiên dùng, không gọi LLM nữa
+        # Prefer cache if available
         if cache_idx < len(cached_tactics):
             tactic_only = cached_tactics[cache_idx]
             cache_idx += 1
             print("\n--- Using cached Lean tactics from solve.txt ---")
             print(tactic_only)
         else:
-            # GỌI API THỰC TẾ Ở ĐÂY (Nên để temperature=0.0 cho Toán)
-            print("Đang chờ LLM trả lời...")
+            print("Waiting for LLM response...")
             print(prompt)
             print("------------------------------------------")
             try:
                 solution_raw = generate_reply(prompt, max_new_tokens=4096, temperature=0.6, top_p=0.95)
             except Exception as e:
-                print(f"Lỗi API: {e}")
-                solution_raw = "sorry"  # Fail-safe, trả lại sorry nếu API sập
-
+                print(f"API Error: {e}")
+                solution_raw = "sorry"
             print("\nLLM Output (raw):")
             print(solution_raw)
-
-            # Chỉ lấy Lean tactics, bỏ phần giải thích/markdown
             tactic_only = extract_lean_tactic(solution_raw)
             print("\n--- Extracted Lean tactics ---")
             print(tactic_only)
 
         solutions_dict[sg["line"]] = tactic_only
 
-    # 4. Ghép code
+    # 4. Merge tactics into skeleton
     print("\n==========================================")
-    print("Đang tiến hành ghép code (Merge)...")
+    print("Merging code (Merge)...")
     final_code = merge_llm_solutions(skeleton_code, solutions_dict)
-    
-    # 5. Lưu ra file
+
+    # 5. Write to output
     out_file = "final_proof.lean"
     with open(out_file, "w", encoding="utf-8") as f:
         f.write(final_code)
-        
-    print(f"Thành công! File hoàn chỉnh đã được lưu tại: {out_file}")
-    print("Cậu hãy dùng Lean REPL để Verify file này nhé!")
+
+    print(f"Success! Complete file saved to: {out_file}")
+    print("Please use Lean REPL to verify this file!")
 
 if __name__ == "__main__":
     main()

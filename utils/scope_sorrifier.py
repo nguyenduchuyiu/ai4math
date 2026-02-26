@@ -1,234 +1,182 @@
+"""
+The Ultimate Hybrid Auto-Sorrifier (AST + Classification)
+Dựa trên thuật toán phân loại Scope của Nguyễn Đức Huy kết hợp Lean 4 AST Coordinates.
+"""
+
+import subprocess
+import json
 import re
-from typing import Tuple, List, Set, Dict, Any, Callable
+import sys
+import os
 from tqdm import tqdm
 
-class Sorrifier:
-    """
-    Automated proof sorrifier that uses a scope-based error recovery strategy.
-    
-    It parses error messages from the Lean 4 compiler to dynamically locate 
-    problematic tactics. Depending on the error type, it either truncates 
-    the faulty tactic block and replaces it with `sorry` (for logical/syntax errors), 
-    or appends `sorry` to properly close unfinished scopes (for 'unsolved goals').
-    """
-    
-    def __init__(
-        self, 
-        verifier: Callable[[str], Dict[str, Any]], 
-        max_cycles: int = 15, 
-        pbar: bool = True
-    ):
-        self.verifier = verifier
+# Cậu sửa lại biến này cho khớp với thư mục của cậu nhé
+REPL_DIR = "/workspace/npthai/APOLLO/repl" 
+
+class HybridSorrifier:
+    def __init__(self, file_path: str, max_cycles: int = 15):
+        self.file_path = os.path.abspath(file_path)
         self.max_cycles = max_cycles
-        self.pbar = pbar
-        # Keywords that open a new logical scope/block in Lean 4
-        self.block_starters = ("have", "·", ".", "cases ", "cases' ", "induction ", "induction' ", "rintro ", "intro ")
 
-    def verify_and_fix(self, code: str) -> str:
-        """
-        Iteratively verifies and repairs the Lean 4 code until no fatal errors remain.
-        """
-        current_code = code
-        modified_blocks: Set[int] = set()
+    def get_lean_errors(self):
+        """Phân loại lỗi từ Lean thành 2 rổ: Fatal (Sai logic) và Unsolved (Chưa xong)."""
+        res = subprocess.run(
+            ["lake", "env", "lean", self.file_path],
+            capture_output=True, text=True, cwd=REPL_DIR
+        )
         
-        main_goal_line = 1
-        for idx, line in enumerate(code.splitlines(), start=1):
-            if ":= by" in line:
-                main_goal_line = idx
-                break
-
-        progress_bar = tqdm(desc="Scope Sorrifier", unit="cycle", total=self.max_cycles) if self.pbar else None
-
-        for _ in range(self.max_cycles):
-            err_info = self.verifier(current_code)
-            
-            if err_info.get('pass', False):
-                if progress_bar: progress_bar.close()
-                return current_code
-
-            # Categorize errors into structural/logic errors vs. incomplete proofs
-            fatal_errors = []
-            unsolved_errors = []
-            for e in err_info.get('errors', []):
-                if "unsolved goals" in e['data']:
-                    unsolved_errors.append(e)
-                else:
-                    fatal_errors.append(e)
-
-            # Safety: if verifier returned no classified errors, stop to avoid index errors
-            if not fatal_errors and not unsolved_errors:
-                print("No errors found in the code. Compile result:", err_info)
-                if progress_bar: progress_bar.close()
-                return current_code
-
-            if fatal_errors:
-                # Handle fatal errors by truncating the inner block
-                fatal_errors.sort(key=lambda x: x['pos']['line'])
-                err_line = fatal_errors[0]['pos']['line']
+        output = res.stdout + "\n" + res.stderr
+        fatal_errors = []
+        unsolved_errors = []
+        
+        current_error_line = None
+        current_error_msg = ""
+        
+        # Parse từng dòng log của Lean
+        for line in output.splitlines():
+            match = re.match(r'^.*?:(\d+):\d+:\s*error:\s*(.*)', line)
+            if match:
+                # Lưu lỗi trước đó vào rổ
+                if current_error_line is not None:
+                    if "unsolved goals" in current_error_msg:
+                        unsolved_errors.append(current_error_line)
+                    else:
+                        fatal_errors.append(current_error_line)
+                        
+                current_error_line = int(match.group(1))
+                current_error_msg = match.group(2)
+            elif current_error_line is not None:
+                current_error_msg += " " + line
                 
-                new_code, owner_idx = self._replace_block_with_sorry(current_code, err_line)
-
-                # Fallback to hard truncation if block replacement fails or loops
-                if new_code == current_code or owner_idx in modified_blocks:
-                    current_code = self._truncate_file(current_code, err_line)
-                else:
-                    current_code = new_code
-                    modified_blocks.add(owner_idx)
+        # Nhét lỗi cuối cùng vào rổ
+        if current_error_line is not None:
+            if "unsolved goals" in current_error_msg:
+                unsolved_errors.append(current_error_line)
             else:
-                # Handle unfinished proofs by appending 'sorry' to the appropriate scope
-                unsolved_errors.sort(key=lambda x: x['pos']['line'])
-                err_line = unsolved_errors[0]['pos']['line']
-
-                new_code = self._close_block_with_sorry(current_code, err_line, main_goal_line)
+                fatal_errors.append(current_error_line)
                 
-                if new_code == current_code:
-                    current_code = self._truncate_file(current_code, err_line)
-                else:
-                    current_code = new_code
+        # Sắp xếp từ trên xuống dưới
+        return sorted(fatal_errors), sorted(unsolved_errors)
 
-            if progress_bar: progress_bar.update(1)
+    def _line_to_byte_offset(self, target_line: int) -> int:
+        """Đổi dòng sang RAW BYTES (né lỗi ký tự Toán học ℝ, ∀)."""
+        with open(self.file_path, "rb") as f:
+            raw_bytes = f.read()
+        lines = raw_bytes.split(b"\n")
+        offset = 0
+        for i in range(min(target_line - 1, len(lines))):
+            offset += len(lines[i]) + 1 
+        
+        # Tịnh tiến qua khoảng trắng
+        if target_line - 1 < len(lines):
+            line_bytes = lines[target_line - 1]
+            offset += len(line_bytes) - len(line_bytes.lstrip(b" \t"))
+        return offset
 
-        if progress_bar: progress_bar.close()
-        return current_code
+    def _get_ast_blocks(self) -> list[dict]:
+        res = subprocess.run(
+            ["lake", "env", "lean", "--run", "dump_ast.lean", self.file_path],
+            capture_output=True, text=True, cwd=REPL_DIR
+        )
+        blocks = []
+        for line in res.stdout.splitlines():
+            if line.strip().startswith("{"):
+                try: blocks.append(json.loads(line))
+                except: pass
+        return blocks
 
-    # -------------------------------------------------------------------------
-    # Core Scope Identification Helpers
-    # -------------------------------------------------------------------------
+    def fix_fatal_error(self, error_line: int) -> bool:
+        """Chiến thuật 1: Lỗi Sai Logic -> Cắt bỏ cục ruột và thay bằng sorry."""
+        error_byte = self._line_to_byte_offset(error_line)
+        blocks = self._get_ast_blocks()
+        
+        # VÙNG CẤM: Tuyệt đối không cắt rụng đầu các lệnh khai báo!
+        target_prefixes = ["lean.parser.tactic", "lean.parser.term.bytactic"]
+        forbidden_keywords = ["tactichave", "tacticcases", "tacticmatch", "tacticlet", "decl", "command"]
+        
+        valid_blocks = [
+            b for b in blocks 
+            if b["start_byte"] <= error_byte <= b["end_byte"]
+            and any(p in b["kind"].lower() for p in target_prefixes)
+            and not any(f in b["kind"].lower() for f in forbidden_keywords)
+        ]
+        
+        if not valid_blocks:
+            # Fallback nếu bó tay
+            valid_blocks = [b for b in blocks if b["start_byte"] <= error_byte <= b["end_byte"] and "command" not in b["kind"].lower()]
+            if not valid_blocks: return False
 
-    def _is_block_starter(self, line: str) -> bool:
-        """Checks if a given line initializes a new tactic scope."""
-        stripped = line.strip()
-        if not any(stripped.startswith(cmd) for cmd in self.block_starters):
-            return False
-        # Special case: 'have' statements must contain ':= by' to be considered a tactic block
-        if stripped.startswith("have") and ":= by" not in stripped:
-            return False
+        # Lấy node nhỏ nhất (cục ruột)
+        target = min(valid_blocks, key=lambda x: x["end_byte"] - x["start_byte"])
+        start_b, end_b = target["start_byte"], target["end_byte"]
+        
+        with open(self.file_path, "rb") as f:
+            raw_bytes = f.read()
+            
+        if "sorry" in target["kind"].lower():
+            tqdm.write(f"🧹 Xóa rác [sorry] byte {start_b}..{end_b}")
+            repaired = raw_bytes[:start_b] + raw_bytes[end_b:]
+        else:
+            tqdm.write(f"🔪 Phẫu thuật Fatal [{target['kind']}] byte {start_b}..{end_b}")
+            repaired = raw_bytes[:start_b] + b"sorry\n" + raw_bytes[end_b:]
+            
+        with open(self.file_path, "wb") as f: f.write(repaired)
         return True
 
-    def _find_block_owner(self, lines: List[str], err_idx: int) -> int:
-        """Scans upwards from the error line to find the parent block owner."""
-        if err_idx >= len(lines):
-            return -1
-            
-        err_indent = len(lines[err_idx]) - len(lines[err_idx].lstrip())
+    def fix_unsolved_goal(self, error_line: int) -> bool:
+        """Chiến thuật 2: Chưa chứng minh xong -> Chèn sorry vào cuối block."""
+        error_byte = self._line_to_byte_offset(error_line)
+        blocks = self._get_ast_blocks()
         
-        # Check if the error is exactly on the block starter line
-        if self._is_block_starter(lines[err_idx]):
-            return err_idx
+        enclosing = [b for b in blocks if b["start_byte"] <= error_byte <= b["end_byte"]]
+        if not enclosing: return False
+        
+        # Tìm block bọc bên ngoài (tacticSeq hoặc byTactic) để đóng nắp
+        seq_blocks = [b for b in enclosing if "seq" in b["kind"].lower() or "bytactic" in b["kind"].lower()]
+        target = min(seq_blocks, key=lambda x: x["end_byte"] - x["start_byte"]) if seq_blocks else min(enclosing, key=lambda x: x["end_byte"] - x["start_byte"])
+        
+        end_b = target["end_byte"]
+        tqdm.write(f"🩹 Đóng nắp Unsolved [{target['kind']}] tại byte {end_b}")
+        
+        with open(self.file_path, "rb") as f:
+            raw_bytes = f.read()
             
-        # Scan upwards for a parent with strictly smaller indentation
-        for i in range(err_idx - 1, -1, -1):
-            line = lines[i]
-            if not line.strip() or line.strip().startswith("--"):
-                continue
-            curr_indent = len(line) - len(line.lstrip())
-            if curr_indent < err_indent and self._is_block_starter(line):
-                return i
+        repaired = raw_bytes[:end_b] + b"\nsorry\n" + raw_bytes[end_b:]
+        
+        with open(self.file_path, "wb") as f: f.write(repaired)
+        return True
+
+    def run(self):
+        tqdm.write(f"🚀 Khởi động Hybrid AST-Sorrifier cho {self.file_path}")
+        
+        with tqdm(total=self.max_cycles, desc="Tiến trình", unit="vòng") as pbar:
+            for _ in range(self.max_cycles):
+                fatal_errs, unsolved_errs = self.get_lean_errors()
                 
-        return -1
+                if not fatal_errs and not unsolved_errs:
+                    tqdm.write("✅ XONG! File đã xanh lè (Well-typed).")
+                    break
+                    
+                # Ưu tiên xử lý Fatal Error (vỡ logic) trước, Unsolved xử lý sau
+                if fatal_errs:
+                    err_line = fatal_errs[0]
+                    pbar.set_postfix_str(f"Sửa Fatal dòng {err_line}")
+                    success = self.fix_fatal_error(err_line)
+                else:
+                    err_line = unsolved_errs[0]
+                    pbar.set_postfix_str(f"Sửa Unsolved dòng {err_line}")
+                    success = self.fix_unsolved_goal(err_line)
+                    
+                if not success:
+                    tqdm.write(f"🛑 Dừng: Bác sĩ bó tay ở dòng {err_line}.")
+                    break
+                    
+                pbar.update(1)
 
-    def _find_block_end(self, lines: List[str], owner_idx: int) -> int:
-        """Scans downwards to find the boundary where the current block ends."""
-        owner_indent = len(lines[owner_idx]) - len(lines[owner_idx].lstrip())
-        for i in range(owner_idx + 1, len(lines)):
-            line = lines[i]
-            if not line.strip() or line.strip().startswith("--"):
-                continue
-            curr_indent = len(line) - len(line.lstrip())
-            if curr_indent <= owner_indent:
-                return i
-        return len(lines)
-
-    def _get_main_indent(self, lines: List[str], main_goal_idx: int) -> int:
-        """Calculates the base indentation level for the main theorem proof."""
-        for i in range(main_goal_idx + 1, len(lines)):
-            line = lines[i]
-            if line.strip() and not line.strip().startswith("--"):
-                return len(line) - len(line.lstrip())
-        return 2
-
-    # -------------------------------------------------------------------------
-    # Code Mutation Strategies
-    # -------------------------------------------------------------------------
-
-    def _replace_block_with_sorry(self, code: str, error_line_num: int) -> Tuple[str, int]:
-        """
-        Truncates the inner contents of a faulty block and replaces it with `sorry`.
-        Returns the modified code and the line index of the modified block.
-        """
-        lines = code.splitlines()
-        owner_idx = self._find_block_owner(lines, error_line_num - 1)
-        
-        if owner_idx == -1:
-            return code, -1
-
-        end_idx = self._find_block_end(lines, owner_idx)
-        owner_line = lines[owner_idx]
-        owner_indent = len(owner_line) - len(owner_line.lstrip())
-
-        new_lines = lines[:owner_idx]
-        stripped_owner = owner_line.strip()
-
-        # Retain the block header but discard its faulty body
-        if stripped_owner.startswith("have"):
-            clean_owner = owner_line.split(":= by")[0] + ":= by"
-            new_lines.append(clean_owner)
-        elif stripped_owner.startswith("·") or stripped_owner.startswith("."):
-            bullet_pos = owner_line.find(stripped_owner[0])
-            clean_owner = owner_line[:bullet_pos + 1] 
-            new_lines.append(clean_owner)
-        else:
-            new_lines.append(owner_line)
-
-        # Inject sorry with appropriate indentation
-        new_lines.append(" " * (owner_indent + 2) + "sorry")
-        new_lines.extend(lines[end_idx:])
-        
-        return "\n".join(new_lines), owner_idx
-
-    def _close_block_with_sorry(self, code: str, err_line_num: int, main_goal_line: int) -> str:
-        """
-        Appends `sorry` to properly close a block that lacks a concluding tactic.
-        """
-        lines = code.splitlines()
-        
-        # If the error points to the theorem declaration, close the main proof
-        if err_line_num <= main_goal_line:
-            base_indent = self._get_main_indent(lines, main_goal_line - 1)
-            lines.append(" " * base_indent + "sorry")
-            return "\n".join(lines)
-
-        owner_idx = self._find_block_owner(lines, err_line_num - 1)
-        if owner_idx == -1:
-            base_indent = self._get_main_indent(lines, main_goal_line - 1)
-            lines.append(" " * base_indent + "sorry")
-            return "\n".join(lines)
-
-        end_idx = self._find_block_end(lines, owner_idx)
-        owner_indent = len(lines[owner_idx]) - len(lines[owner_idx].lstrip())
-
-        insert_indent = owner_indent + 2
-        lines.insert(end_idx, " " * insert_indent + "sorry")
-        
-        return "\n".join(lines)
-
-    def _truncate_file(self, code: str, first_error_line: int) -> str:
-        """
-        Fallback hard truncation: removes all code from the error line downwards
-        and safely closes the proof state.
-        """
-        lines = code.splitlines()
-        err_idx = first_error_line - 1
-        kept_lines = lines[:err_idx]
-
-        if not kept_lines:
-            indent = 2
-        else:
-            last_line = kept_lines[-1]
-            indent_size = len(last_line) - len(last_line.lstrip())
-            if last_line.strip().endswith(("by", "do", "with", ":")):
-                indent_size += 2
-            indent = indent_size
-
-        kept_lines.append(" " * indent + "sorry")
-        return "\n".join(kept_lines)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Sử dụng: python auto_sorrifier.py <file.lean>")
+        sys.exit(1)
+    
+    bot = HybridSorrifier(sys.argv[1])
+    bot.run()

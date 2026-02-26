@@ -20,7 +20,7 @@ from prover.lean.verifier import verify_lean4_file
 from utils.syntax_repair import SyntaxCorrector
 from utils.scope_sorrifier import Sorrifier
 from utils.hint_repair import ProofRepairer
-from utils.extract_proof_state import extract_queries
+from utils.proof_state_extractor import extract_queries
 
 
 # ===========================================================================
