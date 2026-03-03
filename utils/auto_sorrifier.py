@@ -239,60 +239,77 @@ class AutoSorrifier:
         self.current_content = self._clean_redundant_sorries(new_lines)
         return True
 
-    # ==========================================
-    # UTILITY METHODS
-    # ==========================================
+    def _call_lean_tool(self, tool_args: List[str], input_str: Optional[str] = None) -> str:
+        """
+        Động cơ lõi để gọi các Lean Binary (repl, dump_ast).
+        Xử lý TempFile và thu hồi RAM ngay lập tức.
+        """
+        try:
+            with tempfile.TemporaryFile(mode='w+', encoding='utf-8') as temp_in:
+                if input_str:
+                    temp_in.write(input_str + "\r\n\r\n")
+                    temp_in.seek(0)
+                
+                res = subprocess.run(
+                    ["lake", "exe"] + tool_args,
+                    stdin=temp_in if input_str else None,
+                    capture_output=True,
+                    text=True,
+                    cwd=REPL_DIR,
+                    timeout=60
+                )
+                return res.stdout
+        except Exception as e:
+            print(f"  [!] Lean Call Error ({tool_args[0]}): {e}")
+            return ""
 
     def _get_lean_errors(self) -> Tuple[List[Tuple[int, str]], List[Tuple[int, str]]]:
-        """
-        Executes the Lean compiler and parses the stdout/stderr for errors.
-        Returns two lists: fatal_errors (line, message) and unsolved_goals (line, message).
-        """
-        res = subprocess.run(["lake", "env", "lean", self.temp_file_path], capture_output=True, text=True, cwd=REPL_DIR)
-        output = res.stdout + "\n" + res.stderr
+        """Dùng REPL để check lỗi logic"""
+        req = json.dumps({"cmd": self.current_content})
+        import time
+        start_time = time.time()
+        output = self._call_lean_tool(["repl"], input_str=req)
+        elapsed_time = time.time() - start_time
+        print(f"[REPL] lake exe repl executed in {elapsed_time:.4f} seconds")
         fatal_errors, unsolved_goals = [], []
-        curr_line, curr_msg = None, ""
-        
-        for line in output.splitlines():
-            match = re.match(r'^.*?:(\d+):\d+:\s*error:\s*(.*)', line)
-            if match:
-                if curr_line:
-                    if "unsolved goals" in curr_msg:
-                        unsolved_goals.append((curr_line, curr_msg))
-                    else:
-                        fatal_errors.append((curr_line, curr_msg))
-                curr_line = int(match.group(1))
-                curr_msg = match.group(2)
-            elif curr_line:
-                curr_msg += " " + line
-                
-        # Add last accumulated error
-        if curr_line:
-            if "unsolved goals" in curr_msg:
-                unsolved_goals.append((curr_line, curr_msg))
-            else:
-                fatal_errors.append((curr_line, curr_msg))
+        # Dùng raw_decode để bắt Multi-line JSON như DeepSeek
+        decoder = json.JSONDecoder()
+        idx = 0
+        while idx < len(output):
+            idx = output.find('{', idx)
+            if idx == -1: break
+            try:
+                data, chunk_len = decoder.raw_decode(output[idx:])
+                if "messages" in data:
+                    for msg in data["messages"]:
+                        ln, txt = msg.get("pos", {}).get("line", 1), msg.get("data", "")
+                        if msg.get("severity") == "error":
+                            if "unsolved goals" in txt: unsolved_goals.append((ln, txt))
+                            else: fatal_errors.append((ln, txt))
+                idx += chunk_len
+            except: idx += 1
             
-        return sorted(fatal_errors, key=lambda x: x[0]), sorted(unsolved_goals, key=lambda x: x[0])
+        return sorted(fatal_errors), sorted(unsolved_goals)
 
     def _get_ast_lines(self) -> List[Dict]:
-        """
-        Invokes a custom Lean script to dump the AST and calculates line coordinates
-        of logical/code blocks.
-        """
-        res = subprocess.run(["lake", "env", "lean", "--run", "dump_ast.lean", self.temp_file_path], capture_output=True, text=True, cwd=REPL_DIR)
+        """Dùng dump_ast để soi cấu trúc cây"""
+        # Lưu ý: dump_ast nhận file_path làm argument, không qua stdin
+        import time
+        start_time = time.time()
+        output = self._call_lean_tool(["dump_ast", self.temp_file_path])
+        elapsed_time = time.time() - start_time
+        print(f"[AST] lake exe dump_ast executed in {elapsed_time:.4f} seconds")
+        
         blocks = []
         raw_bytes = self.current_content.encode('utf-8')
-        
-        for line in res.stdout.splitlines():
+        for line in output.splitlines():
             if line.strip().startswith("{"):
                 try:
                     b = json.loads(line)
                     b["start_line"] = self._byte_to_line(raw_bytes, b["start_byte"])
                     b["end_line"] = self._byte_to_line(raw_bytes, b["end_byte"])
                     blocks.append(b)
-                except json.JSONDecodeError:
-                    pass
+                except: pass
         return blocks
 
     def _clean_redundant_sorries(self, lines: List[str]) -> str:

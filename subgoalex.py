@@ -112,23 +112,24 @@ with open(output_file, "w", encoding="utf-8") as f:
         f.write("\n```\n\n")
 
     f.write("## Sorrification Process\n\n")
-    checker = AutoSorrifier(code_corrected, max_cycles=20, log_path="output/sorrification.log")
+    checker = AutoSorrifier(code_corrected, max_cycles=20)
     result = checker.fix_code()
 
     f.write("### Sorrified Result\n\n")
     f.write("```lean\n")
     f.write(result)
     f.write("\n```\n\n")
+    final_code = result
 
-    f.write("## Auto Solver (ProofRepairer)\n\n")
-    from utils.hint_repair import ProofRepairer
-    repairer = ProofRepairer(result, verify_lean4_file)
-    final_code = repairer.repair_proof()
+    # f.write("## Auto Solver (ProofRepairer)\n\n")
+    # from utils.hint_repair import ProofRepairer
+    # repairer = ProofRepairer(result, verify_lean4_file)
+    # final_code = repairer.repair_proof()
 
-    f.write("### Auto Solver Result\n\n")
-    f.write("```lean\n")
-    f.write(final_code)
-    f.write("\n```\n\n")
+    # f.write("### Auto Solver Result\n\n")
+    # f.write("```lean\n")
+    # f.write(final_code)
+    # f.write("\n```\n\n")
 
     # Verify final result
     final_check = verify_lean4_file(final_code, timeout=120)
