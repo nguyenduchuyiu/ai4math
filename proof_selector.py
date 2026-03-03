@@ -1,25 +1,23 @@
 """
 Score, rank, and select the best LLM proof candidates.
 
-Pipeline:
-  1. Verify each proof candidate via Lean 4 REPL.
-  2. Classify errors (Semantic > Missing Constant > Syntax).
-  3. Score & rank candidates based on error severity and location.
-  4. For top candidates: run Sorrifier -> ProofRepairer -> Extract Subgoals.
+Pipeline (skip initial verify):
+  1. Sorrify all candidates (SyntaxCorrector -> AutoSorrifier).
+  2. Verify sorrified results; keep only those that pass.
+  3. Extract subgoals from passing candidates.
 """
-
+import gc
+from concurrent.futures import ProcessPoolExecutor, as_completed # Đổi sang ProcessPool
 import os
 import re
 import json
 import argparse
 from dataclasses import dataclass, field
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any, Tuple
 
 from prover.lean.verifier import verify_lean4_file
 from utils.syntax_repair import SyntaxCorrector
-from utils.scope_sorrifier import Sorrifier
-from utils.hint_repair import ProofRepairer
+from utils.auto_sorrifier import AutoSorrifier
 from utils.proof_state_extractor import extract_queries
 
 
@@ -68,6 +66,25 @@ def classify_errors(errors: List[Dict]) -> Dict[str, List[Dict]]:
         groups[classify_error(e["data"])].append(e)
     return groups
 
+def is_garbage_lean(code_body: str) -> bool:
+    """Phát hiện LLM sinh văn xuôi tiếng Anh hoặc LaTeX thay vì code Lean 4."""
+    # 1. Phát hiện LaTeX rác (Lean dùng Unicode, không dùng lệnh LaTeX thô)
+    latex_patterns = [r"\$.*?\$", r"\\\[.*?\\\]", r"\\mathbb", r"\\to\s", r"\\rightarrow", r"\\frac", r"\\sqrt"]
+    
+    # 2. Phát hiện văn xuôi tiếng Anh ở đầu dòng
+    prose_patterns = [
+        r"^[ \t]*We (have|need|can|will|know)", 
+        r"^[ \t]*From (our|the|this)", 
+        r"^[ \t]*Notice that", 
+        r"^[ \t]*Therefore",
+        r"^[ \t]*Let's",
+        r"^[ \t]*Here,"
+    ]
+    
+    for p in latex_patterns + prose_patterns:
+        if re.search(p, code_body, re.MULTILINE | re.IGNORECASE):
+            return True
+    return False
 
 # ===========================================================================
 # 2. DATA STRUCTURES & SCORING
@@ -134,49 +151,61 @@ class ScoredProof:
 # 3. PIPELINE STAGES
 # ===========================================================================
 
-def _verify_one(idx: int, code: str, timeout: int) -> ScoredProof:
-    """Worker function for Stage 1."""
-    r = verify_lean4_file(code, timeout=timeout)
-    status = "COMPLETE" if r.get("complete") else ("PASS" if r.get("pass") else "FAIL")
+def _sorrify_one(idx: int, code: str) -> ScoredProof:
+    """Sorrify one candidate (no prior verify)."""
     sp = ScoredProof(
         idx=idx,
         code=code,
-        status=status,
-        verify_time=r.get("verify_time", 0),
-        errors=r.get("errors", []),
-        sorries=r.get("sorries", []),
-        error_groups=classify_errors(r.get("errors", [])),
+        status="PENDING",
+        verify_time=0,
+        errors=[],
+        sorries=[],
+        error_groups={},
     )
-    sp.compute_raw_score()
-    return sp
-
-def _sorrify_and_repair_one(sp: ScoredProof) -> ScoredProof:
-    """Worker function for Stage 2."""
-    if sp.status == "COMPLETE":
-        sp.sorrified_code, sp.num_sorries = sp.code, 0
-        sp.num_preserved_steps = len([l for l in sp.code.splitlines() if l.strip()])
-    else:
-        try:
-            code_corrected = SyntaxCorrector(sp.code).correct_text()
-            checker = Sorrifier(verify_lean4_file, max_cycles=20)
-            sorrified = checker.verify_and_fix(code_corrected)
-            repairer = ProofRepairer(sorrified, verify_lean4_file)
-            repaired = repairer.repair_proof()
-            
-            sp.sorrified_code = repaired
-            lines = [l.strip() for l in repaired.splitlines() if l.strip()]
-            sp.num_sorries = lines.count("sorry")
-            sp.num_preserved_steps = len(lines) - sp.num_sorries
-        except Exception as e:
-            print(f"  [sorrify+repair] failed for #{sp.idx}: {e}")
-            sp.sorrified_code, sp.num_sorries, sp.num_preserved_steps = "", 9999, 0
-
+    # --- [MỚI]: KIỂM TRA RÁC TRƯỚC KHI ĐƯA VÀO LÒ ---
+    header_split = code.split(":= by")
+    if len(header_split) > 1:
+        body = header_split[-1]
+        if is_garbage_lean(body):
+            print(f"  [sorrify] #{idx:2d} | 🚫 SKIPPED: Phát hiện văn xuôi/LaTeX rác! Chém chay trong 0.001s.")
+            sp.sorrified_code = header_split[0] + ":= by\n  sorry\n"
+            sp.num_sorries = 1
+            sp.num_preserved_steps = 0
+            sp.status = "FAIL"
+            sp.compute_final_score()
+            return sp
+    try:
+        code_corrected = SyntaxCorrector(code).correct_text()
+        checker = AutoSorrifier(code_corrected, max_cycles=20)
+        sorrified = checker.fix_code()
+        # repairer = ProofRepairer(sorrified, verify_lean4_file)
+        # repaired = repairer.repair_proof()
+        sp.sorrified_code = sorrified
+        lines = [l.strip() for l in sorrified.splitlines() if l.strip()]
+        sp.num_sorries = lines.count("sorry")
+        sp.num_preserved_steps = len(lines) - sp.num_sorries
+    except Exception as e:
+        print(f"  [sorrify] failed for #{idx}: {e}")
+        sp.sorrified_code, sp.num_sorries, sp.num_preserved_steps = "", 9999, 0
     sp.compute_final_score()
     return sp
 
+def _verify_sorrified(sp: ScoredProof, timeout: int) -> ScoredProof:
+    """Verify sorrified code; update status."""
+    if not sp.sorrified_code:
+        sp.status = "FAIL"
+        return sp
+    r = verify_lean4_file(sp.sorrified_code, timeout=timeout)
+    sp.status = "COMPLETE" if r.get("complete") else ("PASS" if r.get("pass") else "FAIL")
+    sp.verify_time = r.get("verify_time", 0)
+    sp.errors = r.get("errors", [])
+    sp.sorries = r.get("sorries", [])
+    return sp
+
+
 def _extract_one(sp: ScoredProof, original_target: str = "") -> List[Dict]:
     """Worker function for Stage 3."""
-    if sp.status == "COMPLETE" or not sp.sorrified_code:
+    if not sp.sorrified_code:
         return []
     try:
         results = []
@@ -200,50 +229,61 @@ def _extract_one(sp: ScoredProof, original_target: str = "") -> List[Dict]:
         print(f"  [extract] failed for #{sp.idx}: {e}")
         return []
 
-def select_and_extract(header: str, proof_bodies: List[str], top_k: int = 5, verify_timeout: int = 300, max_workers: int = 4) -> Dict:
-    """Orchestrates the 3-stage proof extraction pipeline."""
+def select_and_extract(header: str, proof_bodies: List[str], top_k: int = 5, verify_timeout: int = 300, max_workers: int = 2) -> Dict:
+    """Orchestrates pipeline: Sorrify all -> Verify -> Extract from passing."""
     
-    # --- Stage 1: Verify & Raw Score ---
-    print(f"\n=== Stage 1: Scoring {len(proof_bodies)} candidates ===")
     codes = [header + body for body in proof_bodies]
-    ranked = [None] * len(codes)
-
-    with ThreadPoolExecutor(max_workers=max_workers) as pool:
-        futures = {pool.submit(_verify_one, idx, code, verify_timeout): idx for idx, code in enumerate(codes)}
-        for fut in as_completed(futures):
-            idx = futures[fut]
-            ranked[idx] = fut.result()
-            sp = ranked[idx]
-            print(f"  [scored] #{sp.idx:2d} | Status: {sp.status:8s} | Cat: {sp.worst_category:15s} | Line: {sp.first_error_line:<4} | Time: {sp.verify_time:.1f}s")
-
-    ranked.sort(key=lambda s: s.raw_score)
-    # filtered = [s for s in ranked if s.worst_category != "syntax" or s.status != "FAIL"]
-    filtered = ranked
     
-    # if not filtered:
-    #     filtered = ranked[:top_k]
-    #     print(f"\n  [!] All candidates have syntax errors. Falling back to top {len(filtered)}.")
-    # else:
-    #     print(f"\n  [+] Kept {len(filtered)} non-syntax candidates (Dropped {len(ranked) - len(filtered)}).")
+    safe_workers = 1 # Least is most :D
+    
+    # --- Stage 1: Sorrify all (no prior verify) ---
+    print(f"\n=== Stage 1: Sorrifying {len(codes)} candidates ===")
+    sorrified = []
+    # Dùng ProcessPoolExecutor để OS tự dọn dẹp RAM khi worker chết
+    with ProcessPoolExecutor(max_workers=safe_workers) as pool:
+        futures = {pool.submit(_sorrify_one, idx, code): idx for idx, code in enumerate(codes)}
+        for fut in as_completed(futures):
+            try:
+                res = fut.result()
+                sorrified.append(res)
+                print(f"  [sorrified] #{res.idx:2d} | Sorries: {res.num_sorries:<3} | Preserved: {res.num_preserved_steps}")
+            except Exception as e:
+                print(f"  [Worker Error Stage 1] #{futures[fut]}: {e}")
 
-    # --- Stage 2: Sorrify & Repair ---
-    print(f"\n=== Stage 2: Sorrifying {len(filtered)} candidates ===")
-    with ThreadPoolExecutor(max_workers=max_workers) as pool:
-        futures = [pool.submit(_sorrify_and_repair_one, sp) for sp in filtered]
-        sorrified = [fut.result() for fut in as_completed(futures)]
-        
-    for sp in sorrified:
-        print(f"  [repaired] #{sp.idx:2d} | Score: {sp.final_score:7.1f} | Sorries: {sp.num_sorries:<3} | Preserved: {sp.num_preserved_steps}")
+    # Dọn rác thủ công sau Stage 1
+    gc.collect() 
+    
+    # --- Stage 2: Verify sorrified; keep only passing ---
+    print(f"\n=== Stage 2: Verifying sorrified results ===")
+    verified = []
+    with ProcessPoolExecutor(max_workers=safe_workers) as pool:
+        futures = {pool.submit(_verify_sorrified, sp, verify_timeout): sp.idx for sp in sorrified}
+        for fut in as_completed(futures):
+            try:
+                res = fut.result()
+                verified.append(res)
+                mark = "OK" if res.status in ("COMPLETE", "PASS") else "FAIL"
+                print(f"  [verify] #{res.idx:2d} | {res.status:8s} | {mark}")
+            except Exception as e:
+                print(f"  [Worker Error Stage 2] #{futures[fut]}: {e}")
 
-    sorrified.sort(key=lambda s: s.final_score)
-    selected = sorrified[:top_k]
-
+    # Dọn rác thủ công sau Stage 2
+    gc.collect()
+    
+    passing = [sp for sp in verified if sp.status in ("COMPLETE", "PASS")]
+    
+    if not passing:
+        print("\n[!] No candidates passed verification.")
+        return {"ranked": verified, "selected": [], "subgoals": []}
+    
+    passing.sort(key=lambda s: (-s.num_preserved_steps, s.num_sorries))
+    selected = passing[:top_k]
+    
     # --- Stage 3: Extract Subgoals ---
-    print(f"\n=== Stage 3: Extracting subgoals from top {len(selected)} candidates ===")
+    print(f"\n=== Stage 3: Extracting subgoals from {len(selected)} passing candidates ===")
     all_subgoals = []
     seen_goals = set()
     
-    # Determine original target to filter trivial subgoals
     original_target, lemma_name = "", "unknown"
     if selected:
         decl_match = re.search(r"(?:lemma|theorem)\s+(\w+)", selected[0].code)
@@ -256,20 +296,25 @@ def select_and_extract(header: str, proof_bodies: List[str], top_k: int = 5, ver
                 target_raw = selected[0].code[:idx][matches[-1].end():].strip()
                 original_target = re.sub(r"\s+", " ", re.sub(r"\(([^()]+?)\s*:\s*[^()]+?\)", r"\1", target_raw))
 
-    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+    with ProcessPoolExecutor(max_workers=safe_workers) as pool:
         futures = {pool.submit(_extract_one, sp, original_target): sp for sp in selected}
         for fut in as_completed(futures):
             sp = futures[fut]
-            for sub_idx, sg in enumerate(fut.result(), 1):
-                if sg["goal"] not in seen_goals:
-                    seen_goals.add(sg["goal"])
-                    sg["name"] = f"{lemma_name}_c{sp.idx}_s{sub_idx}"
-                    sg["sorry_index"] = sub_idx
-                    all_subgoals.append(sg)
-                    print(f"  [extracted] {sg['name']} | Goal: {sg['goal'][:60]}...")
+            try:
+                result_list = fut.result()
+                for sub_idx, sg in enumerate(result_list, 1):
+                    if sg["goal"] not in seen_goals:
+                        seen_goals.add(sg["goal"])
+                        sg["name"] = f"{lemma_name}_c{sp.idx}_s{sub_idx}"
+                        sg["sorry_index"] = sub_idx
+                        all_subgoals.append(sg)
+                        print(f"  [extracted] {sg['name']} | Goal: {sg['goal'][:60]}...")
+            except Exception as e:
+                print(f"  [Worker Error Stage 3] #{sp.idx}: {e}")
 
+    gc.collect()
     print(f"\n=== Pipeline Complete. Total unique subgoals: {len(all_subgoals)} ===")
-    return {"ranked": ranked, "selected": selected, "subgoals": all_subgoals}
+    return {"ranked": verified, "selected": selected, "subgoals": all_subgoals}
 
 
 # ===========================================================================
@@ -282,7 +327,6 @@ def parse_log_file(file_path: str) -> Tuple[str, List[str]]:
         lines = f.readlines()
 
     header = '''import Mathlib
-set_option maxHeartbeats 0
 open BigOperators Real Nat Topology Rat
 lemma aime_1983_p3_1_1
   (f : ℝ → ℝ)
@@ -306,7 +350,7 @@ lemma aime_1983_p3_1_1
         if in_parsed_block:
             if stripped.startswith("--- ") or stripped.startswith("===== "):
                 in_parsed_block = False
-                content = "".join(current_body).strip()
+                content = "".join(current_body).lstrip("\n").rstrip()
                 if content and re.search(r"(have |sorry|rw |simp|linarith|omega|calc|intro |apply |exact )", content):
                     proof_bodies.append(content)
             else:
@@ -320,7 +364,7 @@ if __name__ == "__main__":
     parser.add_argument("--input", type=str, default="logs.log")
     parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--verify-timeout", type=int, default=300)
-    parser.add_argument("--workers", type=int, default=16, help="Max parallel verification workers")
+    parser.add_argument("--workers", type=int, default=2, help="Max parallel verification workers")
     parser.add_argument("--output", type=str, default="output/subgoals.json", help="Save results to JSON file")
     args = parser.parse_args()
 

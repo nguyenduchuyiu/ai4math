@@ -1,5 +1,5 @@
 from prover.lean.verifier import verify_lean4_file
-from utils.scope_sorrifier import Sorrifier
+from utils.auto_sorrifier import AutoSorrifier
 from utils.syntax_repair import SyntaxCorrector
 import os
 from datetime import datetime
@@ -7,85 +7,75 @@ from datetime import datetime
 
 code = '''
 import Mathlib
-set_option maxHeartbeats 0
 open BigOperators Real Nat Topology Rat
 lemma aime_1983_p3_1_1
   (f : ℝ → ℝ)
   (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))
-  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}): Type)) :
+  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :
   ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by
-  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by
+  have h2 : ∀ x : ℝ, f x = x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) := by
     intro x
     rw [h₀ x]
-    simp [pow_two]
-  have h3 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by
-    intro x
-    rw [h2 x]
-    constructor
-    · -- Assume f(x) = 0
-      intro h
-      have h4 : √(x ^ 2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by linarith
-      have h5 : 0 ≤ √(x ^ 2 + 18 * x + 45) := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)
-      have h6 : 0 ≤ (x^2 + 18 * x + 30) / 2 := by linarith [h5, h4]
-      have h7 : x ^ 2 + 18 * x + 30 ≥ 0 := by linarith [h6]
-      have h8 : x^2 + 18 * x + 45 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by
-        calc
-          x^2 + 18 * x + 45 = (√(x ^ 2 + 18 * x + 45)) ^ 2 := by rw [Real.sq_sqrt]; nlinarith
-          _ = ((x^2 + 18 * x + 30) / 2) ^ 2 := by rw [h4]
-      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by
-        ring_nf
-        nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num), h7, h8]
-      cases' (mul_eq_zero.mp h9) with h10 h11
-      · -- x - (-9 + √61) = 0
-        left
-        linarith
-      · -- x - (-9 - √61) = 0
-        right
-        linarith
-    · -- Show that if x ∈ {-9 + √61, -9 - √61}, then f(x) = 0
-      rintro (h | h)
-      · -- x = -9 + √61
-        rw [h]
-        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61
-        have h13 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 - 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 0 := by
-          have h14 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 = 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) := by
-            have h15 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 45 = 25 := by
-              ring_nf
-              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]
-            have h16 : √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 5 := by
-              rw [h15]
-              exact Real.sqrt_eq_cases.2 (by norm_num)
-            nlinarith [h16]
+    ring
+  have h3 : (f ⁻¹' {(0 : ℝ)}).toFinset = {-5, -4} := by
+    have h4 : ∀ x : ℝ, f x = 0 ↔ x = -5 ∨ x = -4 := by
+      intro x
+      rw [h2 x]
+      simp
+      constructor
+      · intro h
+        have h5 : x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) = 0 := by
+          linarith [h]
+        have h6 : √(x^2 + 18*x + 45) = (x^2 + 18*x + 30) / 2 := by
+          linarith [h5]
+        have h7 : x^2 + 18*x + 30 ≥ 0 := by
+          nlinarith [Real.sqrt_nonneg (x^2 + 18*x + 45), sq_nonneg (x + 9)]
+        have h8 : x^2 + 18*x + 45 ≥ 0 := by
+          nlinarith [Real.sqrt_nonneg (x^2 + 18*x + 45), sq_nonneg (x + 9)]
+        have h9 : x^2 + 18*x + 30 = 2*√(x^2 + 18*x + 45) := by linarith [h6]
+        have h10 : (x^2 + 18*x + 30)^2 = 4*(x^2 + 18*x + 45) := by
+          calc
+            (x^2 + 18*x + 30)^2 = (2*√(x^2 + 18*x + 45))^2 := by rw [h9]
+            _ = 4 * (√(x^2 + 18*x + 45))^2 := by ring
+            _ = 4 * (x^2 + 18*x + 45) := by rw [Real.sq_sqrt h8]
+        have h11 : x^4 + 36*x^3 + 242*x^2 + 1008*x + 720 = 0 := by
+          nlinarith [h10]
+        have h12 : (x + 5)*(x + 4)*(x^2 + 32*x + 288) = 0 := by
+          ring_nf at h11 ⊢
           linarith
-        linarith
-      · -- x = -9 - √61
-        rw [h]
-        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61
-        have h13 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 - 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 0 := by
-          have h14 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 = 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) := by
-            have h15 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 45 = 25 := by
-              ring_nf
-              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]
-            have h16 : √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 5 := by
-              rw [h15]
-              exact Real.sqrt_eq_cases.2 (by norm_num)
-            nlinarith [h16]
+        cases' (mul_eq_zero.mp h12) with h13 h14
+        · cases' (mul_eq_zero.mp h13) with h15 h16
+          · left
+            linarith
+          · right
+            linarith
+        · have h17 : x^2 + 32*x + 288 = 0 := by
+            linarith
+          have h18 : x^2 + 32*x + 288 > 0 := by
+            nlinarith
           linarith
-        linarith
-  have h17 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by
+      · intro h
+        cases' h with h19 h20
+        · rw [h19]
+          have h21 : √(25 + (-90) + 30) = √(-35) := by
+            norm_num
+          have h22 : √(-35) = 0 := by
+            linarith [Real.sqrt_nonneg (-35), h21]
+          linarith [h22]
+        · rw [h20]
+          have h23 : √(16 + (-72) + 30) = √(-26) := by
+            norm_num
+          have h24 : √(-26) = 0 := by
+            linarith [Real.sqrt_nonneg (-26), h23]
+          linarith [h24]
     ext x
-    simp [h3 x]
-  have h18 : (f ⁻¹' {(0 : ℝ)}).toFinset = {(-9 + √61), (-9 - √61)} := by
-    simp [h17]
-  rw [h18]
+    simp [h4]
+  rw [h3]
   rw [Finset.prod_insert]
   rw [Finset.prod_singleton]
-  have h19 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by
-    calc
-      (-9 + √61) * (-9 - √61) = (-9) ^ 2 - (√61) ^ 2 := by ring
-      _ = 81 - 61 := by norm_num [Real.sq_sqrt]
-      _ = 20 := by norm_num
-  linarith [h19]
+  norm_num
+  all_goals
+    linarith
 '''
 
 # Create output directory if it doesn't exist
@@ -122,8 +112,8 @@ with open(output_file, "w", encoding="utf-8") as f:
         f.write("\n```\n\n")
 
     f.write("## Sorrification Process\n\n")
-    checker = Sorrifier(verify_lean4_file, max_cycles=20)
-    result = checker.verify_and_fix(code_corrected)
+    checker = AutoSorrifier(code_corrected, max_cycles=20, log_path="output/sorrification.log")
+    result = checker.fix_code()
 
     f.write("### Sorrified Result\n\n")
     f.write("```lean\n")

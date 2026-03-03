@@ -1,374 +1,351 @@
 {
   "ranked": [
     {
-      "idx": 4,
-      "raw_score": -277.0210049152374,
-      "final_score": -3950,
-      "status": "FAIL",
-      "worst_category": "semantic",
-      "first_error_line": 16,
-      "num_sorries": 5,
-      "num_preserved_steps": 42,
-      "verify_time": 117.02100491523743
-    },
-    {
-      "idx": 10,
-      "raw_score": -261.29857563972473,
-      "final_score": -800,
-      "status": "FAIL",
-      "worst_category": "semantic",
-      "first_error_line": 15,
-      "num_sorries": 2,
-      "num_preserved_steps": 9,
-      "verify_time": 111.29857563972473
-    },
-    {
-      "idx": 30,
-      "raw_score": -158.40539002418518,
-      "final_score": -1250,
-      "status": "FAIL",
-      "worst_category": "semantic",
-      "first_error_line": 14,
-      "num_sorries": 3,
-      "num_preserved_steps": 14,
-      "verify_time": 18.40539002418518
-    },
-    {
-      "idx": 21,
-      "raw_score": 1859.8720028400421,
-      "final_score": -800,
-      "status": "FAIL",
-      "worst_category": "other",
-      "first_error_line": 12,
-      "num_sorries": 2,
-      "num_preserved_steps": 9,
-      "verify_time": 20.127997159957886
-    },
-    {
       "idx": 0,
-      "raw_score": 2758.3436670303345,
-      "final_score": -800,
-      "status": "FAIL",
+      "raw_score": 999.0,
+      "final_score": -1950,
+      "status": "PASS",
       "worst_category": "syntax",
-      "first_error_line": 13,
-      "num_sorries": 2,
-      "num_preserved_steps": 9,
-      "verify_time": 111.65633296966553
-    },
-    {
-      "idx": 2,
-      "raw_score": 2758.754354953766,
-      "final_score": -1100,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 13,
-      "num_sorries": 2,
-      "num_preserved_steps": 12,
-      "verify_time": 111.24564504623413
-    },
-    {
-      "idx": 5,
-      "raw_score": 2758.7985825538635,
-      "final_score": -1100,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 13,
-      "num_sorries": 2,
-      "num_preserved_steps": 12,
-      "verify_time": 111.20141744613647
-    },
-    {
-      "idx": 13,
-      "raw_score": 2808.0457532405853,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.95424675941467
-    },
-    {
-      "idx": 6,
-      "raw_score": 2808.3102748394012,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.68972516059875
-    },
-    {
-      "idx": 12,
-      "raw_score": 2808.3599350452423,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.64006495475769
-    },
-    {
-      "idx": 7,
-      "raw_score": 2808.7493748664856,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.2506251335144
+      "num_preserved_steps": 20,
+      "verify_time": 10.55307936668396
     },
     {
       "idx": 1,
-      "raw_score": 2808.752104282379,
-      "final_score": -650,
-      "status": "FAIL",
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.24789571762085
+      "num_preserved_steps": 0,
+      "verify_time": 6.346630811691284
     },
     {
-      "idx": 11,
-      "raw_score": 2808.7608964443207,
-      "final_score": -650,
+      "idx": 2,
+      "raw_score": 999.0,
+      "final_score": -6700,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.23910355567932
-    },
-    {
-      "idx": 15,
-      "raw_score": 2808.7617161273956,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.23828387260437
-    },
-    {
-      "idx": 8,
-      "raw_score": 2808.770873785019,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.22912621498108
-    },
-    {
-      "idx": 9,
-      "raw_score": 2808.7732372283936,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.22676277160645
+      "first_error_line": 9999,
+      "num_sorries": 6,
+      "num_preserved_steps": 70,
+      "verify_time": 9.29636836051941
     },
     {
       "idx": 3,
-      "raw_score": 2808.7812757492065,
-      "final_score": -650,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.185135364532471
+    },
+    {
+      "idx": 4,
+      "raw_score": 999.0,
+      "final_score": -12150,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
+      "num_sorries": 7,
+      "num_preserved_steps": 125,
+      "verify_time": 10.104647397994995
+    },
+    {
+      "idx": 5,
+      "raw_score": 999.0,
+      "final_score": -8850,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 5,
+      "num_preserved_steps": 91,
+      "verify_time": 12.809759616851807
+    },
+    {
+      "idx": 6,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.21872425079346
+      "num_preserved_steps": 0,
+      "verify_time": 6.1771016120910645
+    },
+    {
+      "idx": 7,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.089886903762817
+    },
+    {
+      "idx": 8,
+      "raw_score": 999.0,
+      "final_score": -26550,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 266,
+      "verify_time": 6.362358331680298
+    },
+    {
+      "idx": 9,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.173202753067017
+    },
+    {
+      "idx": 10,
+      "raw_score": 999.0,
+      "final_score": -1850,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 3,
+      "num_preserved_steps": 20,
+      "verify_time": 6.34452486038208
+    },
+    {
+      "idx": 11,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.267061948776245
+    },
+    {
+      "idx": 12,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.190508842468262
+    },
+    {
+      "idx": 13,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.238790512084961
     },
     {
       "idx": 14,
-      "raw_score": 2808.781932115555,
-      "final_score": -650,
+      "raw_score": 999.0,
+      "final_score": -32650,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 111.21806788444519
+      "num_preserved_steps": 327,
+      "verify_time": 6.290274143218994
+    },
+    {
+      "idx": 15,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.199301481246948
     },
     {
       "idx": 16,
-      "raw_score": 2850.7090916633606,
-      "final_score": -1100,
-      "status": "FAIL",
+      "raw_score": 999.0,
+      "final_score": -7250,
+      "status": "PASS",
       "worst_category": "syntax",
-      "first_error_line": 13,
-      "num_sorries": 2,
-      "num_preserved_steps": 12,
-      "verify_time": 19.290908336639404
-    },
-    {
-      "idx": 26,
-      "raw_score": 2850.8440606594086,
-      "final_score": -1100,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 13,
-      "num_sorries": 2,
-      "num_preserved_steps": 12,
-      "verify_time": 19.15593934059143
-    },
-    {
-      "idx": 19,
-      "raw_score": 2899.787570476532,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 20.212429523468018
+      "first_error_line": 9999,
+      "num_sorries": 3,
+      "num_preserved_steps": 74,
+      "verify_time": 10.25376009941101
     },
     {
       "idx": 17,
-      "raw_score": 2900.0562493801117,
-      "final_score": -650,
-      "status": "FAIL",
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.943750619888306
-    },
-    {
-      "idx": 25,
-      "raw_score": 2900.085726261139,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.914273738861084
-    },
-    {
-      "idx": 20,
-      "raw_score": 2900.2867560386658,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.71324396133423
-    },
-    {
-      "idx": 23,
-      "raw_score": 2900.3486700057983,
-      "final_score": -650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.65132999420166
+      "num_preserved_steps": 0,
+      "verify_time": 6.1698033809661865
     },
     {
       "idx": 18,
-      "raw_score": 2900.4260218143463,
-      "final_score": -650,
-      "status": "FAIL",
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.124362468719482
+    },
+    {
+      "idx": 19,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.2086944580078125
+    },
+    {
+      "idx": 20,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.310644149780273
+    },
+    {
+      "idx": 21,
+      "raw_score": 999.0,
+      "final_score": -650,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
       "num_sorries": 1,
       "num_preserved_steps": 7,
-      "verify_time": 19.573978185653687
+      "verify_time": 6.213526010513306
     },
     {
       "idx": 22,
-      "raw_score": 2900.499655008316,
-      "final_score": -650,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.31827974319458
+    },
+    {
+      "idx": 23,
+      "raw_score": 999.0,
+      "final_score": -50650,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.50034499168396
+      "num_preserved_steps": 507,
+      "verify_time": 6.475312948226929
     },
     {
       "idx": 24,
-      "raw_score": 2900.6384885311127,
-      "final_score": -650,
-      "status": "FAIL",
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.36151146888733
+      "num_preserved_steps": 0,
+      "verify_time": 6.224409341812134
     },
     {
-      "idx": 29,
-      "raw_score": 2900.7005381584167,
-      "final_score": -650,
+      "idx": 25,
+      "raw_score": 999.0,
+      "final_score": -2650,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.299461841583252
+      "num_preserved_steps": 27,
+      "verify_time": 6.136154413223267
+    },
+    {
+      "idx": 26,
+      "raw_score": 999.0,
+      "final_score": -8950,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 9,
+      "num_preserved_steps": 94,
+      "verify_time": 13.139829397201538
     },
     {
       "idx": 27,
-      "raw_score": 2900.968130350113,
-      "final_score": -650,
+      "raw_score": 999.0,
+      "final_score": -25850,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
+      "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 19.031869649887085
+      "num_preserved_steps": 259,
+      "verify_time": 6.068981170654297
     },
     {
       "idx": 28,
-      "raw_score": 2901.1170630455017,
-      "final_score": -650,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.220732688903809
+    },
+    {
+      "idx": 29,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 6.203027725219727
+    },
+    {
+      "idx": 30,
+      "raw_score": 999.0,
+      "final_score": 999.0,
       "status": "FAIL",
       "worst_category": "syntax",
-      "first_error_line": 8,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 18.88293695449829
+      "first_error_line": 9999,
+      "num_sorries": 9999,
+      "num_preserved_steps": 0,
+      "verify_time": 0
     }
   ],
   "subgoals": [
     {
-      "source_idx": 10,
-      "line": 10,
-      "goal": "∀ (x : ℝ), f x ≠ 0",
-      "hypotheses": [
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        }
-      ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ ∀ (x : ℝ), f x ≠ 0",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x ≠ 0 := by\n  sorry\nsorry",
-      "name": "aime_1983_p3_1_1_c10_s1",
-      "sorry_index": 1
-    },
-    {
-      "source_idx": 16,
-      "line": 13,
+      "source_idx": 26,
+      "line": 12,
       "goal": "x * x + (18 * x + 30) - 2 * √(x * x + (18 * x + 45)) = x * x + 18 * x + 30 - 2 * √(x * x + 18 * x + 45)",
       "hypotheses": [
         {
@@ -389,122 +366,14 @@
         }
       ],
       "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\n⊢ x * x + (18 * x + 30) - 2 * √(x * x + (18 * x + 45)) = x * x + 18 * x + 30 - 2 * √(x * x + 18 * x + 45)",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\nsorry",
-      "name": "aime_1983_p3_1_1_c16_s1",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s1",
       "sorry_index": 1
     },
     {
-      "source_idx": 0,
-      "line": 10,
-      "goal": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
-      "hypotheses": [
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        }
-      ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) := by\n  sorry\nsorry",
-      "name": "aime_1983_p3_1_1_c0_s1",
-      "sorry_index": 1
-    },
-    {
-      "source_idx": 30,
-      "line": 14,
-      "goal": "x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0 → x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)",
-      "hypotheses": [
-        {
-          "name": null,
-          "type": "case mp"
-        },
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        },
-        {
-          "name": "x",
-          "type": "ℝ"
-        }
-      ],
-      "raw": "case mp\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\n⊢ x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0 → x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x, f x = 0 ↔ x^2 + 18*x + 30 = 2*√(x^2 + 18*x + 45) := by\n      intro x\n      rw [h₀]\n      constructor\n      ·\n        sorry\n      ·\n        sorry\n        sorry",
-      "name": "aime_1983_p3_1_1_c30_s1",
-      "sorry_index": 1
-    },
-    {
-      "source_idx": 30,
-      "line": 16,
-      "goal": "x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) → x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0",
-      "hypotheses": [
-        {
-          "name": null,
-          "type": "case mpr"
-        },
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        },
-        {
-          "name": "x",
-          "type": "ℝ"
-        }
-      ],
-      "raw": "case mpr\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\n⊢ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) → x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x, f x = 0 ↔ x^2 + 18*x + 30 = 2*√(x^2 + 18*x + 45) := by\n      intro x\n      rw [h₀]\n      constructor\n      ·\n        sorry\n      ·\n        sorry\n        sorry",
-      "name": "aime_1983_p3_1_1_c30_s2",
-      "sorry_index": 2
-    },
-    {
-      "source_idx": 12,
-      "line": 8,
-      "goal": "Sort u_1",
-      "hypotheses": [
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        }
-      ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\n⊢ Sort u_1",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n    sorry",
-      "name": "aime_1983_p3_1_1_c12_s1",
-      "sorry_index": 1
-    },
-    {
-      "source_idx": 4,
-      "line": 17,
-      "goal": "x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)",
+      "source_idx": 26,
+      "line": 18,
+      "goal": "f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
       "hypotheses": [
         {
           "name": "f",
@@ -519,83 +388,32 @@
           "type": "Fintype ↑(f ⁻¹' {0})"
         },
         {
-          "name": "x",
-          "type": "ℝ"
-        },
-        {
-          "name": "hfx",
-          "type": "f x = 0"
-        },
-        {
-          "name": "h_eq",
-          "type": "x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0"
-        }
-      ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\nhfx : f x = 0\nh_eq : x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0\n⊢ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by\n    intro x\n    constructor\n    · -- Assume f(x) = 0, prove x = -9 ± √61\n      intro hfx\n      have h_eq : f x = 0 := hfx\n      rw [h₀] at h_eq\n      have h3 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by\n        sorry\n      have h4 : x ^ 2 + 18 * x + 45 ≥ 0 := by\n        have h5 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n        nlinarith [h3, h5]\n      have h5 : √(x ^ 2 + 18 * x + 45) ^ 2 = x ^ 2 + 18 * x + 45 := by\n        rw [Real.sq_sqrt]\n        linarith\n      have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by\n        nlinarith [h3, h5]\n      have h7 : x ^ 2 + 18 * x + 20 = 0 := by\n        sorry\n      have h8 : (x + 9) ^ 2 = 61 := by\n        nlinarith [h7]\n      have h9 : x + 9 = √61 ∨ x + 9 = -√61 := by\n        apply eq_or_eq_neg_of_sq_eq_sq\n        norm_num\n        linarith\n      cases h9 with\n      | inl h10 =>\n        left\n        linarith\n      | inr h11 =>\n        right\n        linarith\n    · -- Assume x = -9 ± √61, prove f(x) = 0\n      rintro (h | h)\n      ·\n        sorry\n      ·\n        sorry\n        sorry",
-      "name": "aime_1983_p3_1_1_c4_s1",
-      "sorry_index": 1
-    },
-    {
-      "source_idx": 4,
-      "line": 27,
-      "goal": "x ^ 2 + 18 * x + 20 = 0",
-      "hypotheses": [
-        {
-          "name": "f",
-          "type": "ℝ → ℝ"
-        },
-        {
-          "name": "h₀",
-          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
-        },
-        {
-          "name": "h₁",
-          "type": "Fintype ↑(f ⁻¹' {0})"
-        },
-        {
-          "name": "x",
-          "type": "ℝ"
-        },
-        {
-          "name": "hfx",
-          "type": "f x = 0"
-        },
-        {
-          "name": "h_eq",
-          "type": "x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0"
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
         },
         {
           "name": "h3",
-          "type": "x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)"
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
         },
         {
-          "name": "h4",
-          "type": "x ^ 2 + 18 * x + 45 ≥ 0"
+          "name": "x",
+          "type": "ℝ"
         },
         {
-          "name": "h5",
-          "type": "√(x ^ 2 + 18 * x + 45) ^ 2 = x ^ 2 + 18 * x + 45"
-        },
-        {
-          "name": "h6",
-          "type": "(x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45)"
+          "name": "hx",
+          "type": "f x = 0"
         }
       ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\nhfx : f x = 0\nh_eq : x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0\nh3 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)\nh4 : x ^ 2 + 18 * x + 45 ≥ 0\nh5 : √(x ^ 2 + 18 * x + 45) ^ 2 = x ^ 2 + 18 * x + 45\nh6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45)\n⊢ x ^ 2 + 18 * x + 20 = 0",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by\n    intro x\n    constructor\n    · -- Assume f(x) = 0, prove x = -9 ± √61\n      intro hfx\n      have h_eq : f x = 0 := hfx\n      rw [h₀] at h_eq\n      have h3 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by\n        sorry\n      have h4 : x ^ 2 + 18 * x + 45 ≥ 0 := by\n        have h5 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n        nlinarith [h3, h5]\n      have h5 : √(x ^ 2 + 18 * x + 45) ^ 2 = x ^ 2 + 18 * x + 45 := by\n        rw [Real.sq_sqrt]\n        linarith\n      have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by\n        nlinarith [h3, h5]\n      have h7 : x ^ 2 + 18 * x + 20 = 0 := by\n        sorry\n      have h8 : (x + 9) ^ 2 = 61 := by\n        nlinarith [h7]\n      have h9 : x + 9 = √61 ∨ x + 9 = -√61 := by\n        apply eq_or_eq_neg_of_sq_eq_sq\n        norm_num\n        linarith\n      cases h9 with\n      | inl h10 =>\n        left\n        linarith\n      | inr h11 =>\n        right\n        linarith\n    · -- Assume x = -9 ± √61, prove f(x) = 0\n      rintro (h | h)\n      ·\n        sorry\n      ·\n        sorry\n        sorry",
-      "name": "aime_1983_p3_1_1_c4_s2",
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nx : ℝ\nhx : f x = 0\n⊢ f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s2",
       "sorry_index": 2
     },
     {
-      "source_idx": 4,
-      "line": 44,
-      "goal": "f x = 0",
+      "source_idx": 26,
+      "line": 40,
+      "goal": "Nat.rawCast 81 + x * Nat.rawCast 18 + (x ^ 2 - √61 ^ 2) = 20 + x * 18 + x ^ 2",
       "hypotheses": [
-        {
-          "name": null,
-          "type": "case mpr.inl"
-        },
         {
           "name": "f",
           "type": "ℝ → ℝ"
@@ -607,6 +425,355 @@
         {
           "name": "h₁",
           "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "x",
+          "type": "ℝ"
+        },
+        {
+          "name": "hx",
+          "type": "f x = 0"
+        },
+        {
+          "name": "h6",
+          "type": "x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "h8",
+          "type": "√61 ^ 2 = 61"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : ∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0\nx : ℝ\nhx : f x = 0\nh6 : x ^ 2 + 18 * x + 20 = 0\nh8 : √61 ^ 2 = 61\n⊢ Nat.rawCast 81 + x * Nat.rawCast 18 + (x ^ 2 - √61 ^ 2) = 20 + x * 18 + x ^ 2",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s3",
+      "sorry_index": 3
+    },
+    {
+      "source_idx": 26,
+      "line": 53,
+      "goal": "f x = 0",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "h5",
+          "type": "∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0"
+        },
+        {
+          "name": "x",
+          "type": "ℝ"
+        },
+        {
+          "name": "hx",
+          "type": "(x - (-9 + √61)) * (x - (-9 - √61)) = 0"
+        },
+        {
+          "name": "h7",
+          "type": "x ^ 2 + 18 * x + 20 = 0"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : ∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0\nh5 : ∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0\nx : ℝ\nhx : (x - (-9 + √61)) * (x - (-9 - √61)) = 0\nh7 : x ^ 2 + 18 * x + 20 = 0\n⊢ f x = 0",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s5",
+      "sorry_index": 5
+    },
+    {
+      "source_idx": 26,
+      "line": 85,
+      "goal": "f (-9 + √61) = 0",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "h5",
+          "type": "∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0"
+        },
+        {
+          "name": "h6",
+          "type": "∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0"
+        },
+        {
+          "name": "h9",
+          "type": "(-9 + √61) ^ 2 + 18 * (-9 + √61) + 20 = 0"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : ∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0\nh5 : ∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0\nh6 : ∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0\nh9 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 20 = 0\n⊢ f (-9 + √61) = 0",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s7",
+      "sorry_index": 7
+    },
+    {
+      "source_idx": 26,
+      "line": 94,
+      "goal": "f (-9 - √61) = 0",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "h5",
+          "type": "∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0"
+        },
+        {
+          "name": "h6",
+          "type": "∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0"
+        },
+        {
+          "name": "h11",
+          "type": "(-9 - √61) ^ 2 + 18 * (-9 - √61) + 20 = 0"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : ∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0\nh5 : ∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0\nh6 : ∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0\nh11 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 20 = 0\n⊢ f (-9 - √61) = 0",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s8",
+      "sorry_index": 8
+    },
+    {
+      "source_idx": 26,
+      "line": 97,
+      "goal": "(f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "h5",
+          "type": "∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0"
+        },
+        {
+          "name": "h6",
+          "type": "∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0"
+        },
+        {
+          "name": "h7",
+          "type": "f ⁻¹' {0} = {-9 + √61, -9 - √61}"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : ∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0\nh5 : ∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0\nh6 : ∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0\nh7 : f ⁻¹' {0} = {-9 + √61, -9 - √61}\n⊢ (f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s9",
+      "sorry_index": 9
+    },
+    {
+      "source_idx": 26,
+      "line": 100,
+      "goal": "(-9 + √61) * (-9 - √61) = 20",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "h5",
+          "type": "∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0"
+        },
+        {
+          "name": "h6",
+          "type": "∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0"
+        },
+        {
+          "name": "h7",
+          "type": "f ⁻¹' {0} = {-9 + √61, -9 - √61}"
+        },
+        {
+          "name": "h8",
+          "type": "(f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : ∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0\nh5 : ∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0\nh6 : ∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0\nh7 : f ⁻¹' {0} = {-9 + √61, -9 - √61}\nh8 : (f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}\n⊢ (-9 + √61) * (-9 - √61) = 20",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s10",
+      "sorry_index": 10
+    },
+    {
+      "source_idx": 26,
+      "line": 103,
+      "goal": "¬-9 + √61 = -9 - √61",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0"
+        },
+        {
+          "name": "h5",
+          "type": "∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0"
+        },
+        {
+          "name": "h6",
+          "type": "∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0"
+        },
+        {
+          "name": "h7",
+          "type": "f ⁻¹' {0} = {-9 + √61, -9 - √61}"
+        },
+        {
+          "name": "h8",
+          "type": "(f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : ∀ (x : ℝ), f x = 0 → x ^ 2 + 18 * x + 20 = 0\nh5 : ∀ (x : ℝ), f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0\nh6 : ∀ (x : ℝ), (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0\nh7 : f ⁻¹' {0} = {-9 + √61, -9 - √61}\nh8 : (f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}\n⊢ ¬-9 + √61 = -9 - √61",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := by\n    intro x\n    rw [h2 x]\n  have h4 : ∀ x : ℝ, f x = 0 → x^2 + 18 * x + 20 = 0 := by\n    intro x hx\n    have h_eq : f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by sorry\n    rw [h_eq] at hx\n    have h5 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n    have h6 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [Real.sqrt_nonneg (x^2 + 18 * x + 45), h5]\n    have h7 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n      linarith\n    have h8 : x^2 + 18 * x + 45 ≥ 0 := by\n      have h9 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      nlinarith [h7, h9]\n    have h9 : x^2 + 18 * x + 20 = 0 := by\n      have h10 : (√(x^2 + 18 * x + 45))^2 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        rw [h7]\n      have h11 : (√(x^2 + 18 * x + 45))^2 = x^2 + 18 * x + 45 := Real.sq_sqrt (by nlinarith)\n      nlinarith [h10, h11, sq_nonneg (x^2 + 18 * x + 30), sq_nonneg (x + 9), sq_nonneg (√(x^2 + 18 * x + 45) - 5)]\n    linarith [h9]\n  have h5 : ∀ x : ℝ, f x = 0 → (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n    intro x hx\n    have h6 : x^2 + 18 * x + 20 = 0 := h4 x hx\n    have h7 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n      ring_nf\n      have h8 : √61^2 = (61 : ℝ) := by\n        exact Real.sq_sqrt (by norm_num)\n      sorry\n    rw [h7]\n    linarith\n  have h6 : ∀ x : ℝ, (x - (-9 + √61)) * (x - (-9 - √61)) = 0 → f x = 0 := by\n    intro x hx\n    have h7 : x^2 + 18 * x + 20 = 0 := by\n      have h8 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := hx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n        ring_nf\n        have h10 : √61^2 = (61 : ℝ) := by\n          exact Real.sq_sqrt (by norm_num)\n        sorry\n      linarith [h9, h8]\n    sorry\n  have h7 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp\n    constructor\n    · -- Assume f(x) = 0, we need to show x ∈ { -9 + √61, -9 - √61 }\n      intro hfx\n      have h8 : x^2 + 18 * x + 20 = 0 := h4 x hfx\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h10 : x^2 + 18 * x + 20 = 0 := h8\n        have h11 : (x - (-9 + √61)) * (x - (-9 - √61)) = x^2 + 18 * x + 20 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          sorry\n        linarith [h11, h10]\n      cases' (mul_eq_zero.mp h9) with h11 h12\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x ∈ { -9 + √61, -9 - √61 }, we need to show f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -9 + √61\n        have h9 : (-9 + √61)^2 + 18 * (-9 + √61) + 20 = 0 := by\n          ring_nf\n          have h10 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h10]\n        have h10 : f (-9 + √61) = 0 := by\n          sorry\n        exact h10\n      · -- x = -9 - √61\n        have h11 : (-9 - √61)^2 + 18 * (-9 - √61) + 20 = 0 := by\n          ring_nf\n          have h12 : √61^2 = (61 : ℝ) := by\n            exact Real.sq_sqrt (by norm_num)\n          linarith [h12]\n        have h12 : f (-9 - √61) = 0 := by\n          sorry\n        exact h12\n  have h8 : (f ⁻¹' {(0 : ℝ)}).toFinset = ({(-9 + √61), (-9 - √61)} : Finset ℝ) := by\n    sorry\n  rw [h8]\n  rw [Finset.prod_pair]\n  have h9 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  simp [h9]\n  all_goals norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c26_s11",
+      "sorry_index": 11
+    },
+    {
+      "source_idx": 16,
+      "line": 29,
+      "goal": "Nat.rawCast 81 + x * Nat.rawCast 18 + (x ^ 2 - √61 ^ 2) = 0",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
         },
         {
           "name": "x",
@@ -614,13 +781,204 @@
         },
         {
           "name": "h",
-          "type": "x = -9 + √61"
+          "type": "x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0"
+        },
+        {
+          "name": "h4",
+          "type": "√(x ^ 2 + 18 * x + 45) = (x ^ 2 + 18 * x + 30) / 2"
+        },
+        {
+          "name": "h5",
+          "type": "0 ≤ √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h6",
+          "type": "0 ≤ (x ^ 2 + 18 * x + 30) / 2"
+        },
+        {
+          "name": "h7",
+          "type": "x ^ 2 + 18 * x + 30 ≥ 0"
+        },
+        {
+          "name": "h8",
+          "type": "x ^ 2 + 18 * x + 45 = ((x ^ 2 + 18 * x + 30) / 2) ^ 2"
         }
       ],
-      "raw": "case mpr.inl\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\nh : x = -9 + √61\n⊢ f x = 0",
-      "code_prefix": "import Mathlib\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\nhave h2 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by\n    intro x\n    constructor\n    · -- Assume f(x) = 0, prove x = -9 ± √61\n      intro hfx\n      have h_eq : f x = 0 := hfx\n      rw [h₀] at h_eq\n      have h3 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by\n        sorry\n      have h4 : x ^ 2 + 18 * x + 45 ≥ 0 := by\n        have h5 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n        nlinarith [h3, h5]\n      have h5 : √(x ^ 2 + 18 * x + 45) ^ 2 = x ^ 2 + 18 * x + 45 := by\n        rw [Real.sq_sqrt]\n        linarith\n      have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by\n        nlinarith [h3, h5]\n      have h7 : x ^ 2 + 18 * x + 20 = 0 := by\n        sorry\n      have h8 : (x + 9) ^ 2 = 61 := by\n        nlinarith [h7]\n      have h9 : x + 9 = √61 ∨ x + 9 = -√61 := by\n        apply eq_or_eq_neg_of_sq_eq_sq\n        norm_num\n        linarith\n      cases h9 with\n      | inl h10 =>\n        left\n        linarith\n      | inr h11 =>\n        right\n        linarith\n    · -- Assume x = -9 ± √61, prove f(x) = 0\n      rintro (h | h)\n      ·\n        sorry\n      ·\n        sorry\n        sorry",
-      "name": "aime_1983_p3_1_1_c4_s3",
-      "sorry_index": 3
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nx : ℝ\nh : x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) = 0\nh4 : √(x ^ 2 + 18 * x + 45) = (x ^ 2 + 18 * x + 30) / 2\nh5 : 0 ≤ √(x ^ 2 + 18 * x + 45)\nh6 : 0 ≤ (x ^ 2 + 18 * x + 30) / 2\nh7 : x ^ 2 + 18 * x + 30 ≥ 0\nh8 : x ^ 2 + 18 * x + 45 = ((x ^ 2 + 18 * x + 30) / 2) ^ 2\n⊢ Nat.rawCast 81 + x * Nat.rawCast 18 + (x ^ 2 - √61 ^ 2) = 0",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by\n    intro x\n    rw [h2 x]\n    constructor\n    · -- Assume f(x) = 0\n      intro h\n      have h4 : √(x ^ 2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by linarith\n      have h5 : 0 ≤ √(x ^ 2 + 18 * x + 45) := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n      have h6 : 0 ≤ (x^2 + 18 * x + 30) / 2 := by linarith [h5, h4]\n      have h7 : x ^ 2 + 18 * x + 30 ≥ 0 := by linarith [h6]\n      have h8 : x^2 + 18 * x + 45 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        calc\n          x^2 + 18 * x + 45 = (√(x ^ 2 + 18 * x + 45)) ^ 2 := by rw [Real.sq_sqrt]; nlinarith\n          _ = ((x^2 + 18 * x + 30) / 2) ^ 2 := by rw [h4]\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        ring_nf\n        sorry\n      cases' (mul_eq_zero.mp h9) with h10 h11\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Show that if x ∈ {-9 + √61, -9 - √61}, then f(x) = 0\n      rintro (h | h)\n      · -- x = -9 + √61\n        rw [h]\n        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61\n        have h13 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 - 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 0 := by\n          have h14 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 = 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) := by\n            have h15 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 45 = 25 := by\n              ring_nf\n              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]\n            have h16 : √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 5 := by\n              rw [h15]\n              exact Real.sqrt_eq_cases.2 (by norm_num)\n            nlinarith [h16]\n          linarith\n        linarith\n      · -- x = -9 - √61\n        rw [h]\n        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61\n        have h13 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 - 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 0 := by\n          have h14 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 = 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) := by\n            have h15 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 45 = 25 := by\n              ring_nf\n              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]\n            have h16 : √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 5 := by\n              rw [h15]\n              exact Real.sqrt_eq_cases.2 (by norm_num)\n            nlinarith [h16]\n          linarith\n        linarith\n  have h17 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp [h3 x]\n  have h18 : (f ⁻¹' {(0 : ℝ)}).toFinset = {(-9 + √61), (-9 - √61)} := by\n    simp [h17]\n  rw [h18]\n  rw [Finset.prod_insert]\n  rw [Finset.prod_singleton]\n  have h19 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  linarith [h19]\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c16_s2",
+      "sorry_index": 2
+    },
+    {
+      "source_idx": 16,
+      "line": 77,
+      "goal": "-9 + √61 ∉ {-9 - √61}",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61"
+        },
+        {
+          "name": "h17",
+          "type": "f ⁻¹' {0} = {-9 + √61, -9 - √61}"
+        },
+        {
+          "name": "h18",
+          "type": "(f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61\nh17 : f ⁻¹' {0} = {-9 + √61, -9 - √61}\nh18 : (f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}\n⊢ -9 + √61 ∉ {-9 - √61}",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by\n    intro x\n    rw [h2 x]\n    constructor\n    · -- Assume f(x) = 0\n      intro h\n      have h4 : √(x ^ 2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by linarith\n      have h5 : 0 ≤ √(x ^ 2 + 18 * x + 45) := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n      have h6 : 0 ≤ (x^2 + 18 * x + 30) / 2 := by linarith [h5, h4]\n      have h7 : x ^ 2 + 18 * x + 30 ≥ 0 := by linarith [h6]\n      have h8 : x^2 + 18 * x + 45 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        calc\n          x^2 + 18 * x + 45 = (√(x ^ 2 + 18 * x + 45)) ^ 2 := by rw [Real.sq_sqrt]; nlinarith\n          _ = ((x^2 + 18 * x + 30) / 2) ^ 2 := by rw [h4]\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        ring_nf\n        sorry\n      cases' (mul_eq_zero.mp h9) with h10 h11\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Show that if x ∈ {-9 + √61, -9 - √61}, then f(x) = 0\n      rintro (h | h)\n      · -- x = -9 + √61\n        rw [h]\n        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61\n        have h13 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 - 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 0 := by\n          have h14 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 = 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) := by\n            have h15 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 45 = 25 := by\n              ring_nf\n              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]\n            have h16 : √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 5 := by\n              rw [h15]\n              exact Real.sqrt_eq_cases.2 (by norm_num)\n            nlinarith [h16]\n          linarith\n        linarith\n      · -- x = -9 - √61\n        rw [h]\n        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61\n        have h13 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 - 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 0 := by\n          have h14 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 = 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) := by\n            have h15 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 45 = 25 := by\n              ring_nf\n              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]\n            have h16 : √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 5 := by\n              rw [h15]\n              exact Real.sqrt_eq_cases.2 (by norm_num)\n            nlinarith [h16]\n          linarith\n        linarith\n  have h17 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp [h3 x]\n  have h18 : (f ⁻¹' {(0 : ℝ)}).toFinset = {(-9 + √61), (-9 - √61)} := by\n    simp [h17]\n  rw [h18]\n  rw [Finset.prod_insert]\n  rw [Finset.prod_singleton]\n  have h19 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  linarith [h19]\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c16_s4",
+      "sorry_index": 4
+    },
+    {
+      "source_idx": 0,
+      "line": 13,
+      "goal": "∀ (x : ℝ), f x = 0 ↔ x = -5 ∨ x = -4",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\n⊢ ∀ (x : ℝ), f x = 0 ↔ x = -5 ∨ x = -4",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) := by\n    intro x\n    rw [h₀ x]\n    ring\n  have h3 : (f ⁻¹' {(0 : ℝ)}).toFinset = {-5, -4} := by\n    have h4 : ∀ x : ℝ, f x = 0 ↔ x = -5 ∨ x = -4 := by sorry\n    ext x\n    simp [h4]\n  rw [h3]\n  rw [Finset.prod_insert]\n  rw [Finset.prod_singleton]\n  norm_num\n  all_goals\n    sorry\n",
+      "name": "aime_1983_p3_1_1_c0_s1",
+      "sorry_index": 1
+    },
+    {
+      "source_idx": 0,
+      "line": 21,
+      "goal": "-5 ∉ {-4}",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "(f ⁻¹' {0}).toFinset = {-5, -4}"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : (f ⁻¹' {0}).toFinset = {-5, -4}\n⊢ -5 ∉ {-4}",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) := by\n    intro x\n    rw [h₀ x]\n    ring\n  have h3 : (f ⁻¹' {(0 : ℝ)}).toFinset = {-5, -4} := by\n    have h4 : ∀ x : ℝ, f x = 0 ↔ x = -5 ∨ x = -4 := by sorry\n    ext x\n    simp [h4]\n  rw [h3]\n  rw [Finset.prod_insert]\n  rw [Finset.prod_singleton]\n  norm_num\n  all_goals\n    sorry\n",
+      "name": "aime_1983_p3_1_1_c0_s2",
+      "sorry_index": 2
+    },
+    {
+      "source_idx": 10,
+      "line": 14,
+      "goal": "x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) ≠ 0",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "x",
+          "type": "ℝ"
+        },
+        {
+          "name": "hfx",
+          "type": "f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h4",
+          "type": "√(x ^ 2 + 18 * x + 45) ≥ 0"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\nhfx : f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh4 : √(x ^ 2 + 18 * x + 45) ≥ 0\n⊢ x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) ≠ 0",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n    have h2 : ∀ x : ℝ, f x ≠ 0 := by\n      intro x\n      have hfx := h₀ x\n      rw [hfx]\n      have h3 : x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) ≠ 0 := by\n        have h4 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n        sorry\n      by_contra h\n      sorry\n    have h5 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = ∅ := by\n      ext x\n      simp [h2 x]\n    have h6 : (f ⁻¹' {(0 : ℝ)}).toFinset = ∅ := by\n      simp [h5]\n    simp [h6]\n    sorry\n",
+      "name": "aime_1983_p3_1_1_c10_s1",
+      "sorry_index": 1
+    },
+    {
+      "source_idx": 10,
+      "line": 16,
+      "goal": "False",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "x",
+          "type": "ℝ"
+        },
+        {
+          "name": "hfx",
+          "type": "f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h3",
+          "type": "x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) ≠ 0"
+        },
+        {
+          "name": "h",
+          "type": "x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nx : ℝ\nhfx : f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh3 : x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) ≠ 0\nh : x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45)) = 0\n⊢ False",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n    have h2 : ∀ x : ℝ, f x ≠ 0 := by\n      intro x\n      have hfx := h₀ x\n      rw [hfx]\n      have h3 : x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) ≠ 0 := by\n        have h4 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n        sorry\n      by_contra h\n      sorry\n    have h5 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = ∅ := by\n      ext x\n      simp [h2 x]\n    have h6 : (f ⁻¹' {(0 : ℝ)}).toFinset = ∅ := by\n      simp [h5]\n    simp [h6]\n    sorry\n",
+      "name": "aime_1983_p3_1_1_c10_s2",
+      "sorry_index": 2
     }
   ]
 }
