@@ -1,81 +1,15 @@
 {
   "ranked": [
     {
-      "idx": 0,
+      "idx": 30,
       "raw_score": 999.0,
-      "final_score": -1950,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 20,
-      "verify_time": 6.934398651123047
-    },
-    {
-      "idx": 1,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.599227428436279
-    },
-    {
-      "idx": 2,
-      "raw_score": 999.0,
-      "final_score": -6700,
+      "final_score": 999.0,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 9999,
-      "num_sorries": 6,
-      "num_preserved_steps": 70,
-      "verify_time": 10.139400482177734
-    },
-    {
-      "idx": 3,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
+      "num_sorries": 9999,
       "num_preserved_steps": 0,
-      "verify_time": 6.55426287651062
-    },
-    {
-      "idx": 4,
-      "raw_score": 999.0,
-      "final_score": -11850,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 9,
-      "num_preserved_steps": 123,
-      "verify_time": 11.122656106948853
-    },
-    {
-      "idx": 5,
-      "raw_score": 999.0,
-      "final_score": -10100,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 2,
-      "num_preserved_steps": 102,
-      "verify_time": 13.56391453742981
-    },
-    {
-      "idx": 6,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.662304878234863
+      "verify_time": 0
     },
     {
       "idx": 7,
@@ -86,161 +20,7 @@
       "first_error_line": 9999,
       "num_sorries": 1,
       "num_preserved_steps": 0,
-      "verify_time": 6.653542518615723
-    },
-    {
-      "idx": 8,
-      "raw_score": 999.0,
-      "final_score": -26550,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 266,
-      "verify_time": 6.94793438911438
-    },
-    {
-      "idx": 9,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.660204887390137
-    },
-    {
-      "idx": 10,
-      "raw_score": 999.0,
-      "final_score": -1850,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 3,
-      "num_preserved_steps": 20,
-      "verify_time": 7.0169923305511475
-    },
-    {
-      "idx": 11,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.677727699279785
-    },
-    {
-      "idx": 12,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.636247634887695
-    },
-    {
-      "idx": 13,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.577235221862793
-    },
-    {
-      "idx": 14,
-      "raw_score": 999.0,
-      "final_score": -32650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 327,
-      "verify_time": 6.649824857711792
-    },
-    {
-      "idx": 15,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.6682093143463135
-    },
-    {
-      "idx": 16,
-      "raw_score": 999.0,
-      "final_score": -7250,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 3,
-      "num_preserved_steps": 74,
-      "verify_time": 11.292302131652832
-    },
-    {
-      "idx": 17,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.63576865196228
-    },
-    {
-      "idx": 18,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.82130241394043
-    },
-    {
-      "idx": 19,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.697634220123291
-    },
-    {
-      "idx": 20,
-      "raw_score": 999.0,
-      "final_score": 50,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 0,
-      "verify_time": 6.640597581863403
-    },
-    {
-      "idx": 21,
-      "raw_score": 999.0,
-      "final_score": -650,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 7,
-      "verify_time": 6.616515874862671
+      "verify_time": 11.561733961105347
     },
     {
       "idx": 22,
@@ -251,18 +31,139 @@
       "first_error_line": 9999,
       "num_sorries": 1,
       "num_preserved_steps": 0,
-      "verify_time": 6.623584508895874
+      "verify_time": 8.930349826812744
     },
     {
-      "idx": 23,
+      "idx": 12,
       "raw_score": 999.0,
-      "final_score": -50650,
-      "status": "FAIL",
+      "final_score": 50,
+      "status": "PASS",
       "worst_category": "syntax",
       "first_error_line": 9999,
       "num_sorries": 1,
-      "num_preserved_steps": 507,
-      "verify_time": 6.875939607620239
+      "num_preserved_steps": 0,
+      "verify_time": 11.59182357788086
+    },
+    {
+      "idx": 17,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 8.120940208435059
+    },
+    {
+      "idx": 18,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 11.771220922470093
+    },
+    {
+      "idx": 6,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 8.274272680282593
+    },
+    {
+      "idx": 15,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 11.077145338058472
+    },
+    {
+      "idx": 19,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 11.625722646713257
+    },
+    {
+      "idx": 3,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 11.470146417617798
+    },
+    {
+      "idx": 11,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 11.730274438858032
+    },
+    {
+      "idx": 9,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 10.307080507278442
+    },
+    {
+      "idx": 13,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 11.455592155456543
+    },
+    {
+      "idx": 1,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 8.366023778915405
+    },
+    {
+      "idx": 20,
+      "raw_score": 999.0,
+      "final_score": 50,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 0,
+      "verify_time": 11.366427659988403
     },
     {
       "idx": 24,
@@ -273,40 +174,7 @@
       "first_error_line": 9999,
       "num_sorries": 1,
       "num_preserved_steps": 0,
-      "verify_time": 6.509444713592529
-    },
-    {
-      "idx": 25,
-      "raw_score": 999.0,
-      "final_score": -2650,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 27,
-      "verify_time": 6.595297574996948
-    },
-    {
-      "idx": 26,
-      "raw_score": 999.0,
-      "final_score": -8950,
-      "status": "PASS",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 9,
-      "num_preserved_steps": 94,
-      "verify_time": 14.268486261367798
-    },
-    {
-      "idx": 27,
-      "raw_score": 999.0,
-      "final_score": -25850,
-      "status": "FAIL",
-      "worst_category": "syntax",
-      "first_error_line": 9999,
-      "num_sorries": 1,
-      "num_preserved_steps": 259,
-      "verify_time": 6.5768516063690186
+      "verify_time": 11.840781688690186
     },
     {
       "idx": 28,
@@ -317,7 +185,7 @@
       "first_error_line": 9999,
       "num_sorries": 1,
       "num_preserved_steps": 0,
-      "verify_time": 6.627286672592163
+      "verify_time": 11.460974216461182
     },
     {
       "idx": 29,
@@ -328,18 +196,150 @@
       "first_error_line": 9999,
       "num_sorries": 1,
       "num_preserved_steps": 0,
-      "verify_time": 6.7068305015563965
+      "verify_time": 10.433138370513916
     },
     {
-      "idx": 30,
+      "idx": 10,
       "raw_score": 999.0,
-      "final_score": 999.0,
+      "final_score": -1850,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 3,
+      "num_preserved_steps": 20,
+      "verify_time": 10.35304856300354
+    },
+    {
+      "idx": 0,
+      "raw_score": 999.0,
+      "final_score": -1950,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 20,
+      "verify_time": 9.132442712783813
+    },
+    {
+      "idx": 16,
+      "raw_score": 999.0,
+      "final_score": -7250,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 3,
+      "num_preserved_steps": 74,
+      "verify_time": 14.046694993972778
+    },
+    {
+      "idx": 21,
+      "raw_score": 999.0,
+      "final_score": -650,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 7,
+      "verify_time": 10.349691152572632
+    },
+    {
+      "idx": 2,
+      "raw_score": 999.0,
+      "final_score": -6550,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 5,
+      "num_preserved_steps": 68,
+      "verify_time": 13.224955558776855
+    },
+    {
+      "idx": 4,
+      "raw_score": 999.0,
+      "final_score": -11850,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 9,
+      "num_preserved_steps": 123,
+      "verify_time": 13.014328002929688
+    },
+    {
+      "idx": 5,
+      "raw_score": 999.0,
+      "final_score": -8850,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 5,
+      "num_preserved_steps": 91,
+      "verify_time": 17.651599645614624
+    },
+    {
+      "idx": 26,
+      "raw_score": 999.0,
+      "final_score": -8950,
+      "status": "PASS",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 9,
+      "num_preserved_steps": 94,
+      "verify_time": 18.110473155975342
+    },
+    {
+      "idx": 25,
+      "raw_score": 999.0,
+      "final_score": -1650,
       "status": "FAIL",
       "worst_category": "syntax",
       "first_error_line": 9999,
-      "num_sorries": 9999,
-      "num_preserved_steps": 0,
-      "verify_time": 0
+      "num_sorries": 1,
+      "num_preserved_steps": 17,
+      "verify_time": 8.309543132781982
+    },
+    {
+      "idx": 27,
+      "raw_score": 999.0,
+      "final_score": -24850,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 249,
+      "verify_time": 8.18814754486084
+    },
+    {
+      "idx": 14,
+      "raw_score": 999.0,
+      "final_score": -31650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 317,
+      "verify_time": 9.716466665267944
+    },
+    {
+      "idx": 8,
+      "raw_score": 999.0,
+      "final_score": -25550,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 256,
+      "verify_time": 10.336714029312134
+    },
+    {
+      "idx": 23,
+      "raw_score": 999.0,
+      "final_score": -49650,
+      "status": "FAIL",
+      "worst_category": "syntax",
+      "first_error_line": 9999,
+      "num_sorries": 1,
+      "num_preserved_steps": 497,
+      "verify_time": 9.378584384918213
     }
   ],
   "subgoals": [
@@ -1032,6 +1032,41 @@
       "sorry_index": 11
     },
     {
+      "source_idx": 5,
+      "line": 96,
+      "goal": "-9 + √61 ∉ {-9 - √61}",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61"
+        },
+        {
+          "name": "h5",
+          "type": "(f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61\nh5 : (f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}\n⊢ -9 + √61 ∉ {-9 - √61}",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by\n    intro x\n    constructor\n    · -- Assume f(x) = 0, prove x = -9 ± √61\n      intro hfx\n      have h_eq : f x = 0 := hfx\n      rw [h2 x] at h_eq\n      have h_eq1 : x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) = 0 := h_eq\n      have h1 : √(x^2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x^2 + 18 * x + 45)\n      have h2 : x^2 + 18 * x + 30 ≥ 0 := by nlinarith [h_eq1, h1]\n      have h3 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n        have h : (x^2 + 18 * x + 30) / 2 ≥ 0 := by nlinarith\n        have h4 : √(x^2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by\n          have h_eq2 : 2 * √(x^2 + 18 * x + 45) = x^2 + 18 * x + 30 := by linarith\n          nlinarith [h_eq2, Real.sqrt_nonneg (x^2 + 18 * x + 45)]\n        exact h4\n      have h4 : x^2 + 18 * x + 45 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        calc\n          x^2 + 18 * x + 45 = (√(x^2 + 18 * x + 45)) ^ 2 := by rw [Real.sq_sqrt]; nlinarith\n          _ = ((x^2 + 18 * x + 30) / 2) ^ 2 := by rw [h3]\n      have h5 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        have h_eq2 : x^2 + 18 * x + 45 = ((x^2 + 18 * x + 30) / 2) ^ 2 := h4\n        ring_nf at h_eq2\n        nlinarith [Real.sq_sqrt (show 0 ≤ (61 : ℝ) by norm_num), h_eq2]\n      cases' (mul_eq_zero.mp h5) with h6 h7\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Assume x = -9 ± √61, prove f(x) = 0\n      rintro (h | h)\n      · -- x = -9 + √61\n        have hx : x = -9 + √61 := h\n        rw [h2 x]\n        have h1 : √(x^2 + 18 * x + 45) = 5 := by\n          have hx2 : x = -9 + √61 := hx\n          have h_eq : x^2 + 18 * x + 45 = 25 := by\n            rw [hx2]\n            ring_nf\n            rw [Real.sq_sqrt (by norm_num)]\n            ring\n          have h_sqrt : √(x^2 + 18 * x + 45) = √25 := by rw [h_eq]\n          rw [h_sqrt]\n          sorry\n          <;> ring_nf <;> norm_num\n        have h2 : x^2 + 18 * x + 30 = 10 := by\n          have hx2 : x = -9 + √61 := hx\n          rw [hx2]\n          ring_nf\n          rw [Real.sq_sqrt (by norm_num)]\n          ring\n        linarith [h1, h2]\n      · -- x = -9 - √61\n        have hx : x = -9 - √61 := h\n        rw [h2 x]\n        have h1 : √(x^2 + 18 * x + 45) = 5 := by\n          have hx2 : x = -9 - √61 := hx\n          have h_eq : x^2 + 18 * x + 45 = 25 := by\n            rw [hx2]\n            ring_nf\n            rw [Real.sq_sqrt (by norm_num)]\n            ring\n          have h_sqrt : √(x^2 + 18 * x + 45) = √25 := by rw [h_eq]\n          rw [h_sqrt]\n          sorry\n          <;> ring_nf <;> norm_num\n        have h2 : x^2 + 18 * x + 30 = 10 := by\n          have hx2 : x = -9 - √61 := hx\n          rw [hx2]\n          ring_nf\n          rw [Real.sq_sqrt (by norm_num)]\n          ring\n        linarith [h1, h2]\n  have h5 : (f ⁻¹' {(0 : ℝ)}).toFinset = {(-9 + √61 : ℝ), (-9 - √61 : ℝ)} := by\n    sorry\n  rw [h5]\n  rw [Finset.prod_insert]\n  rw [Finset.prod_singleton]\n  · -- Show that (-9 + √61) ≠ (-9 - √61)\n    have h61 : √61 > 0 := Real.sqrt_pos.mpr (by norm_num)\n    sorry\n  · sorry\n",
+      "name": "aime_1983_p3_1_1_c5_s6",
+      "sorry_index": 6
+    },
+    {
       "source_idx": 16,
       "line": 29,
       "goal": "Nat.rawCast 81 + x * Nat.rawCast 18 + (x ^ 2 - √61 ^ 2) = 0",
@@ -1087,9 +1122,9 @@
       "sorry_index": 2
     },
     {
-      "source_idx": 16,
-      "line": 77,
-      "goal": "-9 + √61 ∉ {-9 - √61}",
+      "source_idx": 2,
+      "line": 46,
+      "goal": "x = -10 ∨ x = -2",
       "hypotheses": [
         {
           "name": "f",
@@ -1109,21 +1144,170 @@
         },
         {
           "name": "h3",
-          "type": "∀ (x : ℝ), f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61"
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)"
         },
         {
-          "name": "h17",
-          "type": "f ⁻¹' {0} = {-9 + √61, -9 - √61}"
+          "name": "x",
+          "type": "ℝ"
         },
         {
-          "name": "h18",
-          "type": "(f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}"
+          "name": "h h5",
+          "type": "x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h6",
+          "type": "x ^ 2 + 18 * x + 30 ≥ 0"
+        },
+        {
+          "name": "h7",
+          "type": "x ^ 2 + 18 * x + 45 ≥ 0"
+        },
+        {
+          "name": "h8",
+          "type": "x ≤ -3"
+        },
+        {
+          "name": "h9 h11",
+          "type": "x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h12",
+          "type": "x ≤ -3"
+        },
+        {
+          "name": "h13",
+          "type": "x ^ 2 + 18 * x + 30 ≥ 0"
+        },
+        {
+          "name": "h14",
+          "type": "x ^ 2 + 18 * x + 45 ≥ 0"
+        },
+        {
+          "name": "h15",
+          "type": "√(x ^ 2 + 18 * x + 45) ≥ 0"
         }
       ],
-      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61\nh17 : f ⁻¹' {0} = {-9 + √61, -9 - √61}\nh18 : (f ⁻¹' {0}).toFinset = {-9 + √61, -9 - √61}\n⊢ -9 + √61 ∉ {-9 - √61}",
-      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x^2 + 18 * x + 30 - 2 * √(x^2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by\n    intro x\n    rw [h2 x]\n    constructor\n    · -- Assume f(x) = 0\n      intro h\n      have h4 : √(x ^ 2 + 18 * x + 45) = (x^2 + 18 * x + 30) / 2 := by linarith\n      have h5 : 0 ≤ √(x ^ 2 + 18 * x + 45) := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n      have h6 : 0 ≤ (x^2 + 18 * x + 30) / 2 := by linarith [h5, h4]\n      have h7 : x ^ 2 + 18 * x + 30 ≥ 0 := by linarith [h6]\n      have h8 : x^2 + 18 * x + 45 = ((x^2 + 18 * x + 30) / 2) ^ 2 := by\n        calc\n          x^2 + 18 * x + 45 = (√(x ^ 2 + 18 * x + 45)) ^ 2 := by rw [Real.sq_sqrt]; nlinarith\n          _ = ((x^2 + 18 * x + 30) / 2) ^ 2 := by rw [h4]\n      have h9 : (x - (-9 + √61)) * (x - (-9 - √61)) = 0 := by\n        ring_nf\n        sorry\n      cases' (mul_eq_zero.mp h9) with h10 h11\n      · -- x - (-9 + √61) = 0\n        left\n        linarith\n      · -- x - (-9 - √61) = 0\n        right\n        linarith\n    · -- Show that if x ∈ {-9 + √61, -9 - √61}, then f(x) = 0\n      rintro (h | h)\n      · -- x = -9 + √61\n        rw [h]\n        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61\n        have h13 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 - 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 0 := by\n          have h14 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 30 = 2 * √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) := by\n            have h15 : (-9 + √61) ^ 2 + 18 * (-9 + √61) + 45 = 25 := by\n              ring_nf\n              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]\n            have h16 : √((-9 + √61) ^ 2 + 18 * (-9 + √61) + 45) = 5 := by\n              rw [h15]\n              exact Real.sqrt_eq_cases.2 (by norm_num)\n            nlinarith [h16]\n          linarith\n        linarith\n      · -- x = -9 - √61\n        rw [h]\n        have h12 : √61 ≥ 0 := Real.sqrt_nonneg 61\n        have h13 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 - 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 0 := by\n          have h14 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 30 = 2 * √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) := by\n            have h15 : (-9 - √61) ^ 2 + 18 * (-9 - √61) + 45 = 25 := by\n              ring_nf\n              nlinarith [Real.sq_sqrt (show (0 : ℝ) ≤ 61 by norm_num)]\n            have h16 : √((-9 - √61) ^ 2 + 18 * (-9 - √61) + 45) = 5 := by\n              rw [h15]\n              exact Real.sqrt_eq_cases.2 (by norm_num)\n            nlinarith [h16]\n          linarith\n        linarith\n  have h17 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {(-9 + √61), (-9 - √61)} := by\n    ext x\n    simp [h3 x]\n  have h18 : (f ⁻¹' {(0 : ℝ)}).toFinset = {(-9 + √61), (-9 - √61)} := by\n    simp [h17]\n  rw [h18]\n  rw [Finset.prod_insert]\n  rw [Finset.prod_singleton]\n  have h19 : (-9 + √61) * (-9 - √61) = (20 : ℝ) := by sorry\n  linarith [h19]\n  sorry\n",
-      "name": "aime_1983_p3_1_1_c16_s4",
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)\nx : ℝ\nh h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)\nh6 : x ^ 2 + 18 * x + 30 ≥ 0\nh7 : x ^ 2 + 18 * x + 45 ≥ 0\nh8 : x ≤ -3\nh9 h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)\nh12 : x ≤ -3\nh13 : x ^ 2 + 18 * x + 30 ≥ 0\nh14 : x ^ 2 + 18 * x + 45 ≥ 0\nh15 : √(x ^ 2 + 18 * x + 45) ≥ 0\n⊢ x = -10 ∨ x = -2",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h2 x]\n    constructor\n    · intro h\n      linarith\n    · intro h\n      linarith\n  have h4 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {-10, -2} := by\n    ext x\n    simp [h3]\n    constructor\n    · -- If f(x) = 0, then x ∈ {-10, -2}\n      intro h\n      have h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h\n      have h6 : x ^ 2 + 18 * x + 30 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h7 : x ^ 2 + 18 * x + 45 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h8 : x ≤ -3 ∨ x ≥ -15 := by\n        by_contra h9\n        push_neg at h9\n        have h10 : x ^ 2 + 18 * x + 45 < 0 := by nlinarith\n        linarith [show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith [Real.sq_sqrt (show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith)]]\n      rcases h8 with h8 | h8\n      · -- x ≤ -3\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≤ -3 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n      · -- x ≥ -15\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≥ -15 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n    · -- If x ∈ {-10, -2}, then f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -10\n        have h5 : √((-10 : ℝ) ^ 2 + 18 * (-10) + 45) = √(100 - 180 + 45) := by norm_num\n        have h6 : √(100 - 180 + 45) = √(-35) := by norm_num\n        have h7 : √(-35) = 0 := by\n          have h8 : √(-35) = 0 := by\n            rw [Real.sqrt_eq_zero']\n            all_goals linarith\n          exact h8\n        sorry\n      · sorry\n  rw [Set.toFinset]\n  simp\n  <;> norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c2_s2",
+      "sorry_index": 2
+    },
+    {
+      "source_idx": 2,
+      "line": 68,
+      "goal": "(-10) ^ 2 + 18 * -10 + 30 = 2 * √((-10) ^ 2 + 18 * -10 + 45)",
+      "hypotheses": [
+        {
+          "name": null,
+          "type": "case h.mpr.inl"
+        },
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h5",
+          "type": "√((-10) ^ 2 + 18 * -10 + 45) = √(100 - 180 + 45)"
+        },
+        {
+          "name": "h6",
+          "type": "√(100 - 180 + 45) = √(-35)"
+        },
+        {
+          "name": "h7",
+          "type": "√(-35) = 0"
+        }
+      ],
+      "raw": "case h.mpr.inl\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)\nh5 : √((-10) ^ 2 + 18 * -10 + 45) = √(100 - 180 + 45)\nh6 : √(100 - 180 + 45) = √(-35)\nh7 : √(-35) = 0\n⊢ (-10) ^ 2 + 18 * -10 + 30 = 2 * √((-10) ^ 2 + 18 * -10 + 45)",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h2 x]\n    constructor\n    · intro h\n      linarith\n    · intro h\n      linarith\n  have h4 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {-10, -2} := by\n    ext x\n    simp [h3]\n    constructor\n    · -- If f(x) = 0, then x ∈ {-10, -2}\n      intro h\n      have h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h\n      have h6 : x ^ 2 + 18 * x + 30 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h7 : x ^ 2 + 18 * x + 45 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h8 : x ≤ -3 ∨ x ≥ -15 := by\n        by_contra h9\n        push_neg at h9\n        have h10 : x ^ 2 + 18 * x + 45 < 0 := by nlinarith\n        linarith [show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith [Real.sq_sqrt (show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith)]]\n      rcases h8 with h8 | h8\n      · -- x ≤ -3\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≤ -3 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n      · -- x ≥ -15\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≥ -15 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n    · -- If x ∈ {-10, -2}, then f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -10\n        have h5 : √((-10 : ℝ) ^ 2 + 18 * (-10) + 45) = √(100 - 180 + 45) := by norm_num\n        have h6 : √(100 - 180 + 45) = √(-35) := by norm_num\n        have h7 : √(-35) = 0 := by\n          have h8 : √(-35) = 0 := by\n            rw [Real.sqrt_eq_zero']\n            all_goals linarith\n          exact h8\n        sorry\n      · sorry\n  rw [Set.toFinset]\n  simp\n  <;> norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c2_s4",
       "sorry_index": 4
+    },
+    {
+      "source_idx": 2,
+      "line": 69,
+      "goal": "(-2) ^ 2 + 18 * -2 + 30 = 2 * √((-2) ^ 2 + 18 * -2 + 45)",
+      "hypotheses": [
+        {
+          "name": null,
+          "type": "case h.mpr.inr"
+        },
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)"
+        }
+      ],
+      "raw": "case h.mpr.inr\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)\n⊢ (-2) ^ 2 + 18 * -2 + 30 = 2 * √((-2) ^ 2 + 18 * -2 + 45)",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h2 x]\n    constructor\n    · intro h\n      linarith\n    · intro h\n      linarith\n  have h4 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {-10, -2} := by\n    ext x\n    simp [h3]\n    constructor\n    · -- If f(x) = 0, then x ∈ {-10, -2}\n      intro h\n      have h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h\n      have h6 : x ^ 2 + 18 * x + 30 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h7 : x ^ 2 + 18 * x + 45 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h8 : x ≤ -3 ∨ x ≥ -15 := by\n        by_contra h9\n        push_neg at h9\n        have h10 : x ^ 2 + 18 * x + 45 < 0 := by nlinarith\n        linarith [show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith [Real.sq_sqrt (show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith)]]\n      rcases h8 with h8 | h8\n      · -- x ≤ -3\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≤ -3 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n      · -- x ≥ -15\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≥ -15 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n    · -- If x ∈ {-10, -2}, then f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -10\n        have h5 : √((-10 : ℝ) ^ 2 + 18 * (-10) + 45) = √(100 - 180 + 45) := by norm_num\n        have h6 : √(100 - 180 + 45) = √(-35) := by norm_num\n        have h7 : √(-35) = 0 := by\n          have h8 : √(-35) = 0 := by\n            rw [Real.sqrt_eq_zero']\n            all_goals linarith\n          exact h8\n        sorry\n      · sorry\n  rw [Set.toFinset]\n  simp\n  <;> norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c2_s5",
+      "sorry_index": 5
+    },
+    {
+      "source_idx": 2,
+      "line": 73,
+      "goal": "∏ x, ↑x = 20",
+      "hypotheses": [
+        {
+          "name": "f",
+          "type": "ℝ → ℝ"
+        },
+        {
+          "name": "h₀",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))"
+        },
+        {
+          "name": "h₁",
+          "type": "Fintype ↑(f ⁻¹' {0})"
+        },
+        {
+          "name": "h2",
+          "type": "∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h3",
+          "type": "∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)"
+        },
+        {
+          "name": "h4",
+          "type": "f ⁻¹' {0} = {-10, -2}"
+        }
+      ],
+      "raw": "f : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 2 + (18 * x + 30) - 2 * √(x ^ 2 + (18 * x + 45))\nh₁ : Fintype ↑(f ⁻¹' {0})\nh2 : ∀ (x : ℝ), f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45)\nh3 : ∀ (x : ℝ), f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45)\nh4 : f ⁻¹' {0} = {-10, -2}\n⊢ ∏ x, ↑x = 20",
+      "code_prefix": "import Mathlib\nopen BigOperators Real Nat Topology Rat\nlemma aime_1983_p3_1_1\n  (f : ℝ → ℝ)\n  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))\n  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :\n  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by\n  have h2 : ∀ x : ℝ, f x = x ^ 2 + 18 * x + 30 - 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h₀ x]\n    simp [pow_two]\n    sorry\n  have h3 : ∀ x : ℝ, f x = 0 ↔ x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by\n    intro x\n    rw [h2 x]\n    constructor\n    · intro h\n      linarith\n    · intro h\n      linarith\n  have h4 : (f ⁻¹' {(0 : ℝ)} : Set ℝ) = {-10, -2} := by\n    ext x\n    simp [h3]\n    constructor\n    · -- If f(x) = 0, then x ∈ {-10, -2}\n      intro h\n      have h5 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h\n      have h6 : x ^ 2 + 18 * x + 30 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h7 : x ^ 2 + 18 * x + 45 ≥ 0 := by\n        nlinarith [Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)]\n      have h8 : x ≤ -3 ∨ x ≥ -15 := by\n        by_contra h9\n        push_neg at h9\n        have h10 : x ^ 2 + 18 * x + 45 < 0 := by nlinarith\n        linarith [show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith [Real.sq_sqrt (show 0 ≤ x ^ 2 + 18 * x + 45 from by nlinarith)]]\n      rcases h8 with h8 | h8\n      · -- x ≤ -3\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≤ -3 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n      · -- x ≥ -15\n        have h9 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n        have h10 : x = -10 ∨ x = -2 := by\n          have h11 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := h5\n          have h12 : x ≥ -15 := h8\n          have h13 : x ^ 2 + 18 * x + 30 ≥ 0 := by nlinarith\n          have h14 : x ^ 2 + 18 * x + 45 ≥ 0 := by nlinarith\n          have h15 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)\n          sorry\n        tauto\n    · -- If x ∈ {-10, -2}, then f(x) = 0\n      rintro (rfl | rfl)\n      · -- x = -10\n        have h5 : √((-10 : ℝ) ^ 2 + 18 * (-10) + 45) = √(100 - 180 + 45) := by norm_num\n        have h6 : √(100 - 180 + 45) = √(-35) := by norm_num\n        have h7 : √(-35) = 0 := by\n          have h8 : √(-35) = 0 := by\n            rw [Real.sqrt_eq_zero']\n            all_goals linarith\n          exact h8\n        sorry\n      · sorry\n  rw [Set.toFinset]\n  simp\n  <;> norm_num\n  sorry\n",
+      "name": "aime_1983_p3_1_1_c2_s6",
+      "sorry_index": 6
     },
     {
       "source_idx": 0,

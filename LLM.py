@@ -23,7 +23,7 @@ def load_model(model_id: str = MODEL_ID):
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
         dtype=dtype,
-        device_map="cuda",  # spreads layers across available devices/CPU
+        device_map="cuda",
     )
 
     return tokenizer, model
@@ -72,69 +72,73 @@ def main():
             """
             <|im_start|>system
             You are an expert in mathematics and Lean 4.
-            Given a Lean proof state, produce valid Lean 4 tactics to solve the current goal, 
-            fill in the sorry places with valid Lean 4 tactics, do not change other complete tatics.
-            Think before producing final tactics.
+            Given a Lean proof state, only produce Lean 4 Proof with `have` Statements,
+            sketch a skeleton of solution in Lean 4 
+            (ONLY SKELETON with sorry placeholders), which are hypothesis, 
+            subgoals that needed to prove the main statement, not detail tatics.
+            Dont output Complete Lean 4 Proof.
+            Example output:
+            ```lean4
+            theorem example := by
+                have h1:= by sorry
+                have h2:= by sorry
+                have h3:= by sorry
+                exact h3
+            ```
             <|im_end|>
 
             <|im_start|>user
-            Solve the following Lean 4 proof state.
-            lean4
+            ```lean4
             import Mathlib
-            set_option maxHeartbeats 0
             open BigOperators Real Nat Topology Rat
 
-            lemma aime_1983_p3_1_1
-            (f : ℝ → ℝ)
-            (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))
-            (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :
-            ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by
-            have h2 : ∀ x : ℝ, f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61 := by
-                intro x
-                constructor
-                · -- Assume f(x) = 0, prove x = -9 ± √61
-                intro hfx
-                have h_eq : f x = 0 := hfx
-                rw [h₀] at h_eq
-                have h3 : x ^ 2 + 18 * x + 30 = 2 * √(x ^ 2 + 18 * x + 45) := by
+            theorem aime_1983_p1 (x y z w : ℕ) (ht : 1 < x ∧ 1 < y ∧ 1 < z) (hw : 0 ≤ w)
+                (h0 : Real.log w / Real.log x = 24) (h1 : Real.log w / Real.log y = 40)
+                (h2 : Real.log w / Real.log (x * y * z) = 12) : Real.log w / Real.log z = 60 := by
                     sorry
-                have h4 : x ^ 2 + 18 * x + 45 ≥ 0 := by
-                    have h5 : √(x ^ 2 + 18 * x + 45) ≥ 0 := Real.sqrt_nonneg (x ^ 2 + 18 * x + 45)
-                    nlinarith [h3, h5]
-                have h5 : √(x ^ 2 + 18 * x + 45) ^ 2 = x ^ 2 + 18 * x + 45 := by
-                    rw [Real.sq_sqrt]
-                    linarith
-                have h6 : (x ^ 2 + 18 * x + 30) ^ 2 = 4 * (x ^ 2 + 18 * x + 45) := by
-                    nlinarith [h3, h5]
-                have h7 : x ^ 2 + 18 * x + 20 = 0 := by
-                    sorry
-                have h8 : (x + 9) ^ 2 = 61 := by
-                    nlinarith [h7]
-                have h9 : x + 9 = √61 ∨ x + 9 = -√61 := by
-                    apply eq_or_eq_neg_of_sq_eq_sq
-                    norm_num
-                    linarith
-                cases h9 with
-                | inl h10 =>
-                    left
-                    linarith
-                | inr h11 =>
-                    right
-                    linarith
-                · -- Assume x = -9 ± √61, prove f(x) = 0
-                rintro (h | h)
-                ·
-                    sorry
-                ·
-                    sorry
-                sorry
-
-            Continue the proof using Lean tactics.
+            ```
             <|im_end|>
 
             <|im_start|>assistant
+            ### Informal Statement
 
-            """
+            Let $x, y, z$, and $w$ be natural numbers such that $x > 1$, $y > 1$, $z > 1$, and $w \ge 0$. Given the following logarithmic equations:
+
+            * $\frac{\ln w}{\ln x} = 24$
+            * $\frac{\ln w}{\ln y} = 40$
+            * $\frac{\ln w}{\ln(xyz)} = 12$
+
+            Prove that $\frac{\ln w}{\ln z} = 60$.
+
+            *(Note: This is equivalent to saying if $\log_x w = 24$, $\log_y w = 40$, and $\log_{xyz} w = 12$, prove that $\log_z w = 60$.)*
+
+            ---
+
+            ### Solution Skeleton
+
+            **Hypotheses**
+
+            * **Domain:** $x, y, z, w \in \mathbb{N}$
+            * **Base Constraints:** $x > 1$, $y > 1$, $z > 1$ (This ensures $\ln x > 0$, $\ln y > 0$, $\ln z > 0$)
+            * **Argument Constraint:** $w \ge 0$
+            * **$H_1$:** $\frac{\ln w}{\ln x} = 24$ (which rewrites to $\ln x = \frac{\ln w}{24}$)
+            * **$H_2$:** $\frac{\ln w}{\ln y} = 40$ (which rewrites to $\ln y = \frac{\ln w}{40}$)
+            * **$H_3$:** $\frac{\ln w}{\ln(xyz)} = 12$ (which rewrites to $\ln(xyz) = \frac{\ln w}{12}$)
+
+            **Subgoals / Logical Steps**
+
+            1. **Expand the Product Logarithm:** Use logarithmic properties to break down the denominator of the third hypothesis: prove that $\ln(xyz) = \ln x + \ln y + \ln z$.
+            2. **Algebraic Substitution:** Substitute the re-written forms of $H_1$, $H_2$, and the expanded product from Step 1 into $H_3$ to form an equation linking $\ln z$ directly to $\ln w$.
+            > **Target Equation:** $\frac{\ln w}{12} = \frac{\ln w}{24} + \frac{\ln w}{40} + \ln z$
+
+
+            3. **Isolate $\ln z$:** Rearrange the substituted equation to solve for $\ln z$ in terms of $\ln w$.
+            > **Target Equation:** $\ln z = \ln w \cdot \left(\frac{1}{12} - \frac{1}{24} - \frac{1}{40}\right)$
+
+
+            4. **Arithmetic Simplification:** Prove the arithmetic reduction of the fractions: $\frac{1}{12} - \frac{1}{24} - \frac{1}{40} = \frac{1}{60}$.
+            5. **Final Rearrangement:** Apply the result from Step 4 to show $\ln z = \frac{\ln w}{60}$, and algebraically manipulate this to reach the final goal: $\frac{\ln w}{\ln z} = 60$.
+        """
         ).strip(),
         help="Text prompt to send to the model.",
     )

@@ -41,9 +41,8 @@ class LeanProofAssembler:
                     if matches:
                         subfolder_path = matches[0]
                     else:
-                        print(f"Expected subfolder '{subfolder_name}' for 'sorry' #{sorry_counter} in {parent_dir}. Skipping this sorry...")
-                        result.append(line + '\n')
-                        print(rf'{line}')
+                        print(f"[assembler] No subfolder '{subfolder_name}' for sorry #{sorry_counter} in {parent_dir.name} — keeping sorry.")
+                        result.append(line)
                         sorry_counter += 1
                         continue
 
@@ -51,19 +50,31 @@ class LeanProofAssembler:
                 subproof_text = self._get_sub_proof_text(subfolder_path)
 
                 # Remove redundant indentation from partial proofs
-                subproof_text = textwrap.dedent(subproof_text)
+                subproof_text = textwrap.dedent(subproof_text).strip('\n')
 
                 indentation = self.count_leading_spaces(line)
 
-                subproof_text = '\n\n' + ''.join([indentation*" " + s for s in subproof_text.splitlines(keepends=True)]) + '\n\n'
+                # Re-indent each non-empty line; skip blank lines
+                indented_lines = []
+                for s in subproof_text.splitlines(keepends=True):
+                    if s.strip():
+                        indented_lines.append(indentation * " " + s)
+                    else:
+                        indented_lines.append('\n')
+                subproof_text = ''.join(indented_lines)
+                if subproof_text and not subproof_text.endswith('\n'):
+                    subproof_text += '\n'
                 # Recursively expand any nested sorries in the subproof
                 subproof_expanded = self._expand_sorries(subproof_text, subfolder_path, sorry_counter=1)
 
+                # Keep everything on the line before 'sorry' (e.g. '... := by ')
+                prefix = line[:line.index('sorry')].rstrip()
+                if prefix:
+                    result.append(prefix + '\n')
                 result.append(subproof_expanded)
                 sorry_counter += 1
             else:
                 result.append(line)
-        print(result)
         return "".join(result)
     
     def count_leading_spaces(self, s: str) -> int:
@@ -110,7 +121,7 @@ class LeanProofAssembler:
                     if "```" in proof_text:
                         proof_text = proof_text.replace("```lean4", "").replace("```", "")
                     if 'import' in proof_text:
-                        imports, proof_text = split_by_first_by(proof_text)
+                        imports, proof_text = self.split_by_first_by(proof_text)
                 return proof_text
         
         return 'sorry'

@@ -6,7 +6,6 @@
 
 ```lean
 import Mathlib
-set_option maxHeartbeats 0
 open BigOperators Real Nat Topology Rat
 lemma aime_1983_p3_1_1
     (f : ℝ → ℝ)
@@ -233,7 +232,6 @@ h2 : ∀ (x : ℝ), f x = 0 ↔ x = -9 + √61 ∨ x = -9 - √61
 
 ```lean
 import Mathlib
-set_option maxHeartbeats 0
 open BigOperators Real Nat Topology Rat
 lemma aime_1983_p3_1_1
     (f : ℝ → ℝ)
@@ -283,7 +281,7 @@ lemma aime_1983_p3_1_1
             sorry
           sorry
   sorry
-```
+``` 
 
 ## Auto Solver (ProofRepairer)
 

@@ -9,7 +9,7 @@ lean_timeout = 120
 # model
 batch_size = 4
 mode = 'cot_goedel_v2' # chat templates can be changed in prover/utils.py
-pass_ = 32 # number of samples to generate
+pass_ = 4 # number of samples to generate
 model_path = 'Goedel-LM/Goedel-Prover-V2-8B'
 max_model_len = 30000      # cap context length below OOM threshold
 gpu_memory_utilization = 0.9

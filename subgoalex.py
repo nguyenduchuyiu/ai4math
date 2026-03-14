@@ -1,87 +1,61 @@
-from prover.lean.verifier import verify_lean4_file
+from prover.lean.verifier import verify_lean4_file, Lean4ServerScheduler
 from utils.auto_sorrifier import AutoSorrifier, PersistentASTDaemon, REPL_DIR
 from utils.syntax_repair import SyntaxCorrector
 import os
+import tempfile
 from datetime import datetime
 
 code = '''
-import Mathlib
-open BigOperators Real Nat Topology Rat
-lemma aime_1983_p3_1_1
-  (f : ℝ → ℝ)
-  (h₀ : ∀ (x : ℝ), f x = x ^ (2 : ℕ) + ((18 : ℝ) * x + (30 : ℝ)) - (2 : ℝ) * √(x ^ (2 : ℕ) + ((18 : ℝ) * x + (45 : ℝ))))
-  (h₁ : Fintype (↑(f ⁻¹' {(0 : ℝ)}) : Type)) :
-  ∏ x ∈ (f ⁻¹' {(0 : ℝ)}).toFinset, x = (20 : ℝ) := by
-  have h2 : ∀ x : ℝ, f x = x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) := by
-    intro x
-    rw [h₀ x]
-    ring
-  have h3 : (f ⁻¹' {(0 : ℝ)}).toFinset = {-5, -4} := by
-    have h4 : ∀ x : ℝ, f x = 0 ↔ x = -5 ∨ x = -4 := by
-      intro x
-      rw [h2 x]
-      simp
-      constructor
-      · intro h
-        have h5 : x^2 + 18*x + 30 - 2*√(x^2 + 18*x + 45) = 0 := by
-          linarith [h]
-        have h6 : √(x^2 + 18*x + 45) = (x^2 + 18*x + 30) / 2 := by
-          linarith [h5]
-        have h7 : x^2 + 18*x + 30 ≥ 0 := by
-          nlinarith [Real.sqrt_nonneg (x^2 + 18*x + 45), sq_nonneg (x + 9)]
-        have h8 : x^2 + 18*x + 45 ≥ 0 := by
-          nlinarith [Real.sqrt_nonneg (x^2 + 18*x + 45), sq_nonneg (x + 9)]
-        have h9 : x^2 + 18*x + 30 = 2*√(x^2 + 18*x + 45) := by linarith [h6]
-        have h10 : (x^2 + 18*x + 30)^2 = 4*(x^2 + 18*x + 45) := by
-          calc
-            (x^2 + 18*x + 30)^2 = (2*√(x^2 + 18*x + 45))^2 := by rw [h9]
-            _ = 4 * (√(x^2 + 18*x + 45))^2 := by ring
-            _ = 4 * (x^2 + 18*x + 45) := by rw [Real.sq_sqrt h8]
-        have h11 : x^4 + 36*x^3 + 242*x^2 + 1008*x + 720 = 0 := by
-          nlinarith [h10]
-        have h12 : (x + 5)*(x + 4)*(x^2 + 32*x + 288) = 0 := by
-          ring_nf at h11 ⊢
-          linarith
-        cases' (mul_eq_zero.mp h12) with h13 h14
-        · cases' (mul_eq_zero.mp h13) with h15 h16
-          · left
-            linarith
-          · right
-            linarith
-        · have h17 : x^2 + 32*x + 288 = 0 := by
-            linarith
-          have h18 : x^2 + 32*x + 288 > 0 := by
-            nlinarith
-          linarith
-      · intro h
-        cases' h with h19 h20
-        · rw [h19]
-          have h21 : √(25 + (-90) + 30) = √(-35) := by
-            norm_num
-          have h22 : √(-35) = 0 := by
-            linarith [Real.sqrt_nonneg (-35), h21]
-          linarith [h22]
-        · rw [h20]
-          have h23 : √(16 + (-72) + 30) = √(-26) := by
-            norm_num
-          have h24 : √(-26) = 0 := by
-            linarith [Real.sqrt_nonneg (-26), h23]
-          linarith [h24]
-    ext x
-    simp [h4]
-  rw [h3]
-  rw [Finset.prod_insert]
-  rw [Finset.prod_singleton]
-  norm_num
-  all_goals
-    linarith
+theorem chain_example (a : Nat) : a = a := by
+  have h1 : a = a := rfl
+  have h2 : a = a := h1
+  have h3 : a = a := sorry        -- unused
+  have h4 : a = a := h2
+  have h5 : a = a := h4
+  exact h5
+
 '''
+
+def find_unused_haves(ast, code):
+    haves = []
+
+    # collect hypothesis definitions
+    for i, node in enumerate(ast):
+        if node["kind"] == "have":
+            name_node = ast[i+4]  # ident của h
+            name = code[name_node["start_byte"]:name_node["end_byte"]]
+
+            haves.append({
+                "name": name,
+                "pos": name_node["end_byte"]
+            })
+
+    unused = []
+
+    for h in haves:
+        name = h["name"]
+        pos = h["pos"]
+
+        used = False
+        for node in ast:
+            if node["kind"] == "ident":
+                text = code[node["start_byte"]:node["end_byte"]]
+
+                if text == name and node["start_byte"] > pos:
+                    used = True
+                    break
+
+        if not used:
+            unused.append(name)
+
+    return unused
 
 # Create output directory if it doesn't exist
 os.makedirs("output", exist_ok=True)
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 output_file = f"output/subgoalex.md"
 ast_server = PersistentASTDaemon(REPL_DIR)
+verifier = Lean4ServerScheduler(max_concurrent_requests=1, name='auto_sorrifier')
 with open(output_file, "w", encoding="utf-8") as f:
     f.write(f"# Proof Analysis Report\n\n")
     f.write(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
@@ -111,7 +85,7 @@ with open(output_file, "w", encoding="utf-8") as f:
         f.write("\n```\n\n")
 
     f.write("## Sorrification Process\n\n")
-    checker = AutoSorrifier(code_corrected, ast_server, max_cycles=20)
+    checker = AutoSorrifier(code_corrected, ast_server, verifier, max_cycles=50)
     result = checker.fix_code()
 
     f.write("### Sorrified Result\n\n")
@@ -135,6 +109,35 @@ with open(output_file, "w", encoding="utf-8") as f:
     f.write("## Final Verification\n\n")
     f.write(f"- **Pass:** {'Yes' if final_check['pass'] else 'No'}\n")
     f.write(f"- **Complete:** {'Yes' if final_check.get('complete', False) else 'No'}\n")
+
+    # Warning-only: chỉ check unused have khi file đã compile không lỗi
+    if final_check.get("pass"):
+        try:
+            print(f"Checking unused have(s) in final code...")
+            # dump_ast_server đôi khi không đọc được file trong /tmp -> tạo temp ngay trong repl/
+            with tempfile.NamedTemporaryFile(
+                "w",
+                suffix=".lean",
+                delete=False,
+                encoding="utf-8",
+                dir=REPL_DIR,
+            ) as tf:
+                tf.write(final_code)
+                tmp_path = tf.name
+            blocks = ast_server.get_ast(tmp_path)
+            unused = find_unused_haves(blocks, final_code)
+            if unused:
+                msg = f"WARNING: unused have(s): {sorted(unused)}"
+                print(msg)
+                f.write("\n## Warnings\n\n")
+                f.write(f"- {msg}\n")
+        except Exception:
+            pass
+        finally:
+            try:
+                os.remove(tmp_path)
+            except Exception:
+                pass
 
     from utils.proof_state_extractor import extract_queries
     from retriever import retrieve
@@ -162,6 +165,9 @@ with open(output_file, "w", encoding="utf-8") as f:
         #         f.write(premise_code)
         #     f.write("\n")
         # f.write("\n```\n\n")
+
+    verifier.close()
+    ast_server.close()
 
 print(f"Analysis complete! Report saved to: {output_file}")
 print(f"Open the file to view the formatted results.")

@@ -19,6 +19,8 @@ import os
 import tempfile
 from typing import Tuple, List, Dict, Optional
 from tqdm import tqdm
+from prover.lean.verifier import verify_lean4_file, Lean4ServerScheduler
+import time
 
 # Constants
 REPL_DIR = "/workspace/npthai/APOLLO/repl"
@@ -27,6 +29,9 @@ BLOCK_STARTERS = (
     "induction' ", "rintro ", "intro ", "calc", "match", 
     "lemma", "theorem", "def"
 )
+
+# Dùng lock toàn cục để bảo vệ AST daemon khi dùng đa luồng
+AST_LOCK = threading.Lock()
 
 class PersistentASTDaemon:
     def __init__(self, repl_dir):
@@ -88,13 +93,17 @@ class PersistentASTDaemon:
             self.proc.wait()
 
 class AutoSorrifier:
-    def __init__(self, code: str, ast_daemon: PersistentASTDaemon, max_cycles: int = 20, log_path: Optional[str] = None):
+    def __init__(self, code: str, ast_daemon: PersistentASTDaemon, 
+                 repl_verifier: Lean4ServerScheduler, 
+                 max_cycles: int = 50, 
+                 log_path: Optional[str] = None):
         self.current_content = code
         self.max_cycles = max_cycles
         self.log_path = log_path
         self.temp_file_path = ""
         self._last_action_msg = ""
         self.ast_daemon = ast_daemon
+        self.repl_verifier = repl_verifier
 
     def fix_code(self) -> str:
         """
@@ -118,7 +127,11 @@ class AutoSorrifier:
                 for _ in range(self.max_cycles):
                     self._write_to_temp_file()
                     
-                    fatal_errors, unsolved_goals = self._get_lean_errors()
+                    try:
+                        fatal_errors, unsolved_goals = self._get_lean_errors()
+                    except RuntimeError as e:
+                        tqdm.write(f"\nHALTED: {e}")
+                        break
                     
                     # Exit condition: Compilation is fully successful
                     if not fatal_errors and not unsolved_goals:
@@ -163,11 +176,9 @@ class AutoSorrifier:
     def _resolve_infinite_loop(self, err_line: int):
         """
         Fallback resolution for correction oscillations.
-        If error correction oscillates, this method attempts to resolve by 
-        replacing the parent block with `sorry` and removing more deeply indented code
-        belonging to that block.
         """
         lines = self.current_content.splitlines()
+        original_content = self.current_content # Lưu lại trạng thái cũ để so sánh
         
         # 1. Search backward for nearest parent block by string match
         boss_idx = -1
@@ -205,11 +216,20 @@ class AutoSorrifier:
                 else:
                     break
         else:
-            # If parent block is not found, simply remove the problematic line
             tqdm.write("Parent block not found, deleting problematic line.")
-            lines[err_line - 1] = ""
+            if err_line - 1 < len(lines):
+                lines[err_line - 1] = ""
             
         self.current_content = self._clean_redundant_sorries(lines)
+        
+        # 4. Deadlock Breaker: 
+        # Nếu logic phía trên không làm code thay đổi (ví dụ parent đã bị sorry từ trước 
+        # và child không bị xóa do khác indent), ta ép buộc xóa bỏ dòng gây lỗi.
+        if self.current_content == original_content:
+            tqdm.write(f"Fallback didn't mutate code! Force deleting error line {err_line}.")
+            if err_line - 1 < len(lines):
+                lines[err_line - 1] = ""
+            self.current_content = self._clean_redundant_sorries(lines)
 
     def _apply_normal_fix(self, error_line: int, is_fatal: bool, err_msg: str) -> bool:
         """
@@ -299,70 +319,40 @@ class AutoSorrifier:
         self.current_content = self._clean_redundant_sorries(new_lines)
         return True
 
-    def _call_lean_tool(self, tool_args: List[str], input_str: Optional[str] = None) -> str:
-        """
-        Động cơ lõi để gọi các Lean Binary (repl, dump_ast).
-        Xử lý TempFile và thu hồi RAM ngay lập tức.
-        """
-        try:
-            with tempfile.TemporaryFile(mode='w+', encoding='utf-8') as temp_in:
-                if input_str:
-                    temp_in.write(input_str + "\r\n\r\n")
-                    temp_in.seek(0)
-                
-                res = subprocess.run(
-                    ["lake", "exe"] + tool_args,
-                    stdin=temp_in if input_str else None,
-                    capture_output=True,
-                    text=True,
-                    cwd=REPL_DIR,
-                    timeout=120
-                )
-                return res.stdout
-        except Exception as e:
-            print(f"  [!] Lean Call Error ({tool_args[0]}): {e}")
-            return ""
-
     def _get_lean_errors(self) -> Tuple[List[Tuple[int, str]], List[Tuple[int, str]]]:
-        """Dùng REPL để check lỗi logic"""
-        req = json.dumps({"cmd": self.current_content})
-        import time
-        start_time = time.time()
-        output = self._call_lean_tool(["repl"], input_str=req)
-        elapsed_time = time.time() - start_time
-        print(f"[REPL] lake exe repl executed in {elapsed_time:.4f} seconds")
-        fatal_errors, unsolved_goals = [], []
-        # Dùng raw_decode để bắt Multi-line JSON như DeepSeek
-        decoder = json.JSONDecoder()
-        idx = 0
-        while idx < len(output):
-            idx = output.find('{', idx)
-            if idx == -1: break
-            try:
-                data, chunk_len = decoder.raw_decode(output[idx:])
-                if "messages" in data:
-                    for msg in data["messages"]:
-                        ln, txt = msg.get("pos", {}).get("line", 1), msg.get("data", "")
-                        if msg.get("severity") == "error":
-                            if "unsolved goals" in txt: unsolved_goals.append((ln, txt))
-                            else: fatal_errors.append((ln, txt))
-                idx += chunk_len
-            except: idx += 1
-            
+        """
+        Dùng Lean4ServerScheduler (`repl_verifier`) để chạy `verify_lean4_file`
+        trong background process, sau đó phân loại lỗi.
+        """
+        req_ids = self.repl_verifier.submit_all_request(
+            [dict(code=self.current_content)]
+        )
+        result = self.repl_verifier.get_all_request_outputs(req_ids)[0]
+        print(f"[REPL] verify_lean4_file executed in {result.get('verify_time', 0):.4f} seconds")
+
+        if result.get("system_errors"):
+            raise RuntimeError(f"Lean verification timed out or crashed: {result['system_errors'][:200]}")
+
+        fatal_errors: List[Tuple[int, str]] = []
+        unsolved_goals: List[Tuple[int, str]] = []
+
+        for msg in result.get("errors", []):
+            ln = msg.get("pos", {}).get("line", 1)
+            txt = msg.get("data", "")
+            if "unsolved goals" in txt:
+                unsolved_goals.append((ln, txt))
+            else:
+                fatal_errors.append((ln, txt))
+
         return sorted(fatal_errors), sorted(unsolved_goals)
 
     def _get_ast_lines(self) -> List[Dict]:
-        """Gọi thẳng Persistent AST Server qua Stdin/Stdout -> Tốc độ ánh sáng"""
-        import time
-        # start_time không cần thiết lắm vì Lean Server đã tự in ra stderr, nhưng cứ để
-        start_time = time.time()
+        """Gọi thẳng Persistent AST Server qua Stdin/Stdout"""
         
-        # Nhờ Daemon móc AST
-        blocks = self.ast_daemon.get_ast(self.temp_file_path)
-        
-        elapsed_time = time.time() - start_time
-        print(f"  [AST] Persistent Server fetched AST in {elapsed_time:.4f} seconds")
-        
+        # Nhờ Daemon móc AST (bảo vệ bằng lock vì dùng chung 1 process, 1 pipe)
+        with AST_LOCK:
+            blocks = self.ast_daemon.get_ast(self.temp_file_path)
+                    
         # Tính toán line từ byte
         raw_bytes = self.current_content.encode('utf-8')
         for b in blocks:
@@ -430,11 +420,17 @@ if __name__ == "__main__":
     target_path = sys.argv[1]
     with open(target_path, "r", encoding="utf-8") as f:
         source_code = f.read()
-        
-    patcher = AutoSorrifier(source_code)
-    fixed_code = patcher.fix_code()
-    
-    if fixed_code:
-        with open(target_path, "w", encoding="utf-8") as f:
-            f.write(fixed_code)
-        print("Done.")
+
+    # CLI mode: khởi tạo AST daemon + verifier dùng riêng cho file này
+    ast_server = PersistentASTDaemon(REPL_DIR)
+    verifier = Lean4ServerScheduler(max_concurrent_requests=1, timeout=300, memory_limit=-1, name="auto_sorrifier_cli")
+    try:
+        patcher = AutoSorrifier(source_code, ast_server, verifier)
+        fixed_code = patcher.fix_code()
+        if fixed_code:
+            with open(target_path, "w", encoding="utf-8") as f:
+                f.write(fixed_code)
+            print("Done.")
+    finally:
+        verifier.close()
+        ast_server.close()
