@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 # -- Local imports (adjust paths if needed) --
 from utils.syntax_repair import SyntaxCorrector
-from utils.auto_sorrifier import AutoSorrifier, PersistentASTDaemon
+from utils.auto_sorrifier import AutoSorrifier
 from utils.extract_lemmas_from_sorry import LemmaExtractor
 from utils.convert_lean_to_json import get_deepseek_format_proofs
 from utils.proof_assembler import LeanProofAssembler
@@ -49,8 +49,6 @@ class ApolloRepair:
         os.makedirs(self.log_dir, exist_ok=True)
         self.shared_schedulers = shared_schedulers
         self._own_schedulers = False  # track if we created them ourselves
-        self.repl_dir = "/workspace/npthai/APOLLO/repl"
-        self._ast_daemon = None  # lazy init
 
         self.options = 'set_option pp.instanceTypes true\nset_option pp.numericTypes true\nset_option pp.coercions.types true\nset_option pp.letVarTypes true\nset_option pp.structureInstanceTypes true\nset_option pp.instanceTypes true\nset_option pp.mvars.withType true\nset_option pp.coercions true\nset_option pp.funBinderTypes true\nset_option pp.piBinderTypes true'
 
@@ -79,13 +77,6 @@ class ApolloRepair:
             }
             self._own_schedulers = True
         return self.shared_schedulers
-
-    @property
-    def ast_daemon(self):
-        if self._ast_daemon is None:
-            print(f"[{self.lemma_name}] Initializing AST Daemon...")
-            self._ast_daemon = PersistentASTDaemon(self.repl_dir)
-        return self._ast_daemon
 
     def preprocess_code(self, code):
         code = code.splitlines()
@@ -127,9 +118,6 @@ class ApolloRepair:
             print(f"ApolloRepair finished in {elapsed:.2f}s.")
             return str(output_file)
         finally:
-            if self._ast_daemon is not None:
-                self._ast_daemon.close()
-                self._ast_daemon = None
             if self._own_schedulers and self.shared_schedulers is not None:
                 from prover.launch_solver import close_shared_schedulers
                 close_shared_schedulers(
@@ -161,8 +149,7 @@ class ApolloRepair:
             if not self._verify(code_corrected)['pass']:
                 print(f"[{self.lemma_name}] Starting AST-based repair...")
                 patcher = AutoSorrifier(
-                    code=code_corrected, 
-                    ast_daemon=self.ast_daemon, 
+                    code=code_corrected,
                     repl_verifier=self.repl_verifier,
                     max_cycles=30
                 )
@@ -178,8 +165,10 @@ class ApolloRepair:
                 final_code = repairer.repair_proof()
                 print(f"[{self.lemma_name}] After repair: {final_code.count('sorry')} sorry(s) remaining.")
             else:
+                print("No sorry found, skipping repair")
                 final_code = code_corrected_sorry
             print(f"[{self.lemma_name}] Final repaired code:\n{final_code}\n")
+            exit()
 
             # Save the best known main theorem for this attempt
             with open(main_lean_path, "w") as f:
@@ -300,7 +289,6 @@ class ApolloRepair:
                         result = select_and_extract(
                             header, proof_bodies, top_k=1,
                             verifier=self.repl_verifier,
-                            ast_server=self.ast_daemon,
                             max_workers=4,
                         )
                         if result["selected"]:
@@ -334,7 +322,7 @@ class ApolloRepair:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, default="configs/baseline_sampling_kimina_prover.py")
-    parser.add_argument("--problem", type=str, default="problems/problem1.lean")
+    parser.add_argument("--problem", type=str, default="problems/miniF2F-Valid/aime_1984_p5.lean")
     args = parser.parse_args()
     # Create log_dir from problem file name (without extension)
     base_problem = os.path.splitext(os.path.basename(args.problem))[0]

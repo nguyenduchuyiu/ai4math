@@ -91,21 +91,35 @@ class ProofRepairer:
         part2 = sub.join(arr[nth:])
         return part1 + repl + part2
 
+    # def get_hint_tactics(self, info):
+    #     lines = info.splitlines()
+    #     suggestions = []
+    #     current_suggestion = None
+    #     for line in lines:
+    #         stripped = line.strip()
+    #         if stripped.startswith("•"):
+    #             if current_suggestion is not None:
+    #                 suggestions.append(current_suggestion)
+    #             current_suggestion = stripped[1:].strip()
+    #         else:
+    #             if current_suggestion is not None and stripped:
+    #                 current_suggestion += " " + stripped
+    #     if current_suggestion is not None and current_suggestion.strip() not in ('aesop', 'intro'):
+    #         suggestions.append(current_suggestion)
+    #     return suggestions
+    
     def get_hint_tactics(self, info):
+        import re
         lines = info.splitlines()
-        suggestions = []
-        current_suggestion = None
+        suggestions: list[str] = []
         for line in lines:
             stripped = line.strip()
-            if stripped.startswith("•"):
-                if current_suggestion is not None:
-                    suggestions.append(current_suggestion)
-                current_suggestion = stripped[1:].strip()
-            else:
-                if current_suggestion is not None and stripped:
-                    current_suggestion += " " + stripped
-        if current_suggestion is not None and current_suggestion.strip() not in ('aesop', 'intro'):
-            suggestions.append(current_suggestion)
+            m = re.match(r'\[.*?\]\s*🎉\s*(.+)', stripped)
+            if m:
+                tactic = m.group(1).strip()
+                if tactic not in ("aesop", "intro"):
+                    suggestions.append(tactic)
+
         return suggestions
 
     def verify_lean_code(self, code):
